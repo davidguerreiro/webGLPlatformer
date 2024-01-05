@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
     [Header("Level Configuration")]
-    public int level;
+    public string level;
     public string nextLevelName;
 
     [Header("GamePlay References")]
@@ -19,6 +20,9 @@ public class GameManager : MonoBehaviour
 
     [Header("Level Coins")]
     public int levelCoins;
+
+    [Header("Events")]
+    public UnityEvent OnPlayerSpawn;
 
     [HideInInspector]
     public bool inGamePlay;
@@ -66,6 +70,8 @@ public class GameManager : MonoBehaviour
     {
         player.transform.position = playerSpawn.position;
         player.playerController.AllowControl();
+
+        OnPlayerSpawn?.Invoke();
     }
 
     /// <summary>
@@ -111,10 +117,21 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void PlayerDamaged()
     {
+        StartCoroutine(PlayerDamagedRoutine());
+    }
+
+    /// <summary>
+    /// Player damaged coroutine.
+    /// </summary>
+    /// <returns>IEnumerator</returns>
+    private IEnumerator PlayerDamagedRoutine()
+    {
         if (player.GetHealth() > 0)
         {
+            yield return new WaitForSeconds(1.5f);
             PlayerSpawn();
-        } else
+        }
+        else
         {
             // TODO: Call game over here.
             Debug.Log("gameover");

@@ -11,8 +11,15 @@ public class PlayerAnimSounds : MonoBehaviour
     public Sprite idle;
     public Sprite jumping;
 
+    [Header("Particles")]
+    public GameObject damageParticles;
+
     [Header("Audio")]
     public AudioClip jumpSoundClip;
+    public AudioClip diedSound;
+
+    [Header("Settings")]
+    public float damageAnimDuration;
 
     private Animator _anim;
     private SpriteRenderer _spriteRenderer;
@@ -74,6 +81,18 @@ public class PlayerAnimSounds : MonoBehaviour
     }
 
     /// <summary>
+    /// Play dead sound.
+    /// </summary>
+    public void DiedSound()
+    {
+        if (_audio != null)
+        {
+            _audio.clip = diedSound;
+            _audio.Play();
+        }
+    }
+
+    /// <summary>
     ///  Trigger enter door animation.
     /// </summary>
     private void EnterDoorAnim()
@@ -82,6 +101,45 @@ public class PlayerAnimSounds : MonoBehaviour
         {
             _anim.SetBool("EnterDoor", true);
         }
+    }
+
+    /// <summary>
+    /// Display damaged animation and sound.
+    /// </summary>
+    public void GetDamageAnim()
+    {
+        StartCoroutine(GetDamageAnimRoutine());
+    }
+
+    /// <summary>
+    /// Display damaged animation and sound coroutine.
+    /// </summary>
+    /// <returns>IEnumerator</returns>
+    private IEnumerator GetDamageAnimRoutine()
+    {
+        HideSprite();
+        DiedSound();
+        damageParticles.SetActive(true);
+
+        yield return new WaitForSeconds(damageAnimDuration);
+
+        damageParticles.SetActive(false);
+    }
+
+    /// <summary>
+    /// Display player sprite.
+    /// </summary>
+    public void DisplaySprite()
+    {
+        _spriteRenderer.enabled = true;
+    }
+
+    /// <summary>
+    /// Hide player sprite.
+    /// </summary>
+    public void HideSprite()
+    {
+        _spriteRenderer.enabled = false;
     }
 
     /// <summary>

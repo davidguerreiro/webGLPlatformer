@@ -15,8 +15,14 @@ public class Player : MonoBehaviour
     [Header("Events")]
     public UnityEvent getDamage;
 
+
     [HideInInspector]
     public PlayerController playerController;
+
+    [HideInInspector]
+    public bool inDamage;
+
+    private Coroutine _damageRoutine;
 
     /// <summary>
     /// Update player's health.
@@ -97,10 +103,21 @@ public class Player : MonoBehaviour
     /// </summary>
     public void GetDamage()
     {
+        inDamage = true;
+
         playerController.RestrictControl();
         UpdateHealth(-1);
 
         getDamage?.Invoke();
+    }
+
+    /// <summary>
+    /// Allow to get damage from level
+    /// hazards.
+    /// </summary>
+    public void AllowDamage()
+    {
+        inDamage = false;
     }
 
     /// <summary>
@@ -109,7 +126,7 @@ public class Player : MonoBehaviour
     /// <param name="collision">Collision2D</param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (playerController.canMove && collision.gameObject.CompareTag("Hazard"))
+        if (playerController.canMove && collision.gameObject.CompareTag("Hazard") && ! inDamage)
         {
             GetDamage();
         }

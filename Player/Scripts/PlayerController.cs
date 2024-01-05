@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigibody;
     private BoxCollider2D _boxCollider;
     private CapsuleCollider2D _capsuleCollider;
+    private float _baseGravityScale;
 
     private void Update()
     {
@@ -104,6 +105,10 @@ public class PlayerController : MonoBehaviour
     public void AllowControl()
     {
         canMove = true;
+
+        _rigibody.gravityScale = _baseGravityScale;
+        _boxCollider.enabled = true;
+        _capsuleCollider.enabled = true;
     }
 
     /// <summary>
@@ -112,7 +117,11 @@ public class PlayerController : MonoBehaviour
     public void RestrictControl()
     {
         canMove = false;
+
         _rigibody.velocity = new Vector2(0f, 0f);
+        _rigibody.gravityScale = 0f;
+        _boxCollider.enabled = false;
+        _capsuleCollider.enabled = false;
     }
 
     public void EnterDoor()
@@ -134,5 +143,7 @@ public class PlayerController : MonoBehaviour
         _boxCollider = GetComponent<BoxCollider2D>();
         _capsuleCollider = GetComponent<CapsuleCollider2D>();
         enterDoor = false;
+
+        _baseGravityScale = _rigibody.gravityScale;
     }
 }
