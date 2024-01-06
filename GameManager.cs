@@ -7,8 +7,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     [Header("Level Configuration")]
-    public string level;
-    public string nextLevelName;
+    public LevelData levelData;
 
     [Header("GamePlay References")]
     public Player player;
@@ -50,15 +49,23 @@ public class GameManager : MonoBehaviour
     {
         // init UIs.
         gamePlayUI.Init(this);
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(1f);
+
+        // start gameplay UI.
+        gamePlayUI.InitGamePlay();
+
+        while (gamePlayUI.initLevel != null)
+        {
+            yield return new WaitForFixedUpdate();
+        }
 
         // init player.
         player.InitPlayer();
         PlayerSpawn();
         yield return new WaitForSeconds(.1f);
 
-        // start gameplay.
-        gamePlayUI.cover.Hide();
+        // remove cover and start level gameplay.
+        gamePlayUI.cover.FadeOut();
 
         inGamePlay = true;
     }
@@ -107,9 +114,9 @@ public class GameManager : MonoBehaviour
         // TODO: Improve adding extra completed level sound effect.
 
         yield return new WaitForSeconds(5f);
-        gamePlayUI.cover.Display();
+        gamePlayUI.cover.FadeIn();
 
-        SceneManager.LoadScene(nextLevelName);
+        SceneManager.LoadScene(levelData.nextLevelName);
     }
 
     /// <summary>

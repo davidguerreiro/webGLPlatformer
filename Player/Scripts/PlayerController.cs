@@ -144,6 +144,6 @@ public class PlayerController : MonoBehaviour
         _capsuleCollider = GetComponent<CapsuleCollider2D>();
         enterDoor = false;
 
-        _baseGravityScale = _rigibody.gravityScale;
+        _baseGravityScale = 5;
     }
 }

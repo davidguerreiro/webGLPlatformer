@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5213561455779577523}
   - component: {fileID: 6634993499890060286}
+  - component: {fileID: 3426354264135000115}
   m_Layer: 3
   m_Name: Back
   m_TagString: Hazard
@@ -64,7 +65,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.039480805, y: -0.22527261}
+  m_Offset: {x: -0.039480805, y: -0.22944786}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -75,8 +76,35 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.20109493, y: 0.3822423}
+  m_Size: {x: 0.20109493, y: 0.3738918}
   m_EdgeRadius: 0
+--- !u!50 &3426354264135000115
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196072787305814414}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &236884376879648237
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2377904540467009740}
   - component: {fileID: 6200454469389999738}
+  - component: {fileID: 1758217399677526217}
   m_Layer: 3
   m_Name: Front
   m_TagString: Hazard
@@ -141,9 +170,36 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08128396, y: -0.14781448}
-  m_Size: {x: 0.3234977, y: 0.5596495}
+  m_Offset: {x: -0.08128396, y: -0.21740182}
+  m_Size: {x: 0.3234977, y: 0.42047486}
   m_Direction: 0
+--- !u!50 &1758217399677526217
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236884376879648237}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &1287160081289735217
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,7 +215,7 @@ GameObject:
   - component: {fileID: 3169492408555480308}
   m_Layer: 3
   m_Name: LadyBug
-  m_TagString: Hazard
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -202,6 +258,9 @@ MonoBehaviour:
   - {fileID: 7639483803294303571}
   capsuleColliders:
   - {fileID: 6200454469389999738}
+  hazardPoints:
+  - {fileID: 236884376879648237}
+  - {fileID: 196072787305814414}
   flipSpriteOnKill: 1
   defeatedForceUp: 3
   timeToDestroy: 10
@@ -418,7 +477,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0905735, y: -0.0034835339}
+  m_Offset: {x: -0.051604606, y: -0.0034835339}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -429,7 +488,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.48442757, y: 0.24986553}
+  m_Size: {x: 0.56236535, y: 0.24986553}
   m_EdgeRadius: 0
 --- !u!114 &2675082053044509649
 MonoBehaviour:

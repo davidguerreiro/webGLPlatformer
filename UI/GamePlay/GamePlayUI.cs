@@ -5,18 +5,22 @@ using UnityEngine;
 public class GamePlayUI : MonoBehaviour
 {
     [Header("Components")]
-    public Cover cover;
+    public FadeElement cover;
+    public LevelIntro levelIntro;
     public CoinsGameplayUI coinsUI;
     public KeyGameplayUI keyUI;
     public HealthUI healthUI;
+
+    [HideInInspector]
+    public Coroutine initLevel;
 
     /// <summary>
     /// Init gameplay UI method.
     /// </summary>
     public void Init(GameManager gameManager)
     {
-        // init cover.
-        cover.Init();
+        // init level intro.
+        levelIntro.Init(gameManager.levelData);
 
         // init coins UI.
         coinsUI.Init(gameManager.player);
@@ -26,5 +30,29 @@ public class GamePlayUI : MonoBehaviour
 
         // init health UI.
         healthUI.Init(gameManager.player);
+    }
+
+    /// <summary>
+    /// Init gameplay UI.
+    /// </summary>
+    public void InitGamePlay()
+    {
+        initLevel = StartCoroutine(InitGamePlayRoutine());
+    }
+
+    /// <summary>
+    /// Init gameplay UI routine.
+    /// </summary>
+    /// <returns>IEnumerator</returns>
+    private IEnumerator InitGamePlayRoutine()
+    {
+        levelIntro.ShowLevelData();
+
+        while (levelIntro.displayed)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        initLevel = null;
     }
 }

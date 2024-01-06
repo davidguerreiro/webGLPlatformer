@@ -15,6 +15,9 @@ public abstract class Enemy : MonoBehaviour
     public BoxCollider2D[] boxColliders;
     public CapsuleCollider2D[] capsuleColliders;
 
+    [Header("Other Components")]
+    public GameObject[] hazardPoints;
+
     [Header("Settings")]
     public bool flipSpriteOnKill;
     public float defeatedForceUp;
@@ -48,10 +51,25 @@ public abstract class Enemy : MonoBehaviour
     }
 
     /// <summary>
+    /// Remove hazard tags.
+    /// </summary>
+    private void RemoveHazardPoints()
+    {
+        foreach (GameObject hazard in hazardPoints)
+        {
+            if (hazard.activeSelf)
+            {
+                hazard.tag = "Untagged";
+            }
+        }
+    }
+
+    /// <summary>
     /// Enemy killed by player.
     /// </summary>
     public virtual void Defeated()
     {
+        RemoveHazardPoints();
         RemoveColliders();
         SetDefeatedSprite();
 

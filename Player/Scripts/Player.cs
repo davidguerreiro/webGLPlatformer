@@ -22,8 +22,6 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public bool inDamage;
 
-    private Coroutine _damageRoutine;
-
     /// <summary>
     /// Update player's health.
     /// </summary>
@@ -142,5 +140,6 @@ public class Player : MonoBehaviour
         playerController.Init();
 
         key = false;
+        inDamage = false;
     }
 }
