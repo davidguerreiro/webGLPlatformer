@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -179,6 +180,32 @@ public class AudioComponent : MonoBehaviour
 
         onFade = false;
     } 
+
+    /// <summary>
+    /// Set loop value.
+    /// </summary>
+    /// <param name="value">bool</param>
+    public void SetLoop(bool value)
+    {
+        audio.loop = value;
+    }
+
+    /// <summary>
+    /// Update clip in AudioClips array
+    /// </summary>
+    /// <param name="index">int</param>
+    /// <param name="clip">AudioClip</param>
+    public void UpdateClip(int index, AudioClip clip)
+    {
+        try
+        {
+            audioClips[index] = clip;
+        } catch (Exception e)
+        {
+            Debug.Log("Failed to add clip to audioclips. Probably index not found");
+            throw;
+        }
+    }
 
     /// <summary>
     /// Init class method.

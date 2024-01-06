@@ -7,4 +7,5 @@ public class LevelData : ScriptableObject
     public string levelName;
     public Sprite levelIcon;
     public string nextLevelName;
+    public AudioClip levelMusic;
 }

@@ -10,9 +10,12 @@ public class GamePlayUI : MonoBehaviour
     public CoinsGameplayUI coinsUI;
     public KeyGameplayUI keyUI;
     public HealthUI healthUI;
+    public GameObject gameOver;
 
     [HideInInspector]
     public Coroutine initLevel;
+
+    private GameManager _gameManager;
 
     /// <summary>
     /// Init gameplay UI method.
@@ -30,6 +33,8 @@ public class GamePlayUI : MonoBehaviour
 
         // init health UI.
         healthUI.Init(gameManager.player);
+
+        _gameManager = gameManager;
     }
 
     /// <summary>
@@ -54,5 +59,22 @@ public class GamePlayUI : MonoBehaviour
         }
 
         initLevel = null;
+    }
+
+    /// <summary>
+    /// Display game over modal.
+    /// </summary>
+    public void DisplayGameOver()
+    {
+        _gameManager.PlayGameOverMusic();
+        gameOver.SetActive(true);
+    }
+
+    /// <summary>
+    /// Hide game over modal.
+    /// </summary>
+    public void HideGameOver()
+    {
+        gameOver.SetActive(false);
     }
 }

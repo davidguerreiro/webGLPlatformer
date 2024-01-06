@@ -26,9 +26,12 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool inGamePlay;
 
+    private AudioComponent _audio;
+
     // Start is called before the first frame update
     void Start()
     {
+        Init();
         StartCoroutine(InitLevel());
     }
 
@@ -53,6 +56,7 @@ public class GameManager : MonoBehaviour
 
         // start gameplay UI.
         gamePlayUI.InitGamePlay();
+        PlayLevelIntroMusic();
 
         while (gamePlayUI.initLevel != null)
         {
@@ -62,6 +66,8 @@ public class GameManager : MonoBehaviour
         // init player.
         player.InitPlayer();
         PlayerSpawn();
+        PlayLevelMainTheme();
+
         yield return new WaitForSeconds(.1f);
 
         // remove cover and start level gameplay.
@@ -109,6 +115,7 @@ public class GameManager : MonoBehaviour
         inGamePlay = false;
 
         player.playerController.EnterDoor();
+        PlayCompletedLevelMusic();
 
         // TODO: Show current level completed here.
         // TODO: Improve adding extra completed level sound effect.
@@ -140,8 +147,72 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // TODO: Call game over here.
-            Debug.Log("gameover");
+            gamePlayUI.DisplayGameOver();
         }
+    }
+
+    /// <summary>
+    /// Retry game after game over.
+    /// </summary>
+    public void RetryGame()
+    {
+        StartCoroutine(RetryGameRoutine());
+    }
+
+    /// <summary>
+    /// Retry game coroutine.
+    /// </summary>
+    private IEnumerator RetryGameRoutine()
+    {
+
+        gamePlayUI.cover.FadeIn();
+        yield return new WaitForSeconds(3f);
+
+        SceneManager.LoadScene("Level1-1");
+    }
+
+    /// <summary>
+    /// Play level intro music.
+    /// </summary>
+    public void PlayLevelIntroMusic()
+    {
+        _audio.SetLoop(false);
+        _audio.PlaySound(0);
+    }
+
+    /// <summary>
+    /// Play level main theme music.
+    /// </summary>
+    public void PlayLevelMainTheme()
+    {
+        _audio.SetLoop(true);
+        _audio.PlaySound(3);
+    }
+
+    /// <summary>
+    /// Play completed level music.
+    /// </summary>
+    public void PlayCompletedLevelMusic()
+    {
+        _audio.SetLoop(false);
+        _audio.PlaySound(1);
+    }
+
+    /// <summary>
+    /// Play game over music.
+    /// </summary>
+    public void PlayGameOverMusic()
+    {
+        _audio.SetLoop(false);
+        _audio.PlaySound(2);
+    }
+
+    /// <summary>
+    /// Init class method.
+    /// </summary>
+    private void Init()
+    {
+        _audio = GetComponent<AudioComponent>();
+        _audio.UpdateClip(3, levelData.levelMusic);
     }
 }
