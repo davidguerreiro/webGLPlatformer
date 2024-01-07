@@ -6,9 +6,10 @@ public class Key : MonoBehaviour
 {
     [Header("Components")]
     public SpriteRenderer sprite;
+    public GameObject particles;
 
     private BoxCollider2D _collider;
-    private AudioSource _audio;
+    private AudioComponent _audio;
 
     // Start is called before the first frame update
     void Start()
@@ -37,10 +38,13 @@ public class Key : MonoBehaviour
     {
         _collider.enabled = false;
         sprite.enabled = false;
+        particles.SetActive(false);
 
         player.GetKey();
 
-        _audio.Play();
+        _audio.PlaySound(0);
+
+        Destroy(this, 2f);
     }
 
     /// <summary>
@@ -49,6 +53,6 @@ public class Key : MonoBehaviour
     private void Init()
     {
         _collider = GetComponent<BoxCollider2D>();
-        _audio = GetComponent<AudioSource>();
+        _audio = GetComponent<AudioComponent>();
     }
 }
