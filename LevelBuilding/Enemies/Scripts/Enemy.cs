@@ -26,7 +26,7 @@ public abstract class Enemy : MonoBehaviour
     [HideInInspector]
     public bool isAlive;
 
-    protected AudioSource _audio;
+    protected AudioComponent _audio;
     protected Rigidbody2D _rigi;
 
     /// <summary>
@@ -76,7 +76,7 @@ public abstract class Enemy : MonoBehaviour
         _rigi.isKinematic = false;
         _rigi.velocity = new Vector2(0f, defeatedForceUp);
 
-        _audio.Play();
+        _audio.PlaySound(0);
 
         gameManager.player.playerController.EnemyDefeatedRecoil();
 
@@ -102,7 +102,7 @@ public abstract class Enemy : MonoBehaviour
     protected void Init()
     {
         isAlive = true;
-        _audio = GetComponent<AudioSource>();
+        _audio = GetComponent<AudioComponent>();
         _rigi = GetComponent<Rigidbody2D>();
     }
 }

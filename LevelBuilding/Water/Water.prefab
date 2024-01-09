@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2166051558861248331}
   - component: {fileID: 3568253499705258285}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: WaterDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3132064613751682997}
   - component: {fileID: 2707209527092177153}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: WaterTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 5286905765347718107}
   - component: {fileID: 177637391607601524}
   - component: {fileID: 7005130416058765152}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Water
   m_TagString: Hazard
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.3784153, y: -1.1230872}
+  m_Offset: {x: 1.3784153, y: -1.0059116}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -246,7 +246,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.6268945, y: 0.6338258}
+  m_Size: {x: 2.6268945, y: 0.86817694}
   m_EdgeRadius: 0
 --- !u!95 &7005130416058765152
 Animator:
