@@ -80,7 +80,7 @@ public abstract class Enemy : MonoBehaviour
 
         gameManager.player.playerController.EnemyDefeatedRecoil();
 
-        Destroy(this, timeToDestroy);
+        Destroy(this.gameObject, timeToDestroy);
     }
 
     /// <summary>
