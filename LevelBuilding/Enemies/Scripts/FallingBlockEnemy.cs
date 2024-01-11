@@ -54,7 +54,9 @@ public class FallingBlockEnemy : Enemy
     /// <returns>IEnumerator</returns>
     private IEnumerator ReturnUp()
     {
-        _rigi.gravityScale = 0;
+        _audio.PlaySound(1);
+
+        _rigi.gravityScale= 0;
         _rigi.bodyType = RigidbodyType2D.Kinematic;
 
         _rigi.velocity = new Vector2(0f, 0f);

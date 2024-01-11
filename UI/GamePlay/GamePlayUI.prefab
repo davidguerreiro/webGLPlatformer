@@ -536,7 +536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2209381848561473566, guid: 54cfd8cfaf4554a819c0ceab0104aa69, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -148
+      value: -38.7
       objectReference: {fileID: 0}
     - target: {fileID: 2209381848561473566, guid: 54cfd8cfaf4554a819c0ceab0104aa69, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -699,6 +699,10 @@ PrefabInstance:
     - target: {fileID: 1503072554331420401, guid: 23d411b7053324817861e24bca7367ea, type: 3}
       propertyPath: m_Name
       value: Coins
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503072554331420401, guid: 23d411b7053324817861e24bca7367ea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3872498141030933665, guid: 23d411b7053324817861e24bca7367ea, type: 3}
       propertyPath: m_Pivot.x

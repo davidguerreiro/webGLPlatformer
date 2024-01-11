@@ -26,7 +26,7 @@ public class GamePlayUI : MonoBehaviour
         levelIntro.Init(gameManager.levelData);
 
         // init coins UI.
-        coinsUI.Init(gameManager.player);
+        // coinsUI.Init(gameManager.player);
 
         // init key UI.
         keyUI.Init(gameManager.player);
