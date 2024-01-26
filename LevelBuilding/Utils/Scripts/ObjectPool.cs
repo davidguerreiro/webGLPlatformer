@@ -6,6 +6,8 @@ public class ObjectPool : MonoBehaviour {
 
     public GameObject prefab;                               // Prefab to be used in the object pool.
     public int poolSize;                                    // Size of the object pool.
+
+    [HideInInspector]
     public List<GameObject> pool;                          // Object pool list.
 
     /// <summary>
