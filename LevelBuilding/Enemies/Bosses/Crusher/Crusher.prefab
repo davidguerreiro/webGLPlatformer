@@ -97,6 +97,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d56aaa28ccf4c88872bc750fd82dc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2149159700595346888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8169488156819735837}
+  m_Layer: 3
+  m_Name: DestroyedParticleAnims
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8169488156819735837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2149159700595346888}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1681258169281903749}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2665381548699730828
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,6 +281,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8798019880120254863}
+  - {fileID: 8169488156819735837}
   - {fileID: 8509377690295427129}
   - {fileID: 3150004295644523281}
   m_Father: {fileID: 0}
@@ -424,6 +456,9 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: 6f21695a2c6ff4a3a99cdcf5cf570d59, type: 3}
   - {fileID: 8300000, guid: b37698f4b170efb4f8c70398430f064d, type: 3}
+  - {fileID: 8300000, guid: 154d30aac0832534fa8783974c6d2b3d, type: 3}
+  - {fileID: 8300000, guid: 5b9eff881ae22fe43a6d5e9d41847730, type: 3}
+  - {fileID: 8300000, guid: e4019ec0536868b48b3b0e542372ee70, type: 3}
   audio: {fileID: 0}
   onFade: 0
 --- !u!61 &6344296714930225642

@@ -94,8 +94,16 @@ public class GameManager : MonoBehaviour
     {
         if (player.GetCoins() == levelCoins)
         {
-            key.SetActive(true);
+            DisplayKey();
         }
+    }
+
+    /// <summary>
+    /// Reveal key in game level.
+    /// </summary>
+    public void DisplayKey()
+    {
+        key.SetActive(true);
     }
 
     /// <summary>
@@ -116,9 +124,6 @@ public class GameManager : MonoBehaviour
 
         player.playerController.EnterDoor();
         PlayCompletedLevelMusic();
-
-        // TODO: Show current level completed here.
-        // TODO: Improve adding extra completed level sound effect.
 
         yield return new WaitForSeconds(5f);
         gamePlayUI.cover.FadeIn();

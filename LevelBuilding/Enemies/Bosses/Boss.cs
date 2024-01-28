@@ -17,6 +17,7 @@ public abstract class Boss : MonoBehaviour
 
     [Header("Other Components")]
     public GameObject[] hazardPoints;
+    public GameObject[] destroyedExplosions;
 
     [Header("Settings")]
     public float hitForceUp;
@@ -29,13 +30,15 @@ public abstract class Boss : MonoBehaviour
     [HideInInspector]
     public bool isAlive;
     public bool isMoving;
+    public bool inBattleLoop;
     public Coroutine isBeingHit;
+    public Coroutine isBeingDestroyed;
 
     protected AudioComponent _audio;
     protected Rigidbody2D _rigi;
     protected Animator _anim;
 
-    // TODO: Add hit and destroy logic.
+    // TODO: Continue implementing boss logic in Crusher class.
 
     /// <summary>
     /// Remove enemy colliders.
@@ -111,9 +114,92 @@ public abstract class Boss : MonoBehaviour
     /// <summary>
     /// Get hit.
     /// </summary>
-    private void Hit()
+    /// <returns>IEnmumerator</returns>
+    public IEnumerator Hit()
     {
+        GetDamage();
 
+        if (hitsToDestroy > 0)
+        {
+            onHit?.Invoke();
+
+            RemoveColliders();
+            _anim.SetTrigger("IsHit");
+            _audio.PlaySound(2);
+            yield return new WaitForSeconds(1f);
+
+            EnableColliders();
+
+        } else
+        {
+            // Boss defeated.
+            isBeingDestroyed = StartCoroutine(Destroyed());
+
+            while (isBeingDestroyed != null)
+            {
+                yield return new WaitForFixedUpdate();
+            }
+        }
+
+        isBeingHit = null;
+    }
+
+    /// <summary>
+    /// Boss destroyed anim and logic.
+    /// </summary>
+    /// <returns>IEnumerator</returns>
+    private IEnumerator Destroyed()
+    {
+        onDefeated?.Invoke();
+
+        isAlive = false;
+        isMoving = false;
+        inBattleLoop = false;
+
+        _anim.SetBool("Destroy1", true);
+        _audio.PlaySound(2);
+        yield return new WaitForSeconds(1f);
+
+        _anim.SetBool("Destroy2", true);
+        _audio.SetLoop(true);
+        _audio.PlaySound(3);
+        StartCoroutine(EnableDestroyExplosions());
+        yield return new WaitForSeconds(3.5f);
+
+        DisableDestroyExplosions();
+        _anim.SetBool("Destroy3", true);
+        _audio.PlaySound(4);
+        yield return new WaitForSeconds(1.5f);
+
+        gameManager.DisplayKey();
+        isBeingDestroyed = null;
+    }
+
+
+    /// <summary>
+    /// Enable explision animations when boss
+    /// is defeated.
+    /// </summary>
+    /// <returns>IEnumerator</returns>
+    private IEnumerator EnableDestroyExplosions()
+    {
+        foreach (GameObject explosion in destroyedExplosions)
+        {
+            explosion.SetActive(true);
+            yield return new WaitForSeconds(.5f);
+        }
+    }
+
+    /// <summary>
+    /// Disable explosions displayed when boss is defeated in destroy2
+    /// animation phase.
+    /// </summary>
+    private void DisableDestroyExplosions()
+    {
+        foreach (GameObject explosion in destroyedExplosions)
+        {
+            explosion.SetActive(false);
+        }
     }
 
     /// <summary>
