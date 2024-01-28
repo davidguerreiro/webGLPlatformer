@@ -18,6 +18,7 @@ public abstract class Boss : MonoBehaviour
     [Header("Other Components")]
     public GameObject[] hazardPoints;
     public GameObject[] destroyedExplosions;
+    public GameObject[] levelEnemiesAndHazards;
 
     [Header("Settings")]
     public float hitForceUp;
@@ -33,6 +34,8 @@ public abstract class Boss : MonoBehaviour
     public bool inBattleLoop;
     public Coroutine isBeingHit;
     public Coroutine isBeingDestroyed;
+
+    private int _bossPhase;
 
     protected AudioComponent _audio;
     protected Rigidbody2D _rigi;
@@ -112,6 +115,21 @@ public abstract class Boss : MonoBehaviour
     }
 
     /// <summary>
+    ///  Remove all enemies and hazards from
+    ///  current level when Boss has been defeated.
+    /// </summary>
+    private void RemoveAllEnemiesAndHazards()
+    {
+        foreach (GameObject enemyOrHazard in levelEnemiesAndHazards)
+        {
+            if (enemyOrHazard != null && enemyOrHazard.activeSelf)
+            {
+                enemyOrHazard.SetActive(false);
+            }
+        }
+    }
+
+    /// <summary>
     /// Get hit.
     /// </summary>
     /// <returns>IEnmumerator</returns>
@@ -155,6 +173,8 @@ public abstract class Boss : MonoBehaviour
         isAlive = false;
         isMoving = false;
         inBattleLoop = false;
+
+        RemoveAllEnemiesAndHazards();
 
         _anim.SetBool("Destroy1", true);
         _audio.PlaySound(2);
@@ -216,6 +236,23 @@ public abstract class Boss : MonoBehaviour
     }
 
     /// <summary>
+    /// Get current boss phase number.
+    /// </summary>
+    /// <returns></returns>
+    public int GetCurrentBossPhase()
+    {
+        return _bossPhase;
+    }
+    
+    /// <summary>
+    /// Increase current boss phase.
+    /// </summary>
+    public void IncreaseBossPhase()
+    {
+        _bossPhase++;
+    }
+
+    /// <summary>
     /// Init class method.
     /// </summary>
     protected void Init()
@@ -223,5 +260,7 @@ public abstract class Boss : MonoBehaviour
         _audio = GetComponent<AudioComponent>();
         _rigi = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
+
+        _bossPhase = 0;
     }
 }
