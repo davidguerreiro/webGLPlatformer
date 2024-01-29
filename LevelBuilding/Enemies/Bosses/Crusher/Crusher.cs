@@ -13,6 +13,12 @@ public class Crusher : Boss
     public float secondsBeforeFall;
     public float secondsFloor;
 
+    [Header("Failling Spikes Attack")]
+    public int[] patternOne = new int[5];
+    public int[] patternTwo = new int[5];
+    public int[] patternThree = new int[5];
+    public float waitBetweenPlatforms;
+
     [Header("Moving Points")]
     public Transform returningPoint;
     public Transform movingPointLeft;
@@ -30,11 +36,10 @@ public class Crusher : Boss
     private Coroutine _stayInFloor;
     private Coroutine _moveCoroutine;
     private Coroutine _patternAttack;
+    private bool _canUseFallingSpikesAttack;
 
-    // TODO: Write logic for failing spikes attack.
-    // TOOD: Write logic for pattern two.
     // TODO: Write logic to use patterns in Update.
-    // TODO: Assign phase two method to onHit event.
+    // TODO: Assign check boss phase to onHit event.
     // TODO: Create init boss animation.
     // TOOD: Add start battle method.
 
@@ -117,6 +122,53 @@ public class Crusher : Boss
     }
 
     /// <summary>
+    /// Throw failling platforms.
+    /// </summary>
+    /// <returns>IEnumerator</returns>
+    public IEnumerator ThrowFaillingSpikes()
+    {
+        int[] pattern = GetFaillingSpikesPattern();
+        
+        for (int i = 0; i < faillingPlatformSpawners.Length; i++)
+        {
+            GameObject faillingPlatform = faillingPlatformSpawners[pattern[i]].SpawnPrefab();
+            faillingPlatform.transform.position = faillingPlatformSpawners[pattern[i]].transform.position;
+            faillingPlatform.GetComponent<FallingHazard>().Drop();
+            yield return new WaitForSeconds(waitBetweenPlatforms);
+        }
+      
+    }
+
+    /// <summary>
+    /// Get failling spikes pattern used when
+    /// performing this attack.
+    /// </summary>
+    /// <returns>int[]</returns>
+    private int[] GetFaillingSpikesPattern()
+    {
+        int pattern = Random.Range(0, 2);
+        int[] patternArray;
+
+        switch (pattern)
+        {
+            case 0:
+                patternArray = patternOne;
+                break;
+            case 1:
+                patternArray = patternTwo;
+                break;
+            case 2:
+                patternArray = patternThree;
+                break;
+            default:
+                patternArray = patternOne;
+                break;
+        }
+
+        return patternArray;
+    }
+
+    /// <summary>
     /// Move boss side to side before attacking.
     /// </summary>
     /// <returns>IEnumrator</returns>
@@ -176,13 +228,18 @@ public class Crusher : Boss
     }
 
     /// <summary>
-    /// Change moving speed in boss phase two.
+    /// Increase boss phase based on boss hits.
+    /// Call this method in onHit boss Unity Event.
     /// </summary>
-    public void IncreaseMovingSpeed()
+    public void IncreaseBossPhaseAfterHit()
     {
+        if (hitsToDestroy == 2)
+        {
+            _canUseFallingSpikesAttack = true;
+        }
+
         if (hitsToDestroy == 1)
         {
-            IncreaseBossPhase();
             movingSpeed = secondPhaseMovingSpeed;
         }
     }
