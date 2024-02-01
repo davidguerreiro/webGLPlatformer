@@ -52,7 +52,10 @@ public class Crusher : Boss
     // Update is called once per frame
     void Update()
     {
-        
+        if (inBattleLoop && _patternAttack == null)
+        {
+            _patternAttack = StartCoroutine(AttackPatternOne());
+        }   
     }
 
     /// <summary>
@@ -219,6 +222,11 @@ public class Crusher : Boss
 
         _fallingAttack = StartCoroutine(FallingAttack());
 
+        if (_canUseFallingSpikesAttack)
+        {
+            StartCoroutine(ThrowFaillingSpikes());
+        }
+
         while (_fallingAttack != null)
         {
             yield return new WaitForFixedUpdate();
@@ -235,12 +243,12 @@ public class Crusher : Boss
     {
         if (hitsToDestroy == 2)
         {
-            _canUseFallingSpikesAttack = true;
+            movingSpeed = secondPhaseMovingSpeed;
         }
 
         if (hitsToDestroy == 1)
         {
-            movingSpeed = secondPhaseMovingSpeed;
+            _canUseFallingSpikesAttack = true;
         }
     }
 

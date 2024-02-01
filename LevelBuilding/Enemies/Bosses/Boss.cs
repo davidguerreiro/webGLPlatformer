@@ -22,7 +22,7 @@ public abstract class Boss : MonoBehaviour
 
     [Header("Settings")]
     public float hitForceUp;
-    public float hasMovingAnim;
+    public bool hasMovingAnim;
 
     [Header("Events")]
     public UnityEvent onHit;
@@ -30,9 +30,17 @@ public abstract class Boss : MonoBehaviour
 
     [HideInInspector]
     public bool isAlive;
+
+    [HideInInspector]
     public bool isMoving;
+
+    [HideInInspector]
     public bool inBattleLoop;
+
+    [HideInInspector]
     public Coroutine isBeingHit;
+
+    [HideInInspector]
     public Coroutine isBeingDestroyed;
 
     private int _bossPhase;
@@ -40,8 +48,6 @@ public abstract class Boss : MonoBehaviour
     protected AudioComponent _audio;
     protected Rigidbody2D _rigi;
     protected Animator _anim;
-
-    // TODO: Continue implementing boss logic in Crusher class.
 
     /// <summary>
     /// Remove enemy colliders.
