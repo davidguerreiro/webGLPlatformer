@@ -31,6 +31,9 @@ public class Crusher : Boss
     [Header("Phase 2 Battle Settings")]
     public float secondPhaseMovingSpeed;
 
+    [Header("Other Components")]
+    public GameObject bossEmergedExplosion;
+
     private Coroutine _backToReturningPoint;
     private Coroutine _fallingAttack;
     private Coroutine _stayInFloor;
@@ -39,7 +42,7 @@ public class Crusher : Boss
     private bool _canUseFallingSpikesAttack;
 
     // TODO: Write logic to use patterns in Update.
-    // TODO: Assign check boss phase to onHit event.
+    // TODO: Create dialogue UI.
     // TODO: Create init boss animation.
     // TOOD: Add start battle method.
 

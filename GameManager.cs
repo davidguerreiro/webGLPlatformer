@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     [Header("Level Configuration")]
     public LevelData levelData;
+    public bool isBossLevel;
+    public bool hasCinematic;
 
     [Header("GamePlay References")]
     public Player player;
@@ -16,6 +18,9 @@ public class GameManager : MonoBehaviour
 
     [Header("UIs")]
     public GamePlayUI gamePlayUI;
+
+    [Header("Other managers and components")]
+    public CinematicManager cinematicManager;
 
     [Header("Level Coins")]
     public int levelCoins;
@@ -54,6 +59,12 @@ public class GameManager : MonoBehaviour
         gamePlayUI.Init(this);
         yield return new WaitForSeconds(1f);
 
+        // init cinematic manager.
+        if (isBossLevel || hasCinematic)
+        {
+            cinematicManager.Init();
+        }
+
         // start gameplay UI.
         gamePlayUI.InitGamePlay();
         PlayLevelIntroMusic();
@@ -82,7 +93,11 @@ public class GameManager : MonoBehaviour
     public void PlayerSpawn()
     {
         player.transform.position = playerSpawn.position;
-        player.playerController.AllowControl();
+
+        if (! isBossLevel)
+        {
+            player.playerController.AllowControl();
+        }
 
         OnPlayerSpawn?.Invoke();
     }
@@ -210,6 +225,15 @@ public class GameManager : MonoBehaviour
     {
         _audio.SetLoop(false);
         _audio.PlaySound(2);
+    }
+
+    /// <summary>
+    /// Stops level music.
+    /// </summary>
+    public void StopLevelMusic()
+    {
+        _audio.SetLoop(false);
+        _audio.StopAudio();
     }
 
     /// <summary>
