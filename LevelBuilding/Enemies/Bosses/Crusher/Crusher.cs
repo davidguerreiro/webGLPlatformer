@@ -41,8 +41,6 @@ public class Crusher : Boss
     private Coroutine _patternAttack;
     private bool _canUseFallingSpikesAttack;
 
-    // TODO: Write logic to use patterns in Update.
-    // TODO: Create dialogue UI.
     // TODO: Create init boss animation.
     // TOOD: Add start battle method.
 

@@ -88,6 +88,14 @@ public class TextComponent : MonoBehaviour
         _content.fontSize = size;
     }
 
+    /// <summary>
+    /// Clear text.
+    /// </summary>
+    public void Clear()
+    {
+        _content.text = "";
+    }
+
 
     /// <summary>
     /// Init class method.

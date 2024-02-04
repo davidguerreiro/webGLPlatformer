@@ -11,6 +11,7 @@ public class GamePlayUI : MonoBehaviour
     public KeyGameplayUI keyUI;
     public HealthUI healthUI;
     public GameObject gameOver;
+    public DialogueBox dialogueBox;
 
     [HideInInspector]
     public Coroutine initLevel;
@@ -33,6 +34,11 @@ public class GamePlayUI : MonoBehaviour
 
         // init health UI.
         healthUI.Init(gameManager.player);
+
+        if (gameManager.isBossLevel || gameManager.hasCinematic)
+        {
+            dialogueBox.Init();
+        }
 
         _gameManager = gameManager;
     }
