@@ -9,11 +9,16 @@ public class CinematicManager : MonoBehaviour
     public CinematicSounds sounds;
     public CinematicObjects objects;
 
+    [HideInInspector]
+    public GameManager gameManager;
+
     /// <summary>
     /// Init all cinematic dependencies.
     /// </summary>
-    public void Init()
+    public void Init(GameManager gameManager)
     {
+        this.gameManager = gameManager;
+
         // init main camera.
         mainCamera.Init();
 

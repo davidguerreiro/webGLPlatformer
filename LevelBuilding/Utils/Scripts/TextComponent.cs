@@ -93,6 +93,11 @@ public class TextComponent : MonoBehaviour
     /// </summary>
     public void Clear()
     {
+        if (_content == null)
+        {
+            _content = GetComponent<Text>();
+        }
+
         _content.text = "";
     }
 

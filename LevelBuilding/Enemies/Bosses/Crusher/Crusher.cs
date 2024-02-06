@@ -31,18 +31,12 @@ public class Crusher : Boss
     [Header("Phase 2 Battle Settings")]
     public float secondPhaseMovingSpeed;
 
-    [Header("Other Components")]
-    public GameObject bossEmergedExplosion;
-
     private Coroutine _backToReturningPoint;
     private Coroutine _fallingAttack;
     private Coroutine _stayInFloor;
     private Coroutine _moveCoroutine;
     private Coroutine _patternAttack;
     private bool _canUseFallingSpikesAttack;
-
-    // TODO: Create init boss animation.
-    // TOOD: Add start battle method.
 
     // Start is called before the first frame update
     void Start()
@@ -53,10 +47,19 @@ public class Crusher : Boss
     // Update is called once per frame
     void Update()
     {
-        if (inBattleLoop && _patternAttack == null)
-        {
-            _patternAttack = StartCoroutine(AttackPatternOne());
-        }   
+        if (inBattleLoop)
+        {   
+            if (_patternAttack == null)
+            {
+                _patternAttack = StartCoroutine(AttackPatternOne());
+            }
+
+            if (isMoving && _moveCoroutine == null)
+            {
+               _moveCoroutine = StartCoroutine(MoveSideToSide());
+            }
+        }
+
     }
 
     /// <summary>
@@ -218,14 +221,24 @@ public class Crusher : Boss
     {
         float secondsMoving = GetMovingSeconds();
 
-        _moveCoroutine = StartCoroutine(MoveSideToSide());
+        // move side to side.
+        isMoving = true;
         yield return new WaitForSeconds(secondsMoving);
+
+        isMoving = false;
+
+        if (_moveCoroutine != null)
+        {
+            StopCoroutine(_moveCoroutine);
+            _moveCoroutine = null;
+        }
 
         _fallingAttack = StartCoroutine(FallingAttack());
 
         if (_canUseFallingSpikesAttack)
         {
             StartCoroutine(ThrowFaillingSpikes());
+            _canUseFallingSpikesAttack = false;
         }
 
         while (_fallingAttack != null)
@@ -242,12 +255,12 @@ public class Crusher : Boss
     /// </summary>
     public void IncreaseBossPhaseAfterHit()
     {
-        if (hitsToDestroy == 2)
+        if (hitsToDestroy == 1)
         {
             movingSpeed = secondPhaseMovingSpeed;
         }
 
-        if (hitsToDestroy == 1)
+        if (hitsToDestroy == 2)
         {
             _canUseFallingSpikesAttack = true;
         }

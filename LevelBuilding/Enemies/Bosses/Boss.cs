@@ -10,6 +10,9 @@ public abstract class Boss : MonoBehaviour
     [Header("Base Stats")]
     public int hitsToDestroy;
 
+    [Header("Components")]
+    public SpriteRenderer sprite;
+
     [Header("Colliders")]
     public CircleCollider2D[] circleColliders;
     public BoxCollider2D[] boxColliders;
@@ -52,7 +55,7 @@ public abstract class Boss : MonoBehaviour
     /// <summary>
     /// Remove enemy colliders.
     /// </summary>
-    private void RemoveColliders()
+    public void RemoveColliders()
     {
         foreach (CircleCollider2D collider in circleColliders)
         {
@@ -73,7 +76,7 @@ public abstract class Boss : MonoBehaviour
     /// <summary>
     /// Enable colliders
     /// </summary>
-    private void EnableColliders()
+    public void EnableColliders()
     {
         foreach (CircleCollider2D collider in circleColliders)
         {
@@ -95,7 +98,7 @@ public abstract class Boss : MonoBehaviour
     /// <summary>
     /// Remove hazard tags.
     /// </summary>
-    private void RemoveHazardPoints()
+    public void RemoveHazardPoints()
     {
         foreach (GameObject hazard in hazardPoints)
         {
@@ -109,7 +112,7 @@ public abstract class Boss : MonoBehaviour
     /// <summary>
     /// Enable hazard points.
     /// </summary>
-    private void EnableHazardPoints()
+    public void EnableHazardPoints()
     {
         foreach (GameObject hazard in hazardPoints)
         {
@@ -124,7 +127,7 @@ public abstract class Boss : MonoBehaviour
     ///  Remove all enemies and hazards from
     ///  current level when Boss has been defeated.
     /// </summary>
-    private void RemoveAllEnemiesAndHazards()
+    public void RemoveAllEnemiesAndHazards()
     {
         foreach (GameObject enemyOrHazard in levelEnemiesAndHazards)
         {
@@ -136,10 +139,21 @@ public abstract class Boss : MonoBehaviour
     }
 
     /// <summary>
+    /// Boss hit on weak point.
+    /// </summary>
+    public void Hit()
+    {
+        if (isBeingHit == null)
+        {
+            isBeingHit = StartCoroutine(HitCoroutine());
+        }
+    }
+
+    /// <summary>
     /// Get hit.
     /// </summary>
     /// <returns>IEnmumerator</returns>
-    public IEnumerator Hit()
+    private IEnumerator HitCoroutine()
     {
         GetDamage();
 
@@ -180,6 +194,8 @@ public abstract class Boss : MonoBehaviour
         isMoving = false;
         inBattleLoop = false;
 
+        RemoveColliders();
+        RemoveHazardPoints();
         RemoveAllEnemiesAndHazards();
 
         _anim.SetBool("Destroy1", true);
@@ -249,13 +265,34 @@ public abstract class Boss : MonoBehaviour
     {
         return _bossPhase;
     }
-    
+
     /// <summary>
     /// Increase current boss phase.
     /// </summary>
     public void IncreaseBossPhase()
     {
         _bossPhase++;
+    }
+
+    /// <summary>
+    /// Set sprite rendering order.
+    /// </summary>
+    /// <param name="order">int</param>
+    public void SetSpriteRendererOrder(int order = 0)
+    {
+        sprite.sortingOrder = order;
+    }
+
+    /// <summary>
+    /// Start boss battle.
+    /// </summary>
+    public void StartBattle()
+    {
+        EnableColliders();
+        EnableHazardPoints();
+
+        isAlive = true;
+        inBattleLoop = true;
     }
 
     /// <summary>

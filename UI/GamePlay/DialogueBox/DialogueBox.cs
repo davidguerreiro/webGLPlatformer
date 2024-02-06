@@ -63,7 +63,7 @@ public class DialogueBox : MonoBehaviour
     public IEnumerator DisplayRoutine()
     {
         background.SetBool("Display", true);
-        _audio.PlaySound(0);
+        // _audio.PlaySound(0);
 
         yield return new WaitForSeconds(displayAwait);
 
@@ -96,7 +96,7 @@ public class DialogueBox : MonoBehaviour
         }
 
         background.SetBool("Display", false);
-        _audio.PlaySound(2);
+        // _audio.PlaySound(2);
 
         yield return new WaitForSeconds(hideAwait);
 
@@ -110,6 +110,11 @@ public class DialogueBox : MonoBehaviour
     {
         text.gameObject.SetActive(true);
         text.Clear();
+
+        if (playingDialogue == null)
+        {
+            playingDialogue = StartCoroutine(PlayDialogueRoutine());
+        }
     }
 
     /// <summary>
@@ -127,7 +132,7 @@ public class DialogueBox : MonoBehaviour
             {
                 text.Clear();
                 text.gameObject.SetActive(false);
-                _audio.PlaySound(1);
+                _audio.PlaySound(0);
 
                 if (arrow.activeSelf)
                 {
@@ -151,11 +156,14 @@ public class DialogueBox : MonoBehaviour
 
             // await for user pressing space bar to continue playing dialogue.
             _listeningForUserKey = true;
+
             while (_listeningForUserKey)
             {
                 yield return new WaitForFixedUpdate();
             }
         }
+
+        playingDialogue = null;
     }
 
     /// <summary>

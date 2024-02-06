@@ -124,6 +124,25 @@ public class PlayerController : MonoBehaviour
         _capsuleCollider.enabled = false;
     }
 
+    /// <summary>
+    /// Restrict player intpu only.
+    /// </summary>
+    public void RestrictPlayerInput()
+    {
+        canMove = false;
+    }
+
+    /// <summary>
+    /// Allow player input.
+    /// </summary>
+    public void AllowPlayerInput()
+    {
+        canMove = true;
+    }
+
+    /// <summary>
+    /// Enter door after collecting key.
+    /// </summary>
     public void EnterDoor()
     {
         RestrictControl();

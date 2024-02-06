@@ -26,7 +26,9 @@ public class GameManager : MonoBehaviour
     public int levelCoins;
 
     [Header("Events")]
-    public UnityEvent OnPlayerSpawn;
+    public UnityEvent onPlayerSpawn;
+    public UnityEvent beforeLoadLevel;
+    public UnityEvent afterLoadLevel;
 
     [HideInInspector]
     public bool inGamePlay;
@@ -55,6 +57,8 @@ public class GameManager : MonoBehaviour
     /// <returns>IEnumerator</returns>
     public IEnumerator InitLevel()
     {
+        beforeLoadLevel?.Invoke();
+
         // init UIs.
         gamePlayUI.Init(this);
         yield return new WaitForSeconds(1f);
@@ -62,7 +66,7 @@ public class GameManager : MonoBehaviour
         // init cinematic manager.
         if (isBossLevel || hasCinematic)
         {
-            cinematicManager.Init();
+            cinematicManager.Init(this);
         }
 
         // start gameplay UI.
@@ -77,7 +81,11 @@ public class GameManager : MonoBehaviour
         // init player.
         player.InitPlayer();
         PlayerSpawn();
-        PlayLevelMainTheme();
+
+        if (! isBossLevel)
+        {
+            PlayLevelMainTheme();
+        }
 
         yield return new WaitForSeconds(.1f);
 
@@ -85,6 +93,8 @@ public class GameManager : MonoBehaviour
         gamePlayUI.cover.FadeOut();
 
         inGamePlay = true;
+
+        afterLoadLevel?.Invoke();
     }
 
     /// <summary>
@@ -93,13 +103,14 @@ public class GameManager : MonoBehaviour
     public void PlayerSpawn()
     {
         player.transform.position = playerSpawn.position;
+        player.playerController.AllowControl();
 
-        if (! isBossLevel)
+        if (isBossLevel)
         {
-            player.playerController.AllowControl();
+            player.playerController.RestrictPlayerInput();
         }
 
-        OnPlayerSpawn?.Invoke();
+        onPlayerSpawn?.Invoke();
     }
 
     /// <summary>

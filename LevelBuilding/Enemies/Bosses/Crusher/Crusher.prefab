@@ -237,7 +237,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300744, guid: aa619e95419474ad79952084db13ea18, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -304,6 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   hitsToDestroy: 3
+  sprite: {fileID: 7913176544034090609}
   circleColliders: []
   boxColliders:
   - {fileID: 6344296714930225642}
@@ -341,21 +342,26 @@ MonoBehaviour:
   isAlive: 0
   isMoving: 0
   inBattleLoop: 0
-  movingSpeed: 0
-  returningSpeed: 0
-  fallForce: 0
-  secondsBeforeFall: 0
-  secondsFloor: 0
-  patternOne: 0000000000000000000000000000000000000000
-  patternTwo: 0000000000000000000000000000000000000000
-  patternThree: 0000000000000000000000000000000000000000
-  waitBetweenPlatforms: 0
-  returningPoint: {fileID: 0}
+  movingSpeed: 6
+  returningSpeed: 5
+  fallForce: 1
+  secondsBeforeFall: 0.5
+  secondsFloor: 1.5
+  patternOne: 0000000001000000030000000200000004000000
+  patternTwo: 0300000004000000010000000000000002000000
+  patternThree: 0100000004000000000000000200000003000000
+  waitBetweenPlatforms: 1
+  returningPoint: {fileID: 3150004295644523281}
   movingPointLeft: {fileID: 0}
   movingPointRight: {fileID: 0}
-  movingSecondsRatio: {x: 0, y: 0}
-  faillingPlatformSpawners: []
-  secondPhaseMovingSpeed: 0
+  movingSecondsRatio: {x: 4, y: 8}
+  faillingPlatformSpawners:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  secondPhaseMovingSpeed: 8
 --- !u!50 &5293461914969398127
 Rigidbody2D:
   serializedVersion: 4
@@ -506,7 +512,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5989346371646550383}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -605,7 +611,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6728383714795181515}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -656,12 +662,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
+  boss: {fileID: 1551841116393428812}
   hitEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
-        m_MethodName: Defeated
+      - m_Target: {fileID: 1551841116393428812}
+        m_TargetAssemblyTypeName: Boss, Assembly-CSharp
+        m_MethodName: Hit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -738,7 +745,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8588724119365408477}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:

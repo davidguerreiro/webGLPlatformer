@@ -36,6 +36,11 @@ public class FallingHazard : MonoBehaviour
     /// </summary>
     public void StopDropping()
     {
+        if (_rigi == null)
+        {
+            _rigi = GetComponent<Rigidbody2D>();
+
+        }
         _rigi.bodyType = RigidbodyType2D.Kinematic;
     }
 
