@@ -10,7 +10,7 @@ public class ResetSpawners : MonoBehaviour
     /// <param name="collision">collision</param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("ResetSpawn"))
+        if (collision.gameObject.CompareTag("ResetSpawn") || collision.gameObject.CompareTag("Hazard"))
         {
             collision.gameObject.SetActive(false);
         }

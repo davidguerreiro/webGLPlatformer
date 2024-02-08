@@ -313,6 +313,8 @@ MonoBehaviour:
   capsuleColliders: []
   hazardPoints:
   - {fileID: 8588724119365408477}
+  weakPoints:
+  - {fileID: 6728383714795181515}
   destroyedExplosions:
   - {fileID: 2406799351910042323}
   - {fileID: 6785024961421097940}
@@ -338,15 +340,27 @@ MonoBehaviour:
         m_CallState: 2
   onDefeated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1551841116393428812}
+        m_TargetAssemblyTypeName: Crusher, Assembly-CSharp
+        m_MethodName: StopAllAttackCoroutines
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   isAlive: 0
   isMoving: 0
   inBattleLoop: 0
   movingSpeed: 6
   returningSpeed: 5
-  fallForce: 1
+  fallForce: 20
   secondsBeforeFall: 0.5
-  secondsFloor: 1.5
+  secondsFloor: 1
   patternOne: 0000000001000000030000000200000004000000
   patternTwo: 0300000004000000010000000000000002000000
   patternThree: 0100000004000000000000000200000003000000

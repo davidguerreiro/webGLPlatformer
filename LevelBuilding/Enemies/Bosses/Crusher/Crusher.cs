@@ -69,13 +69,13 @@ public class Crusher : Boss
     /// <returns>IEnumerator</returns>
     public IEnumerator ReturnToMovingPoint()
     {
-        while (Vector2.Distance(transform.position, returningPoint.position) < 0.01f) {
-            Vector2.MoveTowards(transform.position, returningPoint.position, returningSpeed * Time.deltaTime);
+        while (Vector2.Distance(transform.localPosition, returningPoint.localPosition) > 0.01f) {
+            transform.localPosition = Vector2.MoveTowards(transform.localPosition, returningPoint.localPosition, returningSpeed * Time.deltaTime);
             yield return new WaitForFixedUpdate();
         }
 
-        transform.localPosition = returningPoint.position;
-        returningPoint.transform.parent = transform.parent;
+        transform.localPosition = returningPoint.localPosition;
+        returningPoint.transform.parent = transform;
 
         yield return new WaitForSeconds(.5f);
         _backToReturningPoint = null;
@@ -87,13 +87,18 @@ public class Crusher : Boss
     /// <returns>IEnumerator</returns>
     public IEnumerator FallingAttack()
     {
-        returningPoint.transform.parent = null;
+        returningPoint.transform.parent = transform.parent;
 
         yield return new WaitForSeconds(secondsBeforeFall);
 
         _rigi.bodyType = RigidbodyType2D.Dynamic;
         _rigi.gravityScale = fallForce;
+        RemoveWeakPoints();
+        yield return new WaitForSeconds(.2f);
 
+        gameManager.cinematicManager.mainCamera.ShackeCamera(.5f);
+        EnableWeakPoints();
+      
         _stayInFloor = StartCoroutine(StayInFloor());
 
         while (_stayInFloor != null)
@@ -112,11 +117,21 @@ public class Crusher : Boss
     {
         _audio.PlaySound(1);
 
+        // trigger throw failling spikes attack only once.
+        if (_canUseFallingSpikesAttack)
+        {
+            StartCoroutine(ThrowFaillingSpikes());
+            _canUseFallingSpikesAttack = false;
+        }
+
+        yield return new WaitForSeconds(.1f);
         _rigi.gravityScale = 0;
         _rigi.bodyType = RigidbodyType2D.Kinematic;
-
-        _rigi.velocity = new Vector2(0f, 0f);
         yield return new WaitForSeconds(secondsFloor);
+
+        _rigi.gravityScale = 0;
+        _rigi.velocity = new Vector2(0f, 0f);
+
 
         _backToReturningPoint = StartCoroutine(ReturnToMovingPoint());
 
@@ -141,6 +156,7 @@ public class Crusher : Boss
             GameObject faillingPlatform = faillingPlatformSpawners[pattern[i]].SpawnPrefab();
             faillingPlatform.transform.position = faillingPlatformSpawners[pattern[i]].transform.position;
             faillingPlatform.GetComponent<FallingHazard>().Drop();
+            Debug.Log("here");
             yield return new WaitForSeconds(waitBetweenPlatforms);
         }
       
@@ -235,12 +251,6 @@ public class Crusher : Boss
 
         _fallingAttack = StartCoroutine(FallingAttack());
 
-        if (_canUseFallingSpikesAttack)
-        {
-            StartCoroutine(ThrowFaillingSpikes());
-            _canUseFallingSpikesAttack = false;
-        }
-
         while (_fallingAttack != null)
         {
             yield return new WaitForFixedUpdate();
@@ -262,8 +272,48 @@ public class Crusher : Boss
 
         if (hitsToDestroy == 2)
         {
+            Debug.Log("can use spikes");
             _canUseFallingSpikesAttack = true;
         }
+    }
+
+    /// <summary>
+    /// Stop all attacks. This method
+    /// will be normally called from OnDefeated Boss
+    /// Unity Event.
+    /// </summary>
+    public void StopAllAttackCoroutines()
+    {   
+        if (_backToReturningPoint != null)
+        {
+            StopCoroutine(_backToReturningPoint);
+            _backToReturningPoint = null;
+        }
+
+        if (_fallingAttack != null)
+        {
+            StopCoroutine(_fallingAttack);
+            _fallingAttack = null;
+        }
+
+        if (_stayInFloor != null)
+        {
+            StopCoroutine(_stayInFloor);
+            _stayInFloor = null;
+        }
+
+        if (_moveCoroutine != null)
+        {
+            StopCoroutine(_moveCoroutine);
+            _moveCoroutine = null;
+        }
+
+        if (_patternAttack != null)
+        {
+            StopCoroutine(_patternAttack);
+            _patternAttack = null;
+        }
+
     }
 
 }

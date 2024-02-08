@@ -20,6 +20,7 @@ public abstract class Boss : MonoBehaviour
 
     [Header("Other Components")]
     public GameObject[] hazardPoints;
+    public GameObject[] weakPoints;
     public GameObject[] destroyedExplosions;
     public GameObject[] levelEnemiesAndHazards;
 
@@ -124,6 +125,28 @@ public abstract class Boss : MonoBehaviour
     }
 
     /// <summary>
+    /// Remove all boss weak points.
+    /// </summary>
+    public void RemoveWeakPoints()
+    {
+        foreach (GameObject weakPoint in weakPoints)
+        {
+            weakPoint.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// Enable all boss weak poinsts.
+    /// </summary>
+    public void EnableWeakPoints()
+    {
+        foreach (GameObject weakPoint in weakPoints)
+        {
+            weakPoint.SetActive(true);
+        }
+    }
+
+    /// <summary>
     ///  Remove all enemies and hazards from
     ///  current level when Boss has been defeated.
     /// </summary>
@@ -164,6 +187,9 @@ public abstract class Boss : MonoBehaviour
             RemoveColliders();
             _anim.SetTrigger("IsHit");
             _audio.PlaySound(2);
+
+            gameManager.player.playerController.EnemyDefeatedRecoil();
+
             yield return new WaitForSeconds(1f);
 
             EnableColliders();
@@ -171,6 +197,7 @@ public abstract class Boss : MonoBehaviour
         } else
         {
             // Boss defeated.
+            gameManager.player.playerController.EnemyDefeatedRecoil();
             isBeingDestroyed = StartCoroutine(Destroyed());
 
             while (isBeingDestroyed != null)
@@ -210,6 +237,7 @@ public abstract class Boss : MonoBehaviour
 
         DisableDestroyExplosions();
         _anim.SetBool("Destroy3", true);
+        _audio.SetLoop(false);
         _audio.PlaySound(4);
         yield return new WaitForSeconds(1.5f);
 
