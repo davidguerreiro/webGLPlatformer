@@ -156,7 +156,6 @@ public class Crusher : Boss
             GameObject faillingPlatform = faillingPlatformSpawners[pattern[i]].SpawnPrefab();
             faillingPlatform.transform.position = faillingPlatformSpawners[pattern[i]].transform.position;
             faillingPlatform.GetComponent<FallingHazard>().Drop();
-            Debug.Log("here");
             yield return new WaitForSeconds(waitBetweenPlatforms);
         }
       
@@ -265,14 +264,13 @@ public class Crusher : Boss
     /// </summary>
     public void IncreaseBossPhaseAfterHit()
     {
-        if (hitsToDestroy == 1)
+        if (hitsToDestroy == 2)
         {
             movingSpeed = secondPhaseMovingSpeed;
         }
 
-        if (hitsToDestroy == 2)
+        if (hitsToDestroy == 3 || hitsToDestroy == 2)
         {
-            Debug.Log("can use spikes");
             _canUseFallingSpikesAttack = true;
         }
     }

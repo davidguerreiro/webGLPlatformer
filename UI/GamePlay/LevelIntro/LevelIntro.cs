@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class LevelIntro : MonoBehaviour
 {
-
     [Header("Components")]
     public TextComponent levelText;
+    public TextComponent introText;
     public FadeElement cover;
     public Image levelImage;
 
@@ -26,6 +26,7 @@ public class LevelIntro : MonoBehaviour
     private void SetUpData()
     {
         levelText.UpdateContent(_levelData.levelName);
+        introText.UpdateContent(_levelData.levelIntro);
         levelImage.sprite = _levelData.levelIcon;
     }
 
@@ -50,6 +51,7 @@ public class LevelIntro : MonoBehaviour
 
         cover.gameObject.SetActive(false);
         levelText.gameObject.SetActive(false);
+        introText.gameObject.SetActive(false);
         levelImage.gameObject.SetActive(false);
 
         displayed = false;

@@ -195,11 +195,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private IEnumerator RetryGameRoutine()
     {
-
         gamePlayUI.cover.FadeIn();
         yield return new WaitForSeconds(3f);
 
-        SceneManager.LoadScene("Level1-1");
+        SceneManager.LoadScene(levelData.levelToLoadOnRetry);
     }
 
     /// <summary>

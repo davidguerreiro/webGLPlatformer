@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  hitsToDestroy: 3
+  hitsToDestroy: 4
   sprite: {fileID: 7913176544034090609}
   circleColliders: []
   boxColliders:
