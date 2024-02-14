@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class FallingHazard : MonoBehaviour
 {
+    [Header("Settings")]
     public float gravityScale;
+    public bool hasAnim;
+    public bool hasAudio;
+    public bool playAnimBeforeFalling;
+    public float secondsBeforeFalling;
 
     private Rigidbody2D _rigi;
+    private Animator _anim;
+    private AudioComponent _audio;
 
     // Start is called before the first frame update
     void Start()
@@ -39,9 +46,39 @@ public class FallingHazard : MonoBehaviour
         if (_rigi == null)
         {
             _rigi = GetComponent<Rigidbody2D>();
-
         }
+
+        if (hasAudio && _audio != null)
+        {
+            _audio.PlaySound();
+        }
+
         _rigi.bodyType = RigidbodyType2D.Kinematic;
+    }
+
+
+    /// <summary>
+    /// Drop with animation.
+    /// </summary>
+    public void DropWithAnim()
+    {
+        StartCoroutine(DropWithAnimRoutine());
+    }
+
+    /// <summary>
+    /// Drop with animtion routine.
+    /// </summary>
+    /// <returns>IEnumerator</returns>
+    private IEnumerator DropWithAnimRoutine()
+    {
+        if (hasAnim && playAnimBeforeFalling)
+        {
+            _anim.SetBool("animBeforeFalling", true);
+            yield return new WaitForSeconds(secondsBeforeFalling);
+            _anim.SetBool("animBeforeFalling", false);
+        }
+
+        Drop();
     }
 
     /// <summary>
@@ -50,5 +87,15 @@ public class FallingHazard : MonoBehaviour
     public void Init()
     {
         _rigi = GetComponent<Rigidbody2D>();
+
+        if (hasAnim)
+        {
+            _anim = GetComponent<Animator>();
+        }
+
+        if (hasAudio)
+        {
+            _audio = GetComponent<AudioComponent>();
+        }
     }
 }

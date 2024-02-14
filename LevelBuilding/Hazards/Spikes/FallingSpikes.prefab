@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 5857084603013818811}
   - component: {fileID: 783126446597648909}
   - component: {fileID: 7985152426203942712}
+  - component: {fileID: 955637669161689591}
   m_Layer: 7
   m_Name: FallingSpikes
   m_TagString: Hazard
@@ -204,3 +205,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityScale: 1
+  hasAnim: 0
+  hasAudio: 0
+  playAnimBeforeFalling: 0
+  secondsBeforeFalling: 0
+--- !u!95 &955637669161689591
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6320128969693784021}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 88b3a9766060563468a89556aef51f87, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
