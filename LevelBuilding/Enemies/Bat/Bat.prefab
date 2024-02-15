@@ -104,13 +104,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4556490315963938155}
-  - component: {fileID: 3095294835763570914}
+  - component: {fileID: 7841117062441791057}
   - component: {fileID: 809789676746487861}
   - component: {fileID: 1808234733944648076}
   - component: {fileID: 8659475272461817083}
   - component: {fileID: 8605640205370118200}
   m_Layer: 3
-  m_Name: Bee
+  m_Name: Bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,7 +133,7 @@ Transform:
   - {fileID: 380656432337338177}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3095294835763570914
+--- !u!114 &7841117062441791057
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,12 +142,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1287160081289735217}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2ca79584d1ff4f798f7289546a4f48a, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e2071665f172d943a1a187721a172b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   spriteRenderer: {fileID: 8522933621019393922}
-  defeatedSprite: {fileID: 21300682, guid: aa619e95419474ad79952084db13ea18, type: 3}
+  defeatedSprite: {fileID: 21300850, guid: aa619e95419474ad79952084db13ea18, type: 3}
   circleColliders: []
   boxColliders:
   - {fileID: 7639483803294303571}
@@ -159,9 +159,8 @@ MonoBehaviour:
   defeatedForceUp: 3
   timeToDestroy: 10
   isAlive: 0
-  speed: 2
-  leftPoint: {fileID: 0}
-  rightPoint: {fileID: 0}
+  speed: 4
+  movingPoints: []
 --- !u!50 &809789676746487861
 Rigidbody2D:
   serializedVersion: 4
@@ -311,7 +310,7 @@ Animator:
   m_GameObject: {fileID: 1287160081289735217}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 771d7ddf8caf4184c9233de164a4f037, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2697a6eff4ef76e4ab7e3db1283a4169, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -412,13 +411,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae4a5928469984364bfe2cbe47302e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 3095294835763570914}
+  enemy: {fileID: 7841117062441791057}
   boss: {fileID: 0}
   hitEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3095294835763570914}
-        m_TargetAssemblyTypeName: MovingSideToSideEnemy, Assembly-CSharp
+      - m_Target: {fileID: 7841117062441791057}
+        m_TargetAssemblyTypeName: MovingToRandomPointsEnemy, Assembly-CSharp
         m_MethodName: Defeated
         m_Mode: 1
         m_Arguments:
@@ -535,7 +534,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300678, guid: aa619e95419474ad79952084db13ea18, type: 3}
+  m_Sprite: {fileID: 21300846, guid: aa619e95419474ad79952084db13ea18, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

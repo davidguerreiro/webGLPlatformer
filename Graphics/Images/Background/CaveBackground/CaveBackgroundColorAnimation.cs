@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class CaveBackgroundColorAnimation : MonoBehaviour
 {
-    // Create falling spikes.
-    // Create bat enemy.
-    // Create spider enemy.
-
     [Header("Colors")]
     public Color[] colors;
 
