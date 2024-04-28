@@ -8,7 +8,13 @@ public class Perez : Boss
     public float movingSpeed;
     public float speedIncrementedAfterHit;
 
+    [Header("Eneimes to spawn")]
+    public GameObject[] enemiesRight;
+    public GameObject[] enemiesLeft;
+
     [Header("BattleFlow")]
+    public PerezShootingAttack shootingAttackRight;
+    public PerezShootingAttack shootingAttackLeft;
     public float toWaitInTube;
     public bool goingLeft;
 
@@ -16,6 +22,7 @@ public class Perez : Boss
     public Transform tubeRight;
     public Transform tubeLeft;
 
+    private int _enemiesSpawnCounter;
     private Coroutine _moveToTube;
     private Coroutine _patternAttack;
 
@@ -34,6 +41,8 @@ public class Perez : Boss
             {
                 _patternAttack = StartCoroutine(PatternAttack());
             }
+
+            CheckForMovingAnim();
         }
     }
       
@@ -47,13 +56,15 @@ public class Perez : Boss
 
         Transform destination = (goingLeft) ? tubeLeft : tubeRight;
 
-        while (Vector2.Distance(transform.localPosition, destination.localPosition) > 0.01f)
+        while (Vector2.Distance(transform.position, destination.position) > 0.01f)
         {
-            transform.localPosition = Vector2.MoveTowards(transform.localPosition, destination.localPosition, movingSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, destination.position, movingSpeed * Time.deltaTime);
             yield return new WaitForFixedUpdate();            
         }
 
-        transform.localPosition = destination.localPosition;
+        transform.position = destination.position;
+
+        ChangeMovingDirection();
 
         _moveToTube = null;
     }
@@ -64,6 +75,7 @@ public class Perez : Boss
     public void ChangeMovingDirection()
     {
         transform.Rotate(0f, 180f, 0f);
+        goingLeft = !goingLeft;
     }
 
     /// <summary>
@@ -73,6 +85,20 @@ public class Perez : Boss
     public void IncrementSpeed()
     {
         movingSpeed += speedIncrementedAfterHit;
+    }
+
+    /// <summary>
+    /// Spawn enemies in battle arena.
+    /// </summary>
+    public void SpawnEnemyGroup()
+    {
+        if (_enemiesSpawnCounter <= 3)
+        {
+            enemiesLeft[_enemiesSpawnCounter].SetActive(true);
+            enemiesRight[_enemiesSpawnCounter].SetActive(true);
+
+            _enemiesSpawnCounter++;
+        }
     }
 
     /// <summary>
@@ -90,6 +116,20 @@ public class Perez : Boss
         }
 
         _patternAttack = null;
+    }
+
+    /// <summary>
+    /// Check for moving animation.
+    /// </summary>
+    public void CheckForMovingAnim()
+    {
+        if (isMoving)
+        {
+            _anim.SetBool("IsMoving", true);
+        } else
+        {
+            _anim.SetBool("IsMoving", false);
+        }
     }
 
     /// <summary>

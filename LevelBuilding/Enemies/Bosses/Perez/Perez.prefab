@@ -611,9 +611,23 @@ MonoBehaviour:
   levelEnemiesAndHazards: []
   hitForceUp: 4
   hasMovingAnim: 1
+  showDestroyedSprite: 1
+  destroyedSprite: {fileID: 21300740, guid: aa619e95419474ad79952084db13ea18, type: 3}
   onHit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2677376844640493868}
+        m_TargetAssemblyTypeName: Perez, Assembly-CSharp
+        m_MethodName: IncrementSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDefeated:
     m_PersistentCalls:
       m_Calls:
@@ -634,6 +648,8 @@ MonoBehaviour:
   inBattleLoop: 0
   movingSpeed: 5
   speedIncrementedAfterHit: 2
+  shootingAttackRight: {fileID: 0}
+  shootingAttackLeft: {fileID: 0}
   toWaitInTube: 2
   goingLeft: 1
   tubeRight: {fileID: 0}
@@ -1034,11 +1050,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
-  boss: {fileID: 0}
+  boss: {fileID: 2677376844640493868}
   hitEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2677376844640493868}
         m_TargetAssemblyTypeName: Boss, Assembly-CSharp
         m_MethodName: Hit
         m_Mode: 1

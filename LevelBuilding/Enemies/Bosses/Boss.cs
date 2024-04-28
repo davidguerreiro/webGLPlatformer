@@ -27,6 +27,8 @@ public abstract class Boss : MonoBehaviour
     [Header("Settings")]
     public float hitForceUp;
     public bool hasMovingAnim;
+    public bool showDestroyedSprite;
+    public Sprite destroyedSprite;
 
     [Header("Events")]
     public UnityEvent onHit;
@@ -224,6 +226,11 @@ public abstract class Boss : MonoBehaviour
         RemoveColliders();
         RemoveHazardPoints();
         RemoveAllEnemiesAndHazards();
+
+        if (showDestroyedSprite)
+        {
+            sprite.sprite = destroyedSprite;
+        }
 
         _anim.SetBool("Destroy1", true);
         _audio.PlaySound(2);

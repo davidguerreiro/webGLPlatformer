@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public bool canMove;
     public bool isGrounded;
     public bool enterDoor;
+    public bool overIcyFloor;
 
     [Header("Stats")]
     public float speed;
@@ -59,7 +60,14 @@ public class PlayerController : MonoBehaviour
         xMove = Input.GetAxis("Horizontal");
         Vector2 movement = new Vector2(xMove, _rigibody.velocity.y);
 
-        _rigibody.velocity = new Vector2(movement.x * speed, _rigibody.velocity.y);
+        if (overIcyFloor)
+        {
+            //float icySpeed = speed * 0.05f;
+            _rigibody.AddForce(new Vector2(movement.x * speed, _rigibody.velocity.y));
+        } else
+        {
+            _rigibody.velocity = new Vector2(movement.x * speed, _rigibody.velocity.y);
+        }
     }
 
     /// <summary>
@@ -97,6 +105,26 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = false;
         }
+    }
+
+    /// <summary>
+    /// Get if player is walking over icy
+    /// floor.
+    /// </summary>
+    /// <returns>bool</returns>
+    public bool IsInIcyFloor()
+    {
+        return overIcyFloor;
+    }
+
+    /// <summary>
+    /// Set player walking over icy
+    /// floor value.
+    /// </summary>
+    /// <param name="isIcy">bool</param>
+    public void SetInIcyFloor(bool isIcy)
+    {
+        overIcyFloor = isIcy;
     }
 
     /// <summary>

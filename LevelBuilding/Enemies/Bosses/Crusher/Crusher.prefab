@@ -323,6 +323,8 @@ MonoBehaviour:
   levelEnemiesAndHazards: []
   hitForceUp: 3
   hasMovingAnim: 0
+  showDestroyedSprite: 1
+  destroyedSprite: {fileID: 21301266, guid: aa619e95419474ad79952084db13ea18, type: 3}
   onHit:
     m_PersistentCalls:
       m_Calls:
