@@ -84,6 +84,17 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
+    /// Player bounce.
+    /// 
+    /// Usually triggered from a bouncy
+    /// item placed in map.
+    /// </summary>
+    public void Bounce()
+    {
+        _rigibody.velocity = new Vector2(_rigibody.velocity.x, jumpForce * 1.5f);
+    }
+
+    /// <summary>
     /// Player enemy defeated recoil.
     /// </summary>
     public void EnemyDefeatedRecoil()

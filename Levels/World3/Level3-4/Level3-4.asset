@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad0edde830cd84645992f14b7ebb0196, type: 3}
-  m_Name: Level3-2
+  m_Name: Level3-4
   m_EditorClassIdentifier: 
-  levelName: Level 3-2
-  levelIntro: '"Walking in the ice"'
+  levelName: Level 3-4
+  levelIntro: '"Door to the Heavens"'
   levelIcon: {fileID: 21300000, guid: df629e8b6c525f14289edf3888f69893, type: 3}
-  nextLevelName: Level3-3
+  nextLevelName: Level3-5
   levelToLoadOnRetry: Level3-1
   levelMusic: {fileID: 8300000, guid: e850c381fb507d5468daf92d7393fb83, type: 3}
