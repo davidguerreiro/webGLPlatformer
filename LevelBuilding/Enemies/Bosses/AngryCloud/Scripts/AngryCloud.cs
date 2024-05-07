@@ -8,16 +8,35 @@ public class AngryCloud : Boss
     public float movingSpeed;
 
     [Header("Spark Tackle Attack")]
+    public GameObject sparking;
     public float startSparkTackleAttackSpeed;
     public float spartkTackleAttackSpeed;
+    public float waitBeforeAttack;
+    public float waitBeforeReturningBack;
+    public Transform originLeft;
+    public Transform destinyLeft;
+    public Transform origingRight;
+    public Transform destinyRight;
+
+    [Header("Spark Ball Shooter Attack")]
+    public SparkBallShooter sparkBallShooter;
+
+    [Header("Random Spark Attack")]
+    public float timeSparkEnabled;
+    public float toWaitBetweenSparks;
 
     [Header("Moving Points")]
     public Transform[] movingPoints;
 
+    [Header("Face")]
+    public GameObject redBack;
+    public GameObject blueBack;
+
+    private bool _inSparkAttack;
+    private bool _canRandomSpark;
     private Coroutine _movingRoutine;
-    
-    // TODO: Program electric proyectiles object pool and attack.
-    // TODO: Program spark tackle attack.
+    private Coroutine _sparkAttackRoutine;
+    private Coroutine _randomSparkAttackRoutine;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +47,21 @@ public class AngryCloud : Boss
     // Update is called once per frame
     void Update()
     {
-        
+        if (inBattleLoop)
+        {
+            if (_movingRoutine == null && _sparkAttackRoutine == null && ! _inSparkAttack)
+            {
+                _movingRoutine = StartCoroutine(MovePointToPoint());
+            }
+
+            if (_canRandomSpark && _randomSparkAttackRoutine == null && _sparkAttackRoutine == null && !_inSparkAttack)
+            {
+                Debug.Log("here");
+                _randomSparkAttackRoutine = StartCoroutine(RandomSpark());
+            }
+
+            CheckForMovingAnim();
+        }
     }
 
     /// <summary>
@@ -51,11 +84,136 @@ public class AngryCloud : Boss
 
             transform.position = target.position;
 
-            // TODO: Trigger shoot electric bomb.
-            
+            ShootSparkBall();
         }
 
         _movingRoutine = null;
+    }
+
+    /// <summary>
+    /// Spark attack coroutine.
+    /// </summary>
+    /// <returns>IEnumerator</returns>
+    public IEnumerator PerformSparkAttack()
+    {
+        RemoveWeakPoints();
+
+        int rand = Random.Range(0, 9);
+        Transform origin;
+        Transform target;
+        Transform returnBack = movingPoints[0];
+
+        if (rand < 4)
+        {
+            origin = originLeft;
+            target = destinyRight;
+        }
+        else
+        {
+            origin = origingRight;
+            target = destinyLeft;
+        }
+
+        EnableSparking();
+
+        // move to origin.
+        while (Vector2.Distance(transform.position, origin.position) > 0.01f)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, origin.position, startSparkTackleAttackSpeed * Time.deltaTime);
+            yield return new WaitForFixedUpdate();
+        }
+
+        transform.position = origin.position;
+
+        yield return new WaitForSeconds(waitBeforeAttack);
+
+        // perform attack.
+        while (Vector2.Distance(transform.position, target.position) > 0.01f)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target.position, spartkTackleAttackSpeed * Time.deltaTime);
+            yield return new WaitForFixedUpdate();
+        }
+
+        transform.position = target.position;
+        yield return new WaitForSeconds(waitBeforeReturningBack);
+
+        // return back.
+        while (Vector2.Distance(transform.position, returnBack.position) > 0.1f)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, returnBack.position, startSparkTackleAttackSpeed * Time.deltaTime);
+            yield return new WaitForFixedUpdate();
+        }
+
+        transform.position = returnBack.position;
+        DisableSparking();
+
+        yield return new WaitForSeconds(.1f);
+
+        _inSparkAttack = false;
+        EnableWeakPoints();
+
+        _sparkAttackRoutine = null;
+    }
+
+    /// <summary>
+    /// Trigger spark attack during battle.
+    /// </summary>
+    public void TriggerSparkAttack()
+    {
+        if (hitsToDestroy > 0)
+        {
+            _inSparkAttack = true;
+
+            if (_movingRoutine != null)
+            {
+                StopCoroutine(_movingRoutine);
+                _movingRoutine = null;
+            }
+
+            _sparkAttackRoutine = StartCoroutine(PerformSparkAttack());
+        }
+    }
+
+    /// <summary>
+    /// Random Spark attack.
+    /// </summary>
+    /// <returns>IEnumerator</returns>
+    public IEnumerator RandomSpark()
+    {
+        EnableSparking();
+        yield return new WaitForSeconds(timeSparkEnabled);
+
+        DisableSparking();
+        yield return new WaitForSeconds(toWaitBetweenSparks);
+
+        _randomSparkAttackRoutine = null;
+    }
+
+    /// <summary>
+    /// Enable sparking hazard.
+    /// </summary>
+    public void EnableSparking()
+    {
+        sparking.SetActive(true);
+        EnableBlueFace();
+    }
+
+    /// <summary>
+    /// Disable sparking hazard.
+    /// </summary>
+    public void DisableSparking()
+    {
+        sparking.SetActive(false);
+        DisableBlueFace();
+    }
+
+    /// <summary>
+    /// Shoot spark ball.
+    /// </summary>
+    public void ShootSparkBall()
+    {
+        _audio.PlaySound(5);
+        sparkBallShooter.ShootSparkBall();
     }
 
     /// <summary>
@@ -66,7 +224,47 @@ public class AngryCloud : Boss
     {
         if (hitsToDestroy == 2)
         {
-            movingSpeed += 1.5f;
+            _canRandomSpark = true;
+        }
+    }
+
+    /// <summary>
+    /// Enable blue back face animation.
+    /// </summary>
+    public void EnableBlueFace()
+    {
+        blueBack.SetActive(true);
+    }
+
+    /// <summary>
+    /// Disable blue back face animation.
+    /// </summary>
+    public void DisableBlueFace()
+    {
+        blueBack.SetActive(false);
+    }
+
+    /// <summary>
+    /// Disable both face animation.
+    /// </summary>
+    public void DisableBothFace()
+    {
+        DisableBlueFace();
+        redBack.SetActive(false);
+    }
+
+    /// <summary>
+    /// Check for moving animation.
+    /// </summary>
+    public void CheckForMovingAnim()
+    {
+        if (isMoving)
+        {
+            _anim.SetBool("IsMoving", true);
+        }
+        else
+        {
+            _anim.SetBool("IsMoving", false);
         }
     }
 
@@ -82,6 +280,18 @@ public class AngryCloud : Boss
             StopCoroutine(_movingRoutine);
             _movingRoutine = null;
         }
+
+        if (_sparkAttackRoutine != null)
+        {
+            StopCoroutine(_sparkAttackRoutine);
+            _sparkAttackRoutine = null;
+        }
+
+        if (_randomSparkAttackRoutine != null)
+        {
+            StopCoroutine(_randomSparkAttackRoutine);
+            _sparkAttackRoutine = null;
+        }
     }
 
     /// <summary>
@@ -91,5 +301,6 @@ public class AngryCloud : Boss
     {
         base.Init();
         isMoving = true;
+        _canRandomSpark = false;
     }
 }

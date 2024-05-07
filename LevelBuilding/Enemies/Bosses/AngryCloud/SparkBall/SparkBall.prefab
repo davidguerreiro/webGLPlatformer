@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3946279586953659309}
   - component: {fileID: 7844637669496480217}
   - component: {fileID: 5128962836490874149}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SparkBall
   m_TagString: Hazard
   m_Icon: {fileID: 0}

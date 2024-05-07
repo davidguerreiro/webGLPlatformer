@@ -23,7 +23,7 @@ public class PerezAppearsCinematic : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Play boss cinematic routine.
     /// </summary>
     /// <returns></returns>
     private IEnumerator PlayCinematicRoutine()
