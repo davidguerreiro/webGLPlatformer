@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1924901515801618672}
   - component: {fileID: 9169758693882824620}
+  - component: {fileID: 933104466437288850}
   - component: {fileID: 8505778264770727581}
   - component: {fileID: 8922453266085187456}
   - component: {fileID: 2177536327826477035}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sparking
   m_TagString: Hazard
   m_Icon: {fileID: 0}
@@ -58,7 +59,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 1
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -4716,6 +4717,33 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!50 &933104466437288850
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113513321200656161}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!199 &8505778264770727581
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -4822,8 +4850,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.00000011920929}
-  m_Size: {x: 1.3743713, y: 1.2662766}
+  m_Offset: {x: -0.018020054, y: 0.045516115}
+  m_Size: {x: 1.528876, y: 1.3573098}
   m_Direction: 1
 --- !u!82 &2177536327826477035
 AudioSource:
@@ -4835,7 +4863,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 232a775486e748d47a0db2730d0fa021, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e0b3ea7cc83475f4d8120a05414d6760, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -5229,8 +5257,8 @@ Transform:
   m_GameObject: {fileID: 2510029590367174447}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -1.085, z: 0}
+  m_LocalScale: {x: 2.264, y: 2.264, z: 2.264}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3490802071550432847}
@@ -6320,9 +6348,9 @@ MonoBehaviour:
   inBattleLoop: 0
   movingSpeed: 2
   sparking: {fileID: 113513321200656161}
-  startSparkTackleAttackSpeed: 12
-  spartkTackleAttackSpeed: 12
-  waitBeforeAttack: 2.5
+  startSparkTackleAttackSpeed: 14
+  spartkTackleAttackSpeed: 14
+  waitBeforeAttack: 2
   waitBeforeReturningBack: 1
   originLeft: {fileID: 0}
   destinyLeft: {fileID: 0}
@@ -6331,6 +6359,8 @@ MonoBehaviour:
   sparkBallShooter: {fileID: 5547366896722121864}
   timeSparkEnabled: 2.5
   toWaitBetweenSparks: 3.5
+  leftSparkCristal: {fileID: 0}
+  rightSparkCristal: {fileID: 0}
   movingPoints: []
   redBack: {fileID: 7045997245055378374}
   blueBack: {fileID: 3810771368542672076}

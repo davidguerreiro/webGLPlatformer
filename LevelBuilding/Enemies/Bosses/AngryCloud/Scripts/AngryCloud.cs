@@ -25,6 +25,10 @@ public class AngryCloud : Boss
     public float timeSparkEnabled;
     public float toWaitBetweenSparks;
 
+    [Header("Hazards")]
+    public SparkCristal leftSparkCristal;
+    public SparkCristal rightSparkCristal;
+
     [Header("Moving Points")]
     public Transform[] movingPoints;
 
@@ -56,7 +60,6 @@ public class AngryCloud : Boss
 
             if (_canRandomSpark && _randomSparkAttackRoutine == null && _sparkAttackRoutine == null && !_inSparkAttack)
             {
-                Debug.Log("here");
                 _randomSparkAttackRoutine = StartCoroutine(RandomSpark());
             }
 
@@ -116,6 +119,10 @@ public class AngryCloud : Boss
 
         EnableSparking();
 
+        // enable sparking cristals.
+        leftSparkCristal.ShowLighting();
+        rightSparkCristal.ShowLighting();
+
         // move to origin.
         while (Vector2.Distance(transform.position, origin.position) > 0.01f)
         {
@@ -148,6 +155,10 @@ public class AngryCloud : Boss
         DisableSparking();
 
         yield return new WaitForSeconds(.1f);
+
+        // disable spark cristals.
+        leftSparkCristal.HideLighting();
+        rightSparkCristal.HideLighting();
 
         _inSparkAttack = false;
         EnableWeakPoints();
@@ -275,6 +286,13 @@ public class AngryCloud : Boss
     /// </summary>
     public void StopAllAttackCoroutines()
     {
+        isMoving = false;
+        _anim.SetBool("IsMoving", false);
+
+        // disable spark cristals.
+        leftSparkCristal.HideLighting();
+        rightSparkCristal.HideLighting();
+
         if (_movingRoutine != null)
         {
             StopCoroutine(_movingRoutine);

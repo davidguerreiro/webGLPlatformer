@@ -11,9 +11,9 @@ public class MovingSideToSideEnemy : Enemy
     public Transform leftPoint;
     public Transform rightPoint;
 
-    private bool _canMove;
-    private Animator _anim;
-    private Coroutine _moveRoutine;
+    protected bool _canMove;
+    protected  Animator _anim;
+    protected Coroutine _moveRoutine;
 
     // Start is called before the first frame update
     void Start()

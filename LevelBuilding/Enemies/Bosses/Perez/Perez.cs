@@ -139,6 +139,9 @@ public class Perez : Boss
     /// </summary>
     public void StopAllBattleCoroutines()
     {
+        isMoving = false;
+        _anim.SetBool("IsMoving", false);
+
         if (_moveToTube != null)
         {
             StopCoroutine(_moveToTube);

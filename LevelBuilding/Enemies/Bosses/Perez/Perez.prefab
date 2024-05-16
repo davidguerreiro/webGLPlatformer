@@ -648,6 +648,8 @@ MonoBehaviour:
   inBattleLoop: 0
   movingSpeed: 5
   speedIncrementedAfterHit: 2
+  enemiesRight: []
+  enemiesLeft: []
   shootingAttackRight: {fileID: 0}
   shootingAttackLeft: {fileID: 0}
   toWaitInTube: 2
@@ -807,7 +809,7 @@ Animator:
   m_GameObject: {fileID: 6994714020788587298}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5a4643662a034294dbdae4b71716f997, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7bd399231b7360d488cb7e2b60251ba3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -32,7 +32,7 @@ public abstract class Enemy : MonoBehaviour
     /// <summary>
     /// Remove enemy colliders.
     /// </summary>
-    private void RemoveColliders()
+    protected void RemoveColliders()
     {
         foreach (CircleCollider2D collider in circleColliders)
         {
@@ -53,7 +53,7 @@ public abstract class Enemy : MonoBehaviour
     /// <summary>
     /// Remove hazard tags.
     /// </summary>
-    private void RemoveHazardPoints()
+    protected void RemoveHazardPoints()
     {
         foreach (GameObject hazard in hazardPoints)
         {
