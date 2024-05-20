@@ -65,7 +65,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.020113915, y: -0.26091903}
+  m_Offset: {x: -0.020113915, y: -0.2832222}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -76,7 +76,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2398287, y: 0.31094944}
+  m_Size: {x: 0.2398287, y: 0.2663431}
   m_EdgeRadius: 0
 --- !u!50 &3426354264135000115
 Rigidbody2D:
@@ -170,8 +170,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08128396, y: -0.21740182}
-  m_Size: {x: 0.3234977, y: 0.42047486}
+  m_Offset: {x: -0.08128396, y: -0.25428784}
+  m_Size: {x: 0.3234977, y: 0.3467028}
   m_Direction: 0
 --- !u!50 &1758217399677526217
 Rigidbody2D:
@@ -273,9 +273,9 @@ MonoBehaviour:
   explodeSprite: {fileID: 21300798, guid: aa619e95419474ad79952084db13ea18, type: 3}
   explosion: {fileID: 8776088086950656635}
   growingTimes: 2
-  secondsBeforeGlowing: 1.5
+  secondsBeforeGlowing: 0.5
   secondsBeforeExplosion: 0.5
-  secondsExplosionDamageable: 0.9
+  secondsExplosionDamageable: 0.8
 --- !u!50 &809789676746487861
 Rigidbody2D:
   serializedVersion: 4
@@ -503,7 +503,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.039500296, y: -0.0034835339}
+  m_Offset: {x: -0.023201823, y: -0.017195001}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -514,7 +514,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.58657396, y: 0.24986553}
+  m_Size: {x: 0.6534835, y: 0.28741905}
   m_EdgeRadius: 0
 --- !u!114 &2675082053044509649
 MonoBehaviour:
