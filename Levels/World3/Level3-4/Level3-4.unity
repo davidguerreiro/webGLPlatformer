@@ -7934,6 +7934,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1121938388}
     m_Modifications:
+    - target: {fileID: 3689590308210038288, guid: dfab636723bdc4f43872d0f571b80e8d, type: 3}
+      propertyPath: m_Size.x
+      value: 1.2645242
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689590308210038288, guid: dfab636723bdc4f43872d0f571b80e8d, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5143523
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689590308210038288, guid: dfab636723bdc4f43872d0f571b80e8d, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.13226211
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689590308210038288, guid: dfab636723bdc4f43872d0f571b80e8d, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.25717616
+      objectReference: {fileID: 0}
     - target: {fileID: 4254134836571411418, guid: dfab636723bdc4f43872d0f571b80e8d, type: 3}
       propertyPath: m_Name
       value: ExplosionBlock
