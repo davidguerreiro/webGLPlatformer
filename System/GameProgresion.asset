@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8da0d047d25b134fa3a7e6629ab3c0e, type: 3}
+  m_Name: GameProgresion
+  m_EditorClassIdentifier: 
+  variables:
+  - name: world1Unlocked
+    value: 0
+  - name: world2Unlocked
+    value: 0
+  - name: world3Unlocked
+    value: 0
+  - name: world4Unlocked
+    value: 0
+  - name: world5Unlocked
+    value: 0
+  - name: world6Unlocked
+    value: 0
+  - name: world7Unlocked
+    value: 0
+  - name: world8Unlocked
+    value: 0
+  - name: emerald1
+    value: 0
+  - name: emerald2
+    value: 0
+  - name: emerald3
+    value: 0
+  - name: emerald4
+    value: 0

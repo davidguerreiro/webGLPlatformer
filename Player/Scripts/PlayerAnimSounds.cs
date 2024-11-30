@@ -66,6 +66,15 @@ public class PlayerAnimSounds : MonoBehaviour
         {
             _anim.SetBool("IsMoving", false);
         }
+
+        if (! playerController.isGrounded)
+        {
+            _anim.SetBool("IsJumping", true);
+        }
+        else
+        {
+            _anim.SetBool("IsJumping", false);
+        }
     }
 
     /// <summary>

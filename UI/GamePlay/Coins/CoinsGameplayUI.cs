@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class CoinsGameplayUI : MonoBehaviour
 {
     public Text textComponent;
-    private Player _player;
+    private GameManager _gameManager;
 
     // Update is called once per frame
     void Update()
     {
-        if (_player != null)
+        if (_gameManager != null)
         {
             UpdateCoinsValue();
         }
@@ -22,15 +22,15 @@ public class CoinsGameplayUI : MonoBehaviour
     /// </summary>
     private void UpdateCoinsValue()
     {
-        textComponent.text = _player.GetCoins().ToString();
+        textComponent.text = _gameManager.GetCoinsLeftInLevel().ToString();
     }
 
     /// <summary>
     /// Init coins UI.
     /// </summary>
-    /// <param name="player"></param>
-    public void Init(Player player)
+    /// <param name="gameManager"></param>
+    public void Init(GameManager gameManager)
     {
-        _player = player;
+        _gameManager = gameManager;
     }
 }

@@ -104,6 +104,7 @@ public class Player : MonoBehaviour
         inDamage = true;
 
         playerController.RestrictControl();
+        playerController.TriggerHitVibration();
         UpdateHealth(-1);
 
         getDamage?.Invoke();

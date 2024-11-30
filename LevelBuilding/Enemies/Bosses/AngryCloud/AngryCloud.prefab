@@ -6289,6 +6289,7 @@ MonoBehaviour:
   hasMovingAnim: 1
   showDestroyedSprite: 0
   destroyedSprite: {fileID: 0}
+  displayKeyWhenDefeated: 1
   onHit:
     m_PersistentCalls:
       m_Calls:

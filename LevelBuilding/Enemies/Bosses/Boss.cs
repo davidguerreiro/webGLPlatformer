@@ -29,10 +29,12 @@ public abstract class Boss : MonoBehaviour
     public bool hasMovingAnim;
     public bool showDestroyedSprite;
     public Sprite destroyedSprite;
+    public bool displayKeyWhenDefeated;
 
     [Header("Events")]
     public UnityEvent onHit;
     public UnityEvent onDefeated;
+    public UnityEvent onDefeatedAfterAnim;
 
     [HideInInspector]
     public bool isAlive;
@@ -190,6 +192,7 @@ public abstract class Boss : MonoBehaviour
             _anim.SetTrigger("IsHit");
             _audio.PlaySound(2);
 
+            gameManager.player.playerController.TriggerHitVibration();
             gameManager.player.playerController.EnemyDefeatedRecoil();
 
             yield return new WaitForSeconds(1f);
@@ -247,8 +250,14 @@ public abstract class Boss : MonoBehaviour
         _audio.SetLoop(false);
         _audio.PlaySound(4);
         yield return new WaitForSeconds(1.5f);
+        
+        if (displayKeyWhenDefeated)
+        {
+            gameManager.DisplayKey();
+        }
 
-        gameManager.DisplayKey();
+        onDefeatedAfterAnim?.Invoke();
+
         isBeingDestroyed = null;
     }
 

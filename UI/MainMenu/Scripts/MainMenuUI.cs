@@ -6,15 +6,16 @@ public class MainMenuUI : MonoBehaviour
 {
     [Header("Components")]
     public FadeElement cover;
-    public GameObject board;
-    public GameObject gameTitle;
-    public GameObject logoSection;
-    public GameObject pressSpaceBarSection;
+    public FadeElement gameTitle;
+    public FadeElement companyLogo;
+    public GameObject pressStartText;
+    public GameObject mainMenuNavegable;
 
     [HideInInspector]
     public bool displayed;
 
     private AudioComponent _audio;
+    private Navegable _navegable;
 
     // Start is called before the first frame update
     void Start()
@@ -33,20 +34,85 @@ public class MainMenuUI : MonoBehaviour
     /// <returns>IEnumerator</returns>
     private IEnumerator DisplayUIElementsRoutine()
     {
-        cover.FadeOut();
-        yield return new WaitForSeconds(1.5f);
+        gameTitle.FadeIn(.1f);
+        yield return new WaitForSeconds(3f);
 
-        board.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
-
-        gameTitle.SetActive(true);
-        _audio.PlaySound(0);
+        companyLogo.FadeIn();
         yield return new WaitForSeconds(1f);
 
-        logoSection.SetActive(true);
-        pressSpaceBarSection.SetActive(true);
-
+        pressStartText.SetActive(true);
         displayed = true;
+    }
+
+    /// <summary>
+    /// Display and make main menu navegable.
+    /// </summary>
+    public void DisplayAndEnableMainMenuNavegable()
+    {
+        _audio.PlaySound(0);
+        DisablePressStartText();
+        mainMenuNavegable.SetActive(true);
+
+        _navegable = mainMenuNavegable.GetComponent<Navegable>();
+        _navegable.SetNavegable();
+    }
+
+    /// <summary>
+    /// Get selected option in navegable 
+    /// main menu UI.
+    /// </summary>
+    /// <returns>string</returns>
+    public string GetSelectedNavegableItem()
+    {
+        if (_navegable == null)
+        {
+            _navegable = GetComponent<Navegable>();
+        }
+
+        return _navegable.GetSelectedLabel();
+    }
+
+    /// <summary>
+    /// Disable press start button text
+    /// in main menu UI.
+    /// </summary>
+    public void DisablePressStartText()
+    {
+        pressStartText.SetActive(false);
+    }
+
+    /// <summary>
+    /// Disable and hide main menu navegable.
+    /// </summary>
+    public void HideNavegableMenu()
+    {
+        mainMenuNavegable.SetActive(false);
+    }
+
+    /// <summary>
+    /// Fade out logo and title from
+    /// main menu UI.
+    /// </summary>
+    public void HideTitleAndLogo()
+    {
+        gameTitle.FadeOut();
+        companyLogo.FadeOut();
+    }
+
+    /// <summary>
+    /// Display cover.
+    /// </summary>
+    public void ShowCover()
+    {
+        cover.FadeIn();
+    }
+
+    /// <summary>
+    /// Hide cover.
+    /// </summary>
+    public void RemoveCover()
+    {
+        cover.FadeOut();
     }
 
     /// <summary>

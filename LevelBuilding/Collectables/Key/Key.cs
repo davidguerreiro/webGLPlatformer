@@ -39,6 +39,7 @@ public class Key : MonoBehaviour
         _collider.enabled = false;
         sprite.enabled = false;
         particles.SetActive(false);
+        player.playerController.TriggerCollectKeyVibration();
 
         player.GetKey();
 

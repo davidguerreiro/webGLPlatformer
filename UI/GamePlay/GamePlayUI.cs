@@ -9,9 +9,11 @@ public class GamePlayUI : MonoBehaviour
     public LevelIntro levelIntro;
     public CoinsGameplayUI coinsUI;
     public KeyGameplayUI keyUI;
+    public KeyGameplayUI blueKeyUI;
     public HealthUI healthUI;
-    public GameObject gameOver;
+    public GameOverUI gameOver;
     public DialogueBox dialogueBox;
+    public PauseUI pauseUI;
 
     [HideInInspector]
     public Coroutine initLevel;
@@ -21,16 +23,32 @@ public class GamePlayUI : MonoBehaviour
     /// <summary>
     /// Init gameplay UI method.
     /// </summary>
+    /// <param name="gameManager"></param>
     public void Init(GameManager gameManager)
     {
         // init level intro.
         levelIntro.Init(gameManager.levelData);
 
         // init coins UI.
-        // coinsUI.Init(gameManager.player);
+        if (gameManager.isBossLevel)
+        {
+            coinsUI.gameObject.SetActive(false);
+        } else
+        {
+            coinsUI.Init(gameManager);
+        }
 
         // init key UI.
-        keyUI.Init(gameManager.player);
+        if (gameManager.hasBlueKey)
+        {
+            keyUI.gameObject.SetActive(false);
+            blueKeyUI.gameObject.SetActive(true);
+
+            blueKeyUI.Init(gameManager.player);
+        } else
+        {
+            keyUI.Init(gameManager.player);
+        }
 
         // init health UI.
         healthUI.Init(gameManager.player);
@@ -73,7 +91,8 @@ public class GamePlayUI : MonoBehaviour
     public void DisplayGameOver()
     {
         _gameManager.PlayGameOverMusic();
-        gameOver.SetActive(true);
+        gameOver.gameObject.SetActive(true);
+        gameOver.EnableNavegable(_gameManager);
     }
 
     /// <summary>
@@ -81,6 +100,6 @@ public class GamePlayUI : MonoBehaviour
     /// </summary>
     public void HideGameOver()
     {
-        gameOver.SetActive(false);
+        gameOver.gameObject.SetActive(false);
     }
 }

@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
     public LevelData levelData;
     public bool isBossLevel;
     public bool hasCinematic;
+    public bool hasBlueKey;
+
+    [Header("Game Progresion")]
+    public LocalVars gameProgresion;
 
     [Header("GamePlay References")]
     public Player player;
@@ -33,7 +37,14 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool inGamePlay;
 
+    [HideInInspector]
+    public bool inGameOver;
+
+    [HideInInspector]
+    public bool isPaused;
+
     private AudioComponent _audio;
+    private SaveGame _saveGame;
 
     // Start is called before the first frame update
     void Start()
@@ -44,10 +55,32 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        // check player coins requisite to show key in game scene.
-        if (inGamePlay && !key.activeSelf)
+        if (inGamePlay)
         {
-            CheckForCoins();
+            // check player coins requisite to show key in game scene.
+            if (!key.activeSelf)
+            {
+                CheckForCoins();
+            }
+
+            // check for pause game.
+            if (! inGameOver && player.playerController.rewiredPlayer.GetButtonDown("Start"))
+            {
+                if (isPaused)
+                {
+                    ResumeGameAfterPause();
+                } else
+                {
+                    PauseGame();
+                }
+            }
+
+            // check for exiting game.
+            if (isPaused && player.playerController.rewiredPlayer.GetButtonDown("Exit"))
+            {
+                ExitToMainMenu();
+            }
+            
         }
     }
 
@@ -58,6 +91,12 @@ public class GameManager : MonoBehaviour
     public IEnumerator InitLevel()
     {
         beforeLoadLevel?.Invoke();
+
+        // update game progression if needed.
+        if (levelData.saveDataAtInitLevel)
+        {
+            UpdateGameProgression();
+        }
 
         // init UIs.
         gamePlayUI.Init(this);
@@ -133,6 +172,28 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Pause game.
+    /// </summary>
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+        gamePlayUI.pauseUI.Display();
+        player.playerController.RestrictPlayerInput();
+        isPaused = true;
+    }
+
+    /// <summary>
+    /// Resume game after paused.
+    /// </summary>
+    public void ResumeGameAfterPause()
+    {
+        Time.timeScale = 1f;
+        gamePlayUI.pauseUI.Hide();
+        player.playerController.AllowPlayerInput();
+        isPaused = false;
+    }
+
+    /// <summary>
     /// Level finished logic coroutine.
     /// </summary>
     public void EndLevel()
@@ -158,6 +219,16 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Calculate how manu coins are left to be collected
+    /// by the player.
+    /// </summary>
+    /// <returns>int</returns>
+    public int GetCoinsLeftInLevel()
+    {
+        return levelCoins - player.coins;
+    }
+
+    /// <summary>
     /// Player damaged.
     /// </summary>
     public void PlayerDamaged()
@@ -178,6 +249,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            inGameOver = true;
             gamePlayUI.DisplayGameOver();
         }
     }
@@ -195,10 +267,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private IEnumerator RetryGameRoutine()
     {
+        inGamePlay = false;
         gamePlayUI.cover.FadeIn();
         yield return new WaitForSeconds(3f);
 
-        SceneManager.LoadScene(levelData.levelToLoadOnRetry);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     /// <summary>
@@ -247,11 +320,40 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Update game progresion, usually called
+    /// first time player enters into new world.
+    /// </summary>
+    private void UpdateGameProgression()
+    {
+        gameProgresion.SetVar(levelData.saveVariableName, true);
+        _saveGame.WriteDataInJson(gameProgresion);
+    }
+
+    /// <summary>
+    /// Exit current gameplay and load main
+    /// menu scene.
+    /// </summary>
+    public void ExitToMainMenu()
+    {
+        StopLevelMusic();
+        ResumeGameAfterPause();
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        Destroy(this);
+    }
+
+    /// <summary>
     /// Init class method.
     /// </summary>
     private void Init()
     {
         _audio = GetComponent<AudioComponent>();
         _audio.UpdateClip(3, levelData.levelMusic);
+        inGameOver = false;
+
+        if (levelData.saveDataAtInitLevel)
+        {
+            _saveGame = GetComponent<SaveGame>();
+            _saveGame.Init();
+        }
     }
 }

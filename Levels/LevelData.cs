@@ -10,4 +10,6 @@ public class LevelData : ScriptableObject
     public string nextLevelName;
     public string levelToLoadOnRetry;
     public AudioClip levelMusic;
+    public bool saveDataAtInitLevel;
+    public string saveVariableName;
 }

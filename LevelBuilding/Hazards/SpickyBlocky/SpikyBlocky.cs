@@ -7,6 +7,7 @@ public class SpikyBlocky : MonoBehaviour
     [Header("Settings")]
     public float speed;
     public float waitBetweenMovements;
+    public bool playSound;
 
     [Header("Components")]
     public GameManager gameManager;
@@ -50,7 +51,10 @@ public class SpikyBlocky : MonoBehaviour
                 yield return new WaitForFixedUpdate();
             }
 
-            _audio.PlaySound();
+            if (playSound)
+            {
+                _audio.PlaySound();
+            }
 
             transform.position = target.position;
             yield return new WaitForSeconds(waitBetweenMovements);

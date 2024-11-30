@@ -43,6 +43,8 @@ public class Spagueti : Boss
             {
                 _attackLoopBehaviour = StartCoroutine(BattleLoop());
             }
+
+            CheckForMovingAnim();
         }
     }
 
@@ -160,7 +162,7 @@ public class Spagueti : Boss
     /// <summary>
     /// Go down fast.
     /// </summary>
-    private void GoDownFast()
+    public void GoDownFast()
     {
         if (inBattleLoop)
         {
@@ -180,7 +182,7 @@ public class Spagueti : Boss
     /// </summary>
     public void IncreaseGoingDownSpeed()
     {
-        speedGoingDown *= 10f;
+        speedGoingDown *= 15f;
     }
 
     /// <summary>
@@ -202,6 +204,21 @@ public class Spagueti : Boss
         if (hitsToDestroy == bossIncreasePhaseAtHits)
         {
             IncreaseBossPhase();
+        }
+    }
+
+    /// <summary>
+    /// Check for moving animation.
+    /// </summary>
+    public void CheckForMovingAnim()
+    {
+        if (isMoving)
+        {
+            _anim.SetBool("IsMoving", true);
+        }
+        else
+        {
+            _anim.SetBool("IsMoving", false);
         }
     }
 

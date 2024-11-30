@@ -18,3 +18,5 @@ MonoBehaviour:
   nextLevelName: Level1-2
   levelToLoadOnRetry: Level1-1
   levelMusic: {fileID: 8300000, guid: a6c770919930a5e49ae95c332ab2deb0, type: 3}
+  saveDataAtInitLevel: 1
+  saveVariableName: world1Unlocked

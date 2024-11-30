@@ -9,19 +9,46 @@ public class MovingDecoration : MonoBehaviour
     public bool movingLeft;
     public float delay;
     public float completedDelay;
+    public bool playSoundAtInitMovement;
 
     [Header("Components")]
     public Transform leftTarget;
     public Transform rightTarget;
 
     private Coroutine _isMoving;
+    private AudioComponent _audio;
+    private GameManager _gameManager;
+
+    private void Start()
+    {
+        Init();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (_isMoving == null)
+        if (playSoundAtInitMovement)
         {
-            _isMoving = StartCoroutine(Moving());
+
+            if (_gameManager != null)
+            {
+                if (_gameManager.inGamePlay && _isMoving == null && !_gameManager.inGameOver)
+                {
+                    _isMoving = StartCoroutine(Moving());
+                }
+
+
+                if (_gameManager.inGameOver && _isMoving != null)
+                {
+                    StopCoroutine(_isMoving);
+                }
+            }
+        } else
+        {
+            if (_isMoving == null)
+            {
+                _isMoving = StartCoroutine(Moving());
+            }
         }
     }
 
@@ -37,6 +64,11 @@ public class MovingDecoration : MonoBehaviour
         }
 
         Transform target = (movingLeft) ? leftTarget : rightTarget;
+
+        if (playSoundAtInitMovement)
+        {
+            _audio.PlaySound(0);
+        }
 
         while (Vector2.Distance(transform.localPosition, target.localPosition) > 0.01f)
         {
@@ -60,6 +92,29 @@ public class MovingDecoration : MonoBehaviour
         }
 
         _isMoving = null;
+    }
+
+    /// <summary>
+    /// Get game manager in current scene.
+    /// </summary>
+    /// <returns>IEnumerator</returns>
+    private IEnumerator GetGameManager()
+    {
+        yield return new WaitForSeconds(.1f);
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
+
+    /// <summary>
+    /// Init class method.
+    /// </summary>
+    private void Init()
+    {
+        if (playSoundAtInitMovement)
+        {
+            _audio = GetComponent<AudioComponent>();
+            StartCoroutine(GetGameManager());
+        }
+
     }
 
 }

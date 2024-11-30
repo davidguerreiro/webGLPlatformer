@@ -53,4 +53,19 @@ public class ObjectPool : MonoBehaviour {
 
         return null;
     }
+
+    /// <summary>
+    /// Disable all prefabs in this
+    /// object pool.
+    /// </summary>
+    public void DisableAll()
+    {
+        foreach (GameObject prefab in pool)
+        {
+            if (prefab.activeSelf)
+            {
+                prefab.SetActive(false);
+            }
+        }
+    }
 }

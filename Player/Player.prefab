@@ -375,10 +375,15 @@ MonoBehaviour:
   canMove: 0
   isGrounded: 0
   enterDoor: 0
+  overIcyFloor: 0
   speed: 5
   jumpForce: 18
   rightPlayerCheckGround: {fileID: 5203280910998700369}
   leftPlayerCheckGround: {fileID: 1392403851496052090}
+  collectCoinVibration: 0.2
+  hitVibration: 1
+  collecKeyVibration: 0.5
+  bounceVibration: 0.7
   jumpEvent:
     m_PersistentCalls:
       m_Calls:

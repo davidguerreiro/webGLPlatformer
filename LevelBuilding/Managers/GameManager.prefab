@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 226454138810313470}
   - component: {fileID: 5305767622340963797}
+  - component: {fileID: 5543249748431296169}
   - component: {fileID: 268507320580274388}
   - component: {fileID: 5820068159357026842}
   m_Layer: 0
@@ -47,15 +48,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelData: {fileID: 0}
+  isBossLevel: 0
+  hasCinematic: 0
+  gameProgresion: {fileID: 11400000, guid: 251c24aa000ad0144a1f366ac4cbd2db, type: 2}
   player: {fileID: 0}
   playerSpawn: {fileID: 0}
   key: {fileID: 0}
   gamePlayUI: {fileID: 0}
+  cinematicManager: {fileID: 0}
   levelCoins: 0
-  OnPlayerSpawn:
+  onPlayerSpawn:
+    m_PersistentCalls:
+      m_Calls: []
+  beforeLoadLevel:
+    m_PersistentCalls:
+      m_Calls: []
+  afterLoadLevel:
     m_PersistentCalls:
       m_Calls: []
   inGamePlay: 0
+  inGameOver: 0
+  isPaused: 0
+--- !u!114 &5543249748431296169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4773182915192714200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e05172eb5bb9a5447a669e90f69aa1a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &268507320580274388
 AudioSource:
   m_ObjectHideFlags: 0

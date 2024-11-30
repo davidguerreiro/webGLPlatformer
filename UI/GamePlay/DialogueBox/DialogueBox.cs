@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Rewired;
 
 public class DialogueBox : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class DialogueBox : MonoBehaviour
     [HideInInspector]
     public Coroutine playingFullDialogue;
 
+    [HideInInspector]
+    public Rewired.Player rewiredPlayer;
+
     private DialogueData _dialogue;
     private AudioComponent _audio;
     private bool _listeningForUserKey;
@@ -33,7 +37,7 @@ public class DialogueBox : MonoBehaviour
     private void Update()
     {
         // await user input to continue playing dialogue.
-        if (_listeningForUserKey && Input.GetKeyDown("space"))
+        if (_listeningForUserKey && (rewiredPlayer.GetButton("Jump") || rewiredPlayer.GetButton("Cancel")))
         {
             _listeningForUserKey = false;
         }    
@@ -224,6 +228,7 @@ public class DialogueBox : MonoBehaviour
     public void Init()
     {
         _audio = GetComponent<AudioComponent>();
+        rewiredPlayer = ReInput.players.GetPlayer(0);
         _listeningForUserKey = false;
     }
 }

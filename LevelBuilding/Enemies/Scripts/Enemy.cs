@@ -51,6 +51,27 @@ public abstract class Enemy : MonoBehaviour
     }
 
     /// <summary>
+    /// Enable enemy colliders.
+    /// </summary>
+    protected void EnableColliders()
+    {
+        foreach (CircleCollider2D collider in circleColliders)
+        {
+            collider.enabled = true;
+        }
+
+        foreach (BoxCollider2D collider in boxColliders)
+        {
+            collider.enabled = true;
+        }
+
+        foreach (CapsuleCollider2D collider in capsuleColliders)
+        {
+            collider.enabled = true;
+        }
+    }
+
+    /// <summary>
     /// Remove hazard tags.
     /// </summary>
     protected void RemoveHazardPoints()
@@ -78,6 +99,7 @@ public abstract class Enemy : MonoBehaviour
 
         _audio.PlaySound(0);
 
+        gameManager.player.playerController.TriggerHitVibration();
         gameManager.player.playerController.EnemyDefeatedRecoil();
 
         Destroy(this.gameObject, timeToDestroy);

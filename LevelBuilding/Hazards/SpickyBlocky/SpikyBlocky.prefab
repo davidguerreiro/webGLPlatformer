@@ -689,6 +689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   waitBetweenMovements: 3
+  playSound: 1
   gameManager: {fileID: 0}
   movingPoints: []
 --- !u!82 &6360246370747592082

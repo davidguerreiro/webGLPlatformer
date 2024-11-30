@@ -3,16 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RotateItself : MonoBehaviour {
+    public bool autoStart;
     public float speed = 10f;                                   // Rotate speed.
     public bool rotateX = true;
     public bool rotateY = true;
     public bool rotateZ = true;
 
-    private bool _canMove = true;                               // Flag used to stop movement.
+    private bool _canMove;                                      // Flag used to stop movement.
+    private Quaternion _originalRotation;
+
+    private void Start()
+    {
+        Init();
+    }
 
     // Update is called once per frame
     void Update() {
-        RotateObject();
+        if (_canMove)
+        {
+            RotateObject();
+        }
     }
 
     /// <summary>
@@ -29,9 +39,36 @@ public class RotateItself : MonoBehaviour {
     }
 
     /// <summary>
+    /// Set rotation in motion.
+    /// </summary>
+    public void StartRotation()
+    {
+        _canMove = true;
+    }
+
+    /// <summary>
     /// Stop rotation.
     /// </summary>
-    public void Stop() {
+    /// <param name="resetRotation">bool</param>
+    public void StopRotation(bool resetRotation = false) {
         _canMove = false;
+
+        if (resetRotation)
+        {
+            transform.rotation = _originalRotation;
+        }
+    }
+
+    /// <summary>
+    /// Init class method.
+    /// </summary>
+    private void Init()
+    {
+        _originalRotation = transform.rotation;
+
+        if (autoStart)
+        {
+            StartRotation();
+        }
     }
 }

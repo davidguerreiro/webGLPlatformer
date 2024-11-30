@@ -23,14 +23,31 @@ public class SplashFireBallLauncher : MonoBehaviour
 
             splashRigi.velocity = Vector2.zero;
 
-            // TODO: Change, test and/or randomize force values.
-            if (direction == "left")
-            {
-                splashRigi.velocity = new Vector2(-5f, 5f);
-            } else
-            {
-                splashRigi.velocity = new Vector2(5f, 5f);
-            }                
+            Vector2 force = GetRandForce(direction);
+            splashRigi.AddForce(force, ForceMode2D.Impulse);
         }
+    }
+
+    /// <summary>
+    /// Get force for splash ball.
+    /// </summary>
+    /// <param name="direction">string</param>
+    /// <returns>Vector2</returns>
+    private Vector2 GetRandForce(string direction)
+    {
+        float forceSide = Random.Range(4f, 6f);
+        float forceUp = Random.Range(9f, 11f);
+
+        Vector2 force = Vector2.up * forceUp;
+
+        if (direction == "left")
+        {
+            force += Vector2.left * forceSide;
+        } else
+        {
+            force += Vector2.right * forceSide;
+        }
+
+        return force;
     }
 }

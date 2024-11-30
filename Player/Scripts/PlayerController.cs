@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Rewired;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,11 +20,20 @@ public class PlayerController : MonoBehaviour
     public PlayerCheckGround rightPlayerCheckGround;
     public PlayerCheckGround leftPlayerCheckGround;
 
+    [Header("Vibration")]
+    public float collectCoinVibration;
+    public float hitVibration;
+    public float collecKeyVibration;
+    public float bounceVibration;
+
     [Header("Events")]
     public UnityEvent jumpEvent;
 
     [HideInInspector]
     public float xMove;
+
+    [HideInInspector]
+    public Rewired.Player rewiredPlayer;
 
     private Rigidbody2D _rigibody;
     private BoxCollider2D _boxCollider;
@@ -34,7 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         if (canMove)
         {
-            if (Input.GetKeyDown("space"))
+            if (rewiredPlayer.GetButtonDown("Jump") || rewiredPlayer.GetButtonDown("Cancel"))
             {
                 Jump();
             }
@@ -57,7 +67,8 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void Move()
     {
-        xMove = Input.GetAxis("Horizontal");
+        // xMove = Input.GetAxis("Horizontal");
+        xMove = rewiredPlayer.GetAxis("MoveHorizontal");
         Vector2 movement = new Vector2(xMove, _rigibody.velocity.y);
 
         if (overIcyFloor)
@@ -92,6 +103,7 @@ public class PlayerController : MonoBehaviour
     public void Bounce()
     {
         _rigibody.velocity = new Vector2(_rigibody.velocity.x, jumpForce * 1.5f);
+        TriggerBounceVibration();
     }
 
     /// <summary>
@@ -99,7 +111,8 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void EnemyDefeatedRecoil()
     {
-        float force = Input.GetKey("space") ? jumpForce * 1.3f : jumpForce / 2f;
+        bool isJumping = (rewiredPlayer.GetButton("Jump") || rewiredPlayer.GetButton("Cancel"));
+        float force = isJumping ? jumpForce * 1.3f : jumpForce / 2f;
         _rigibody.velocity = new Vector2(_rigibody.velocity.x, 0f);
         _rigibody.velocity = new Vector2(_rigibody.velocity.x, force);
     }
@@ -193,6 +206,58 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
+    /// Trigger gamepad vibration when coin is collected.
+    /// </summary>
+    public void TriggerCoinVibration()
+    {
+        string hasVibrationEnabled = PlayerPrefs.GetString("vibration", "yes");
+
+        if (hasVibrationEnabled == "yes")
+        {
+            rewiredPlayer.SetVibration(0, collectCoinVibration, .1f);
+        }
+    }
+
+    /// <summary>
+    /// Trigger gamepad vibration when hit enemy or hit by enemy.
+    /// </summary>
+    public void TriggerHitVibration()
+    {
+        string hasVibrationEnabled = PlayerPrefs.GetString("vibration", "yes");
+
+        if (hasVibrationEnabled == "yes")
+        {
+            rewiredPlayer.SetVibration(0, hitVibration, .4f);
+        }
+    }
+
+    /// <summary>
+    /// Trigger gamepad vibration when collecting key.
+    /// </summary>
+    public void TriggerCollectKeyVibration()
+    {
+        string hasVibrationEnabled = PlayerPrefs.GetString("vibration", "yes");
+
+        if (hasVibrationEnabled == "yes")
+        {
+            rewiredPlayer.SetVibration(0, collectCoinVibration, .1f);
+        }
+    }
+
+    /// <summary>
+    /// Trigger gamepad vibration when bouncing.
+    /// </summary>
+    public void TriggerBounceVibration()
+    {
+        string hasVibrationEnabled = PlayerPrefs.GetString("vibration", "yes");
+
+        if (hasVibrationEnabled == "yes")
+        {
+            rewiredPlayer.SetVibration(0, bounceVibration, .5f);
+        }
+    }
+
+    /// <summary>
     /// Init class method.
     /// </summary>
     public void Init()
@@ -201,6 +266,8 @@ public class PlayerController : MonoBehaviour
         _boxCollider = GetComponent<BoxCollider2D>();
         _capsuleCollider = GetComponent<CapsuleCollider2D>();
         enterDoor = false;
+
+        rewiredPlayer = ReInput.players.GetPlayer(0);
 
         _baseGravityScale = 5;
     }

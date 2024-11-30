@@ -42,6 +42,7 @@ public class Coin : MonoBehaviour
         sprite.enabled = false;
         _collider.enabled = false;
 
+        player.playerController.TriggerCoinVibration();
         _audioSource.Play();
 
         player.UpdateCoins(value);
