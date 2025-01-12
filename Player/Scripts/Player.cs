@@ -30,9 +30,9 @@ public class Player : MonoBehaviour
     {
         health += update;
 
-        if (health < 0)
+        if (health < -1)
         {
-            health = 0;
+            health = -1;
         }
 
         if (health > maxHealth)

@@ -242,7 +242,7 @@ public class GameManager : MonoBehaviour
     /// <returns>IEnumerator</returns>
     private IEnumerator PlayerDamagedRoutine()
     {
-        if (player.GetHealth() > 0)
+        if (player.GetHealth() >= 0)
         {
             yield return new WaitForSeconds(1.5f);
             PlayerSpawn();
