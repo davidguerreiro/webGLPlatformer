@@ -46,10 +46,13 @@ public class SkyProjectileSpawner : MonoBehaviour
     /// <param name="collision">Collider2D</param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(tagToCheckForEnable))
+        if (spawnByTouch)
         {
-            SpawnSkyProjectile();
-        }   
+            if (collision.gameObject.CompareTag(tagToCheckForEnable))
+            {
+                SpawnSkyProjectile();
+            }
+        }
     }
 
     /// <summary>

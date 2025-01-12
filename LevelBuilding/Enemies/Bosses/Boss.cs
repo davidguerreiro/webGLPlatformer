@@ -183,7 +183,7 @@ public abstract class Boss : MonoBehaviour
     private IEnumerator HitCoroutine()
     {
         GetDamage();
-
+        Debug.Log("Hit coroutine");
         if (hitsToDestroy > 0)
         {
             onHit?.Invoke();

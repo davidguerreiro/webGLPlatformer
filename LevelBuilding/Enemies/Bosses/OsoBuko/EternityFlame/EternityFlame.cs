@@ -27,7 +27,7 @@ public class EternityFlame : MonoBehaviour
     /// </summary>
     public void Dissapear()
     {
-        _animator.SetBool("Dissapear", true);
+        _animator.SetBool("Appear", false);
         _audioComponent.PlaySound();
     }
 
