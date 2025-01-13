@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: Level 8-2
   levelIntro: '"Leap of faith"'
+  levelIntroEs: '"Salto de Fe"'
   levelIcon: {fileID: 21300000, guid: 2a4faf654f4dbac4dade0fa43796b4e9, type: 3}
   nextLevelName: Level8-3
   levelToLoadOnRetry: Level8-2

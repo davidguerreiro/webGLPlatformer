@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: Level 4-2
   levelIntro: '"Tower of Chocolate"'
+  levelIntroEs: '"La torre de chocolate"'
   levelIcon: {fileID: 21300000, guid: 45b143b22696e3242bf75a90615d94fb, type: 3}
   nextLevelName: Level4-3
   levelToLoadOnRetry: Level4-1
   levelMusic: {fileID: 8300000, guid: 65c2bd99c85dc42469c1b58bd91d32b2, type: 3}
+  saveDataAtInitLevel: 0
+  saveVariableName: 

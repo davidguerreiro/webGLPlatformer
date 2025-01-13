@@ -25,11 +25,16 @@ public class LevelIntro : MonoBehaviour
     /// </summary>
     private void SetUpData()
     {
+        string lang = PlayerPrefs.GetString("language", "english");
+        string introTextContent = (lang == "english") ? _levelData.levelIntro : _levelData.levelIntroEs;
         levelText.UpdateContent(_levelData.levelName);
-        introText.UpdateContent(_levelData.levelIntro);
+        introText.UpdateContent(introTextContent);
         levelImage.sprite = _levelData.levelIcon;
     }
 
+    /// <summary>
+    /// Show level data.
+    /// </summary>
     public void ShowLevelData()
     {
         StartCoroutine(ShowLevelDataRoutine());   

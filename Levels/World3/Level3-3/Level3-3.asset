@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: Level 3-3
   levelIntro: '"Jumping over the clouds"'
+  levelIntroEs: '"Saltando sobre las nubes"'
   levelIcon: {fileID: 21300000, guid: df629e8b6c525f14289edf3888f69893, type: 3}
   nextLevelName: Level3-4
   levelToLoadOnRetry: Level3-1
   levelMusic: {fileID: 8300000, guid: e850c381fb507d5468daf92d7393fb83, type: 3}
+  saveDataAtInitLevel: 0
+  saveVariableName: 

@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: Level 2-4
   levelIntro: '"Spiky Spiky!"'
+  levelIntroEs: '"Pinchos Picudos"'
   levelIcon: {fileID: 21300000, guid: 2f67d6c598046a14a80c224dcec17824, type: 3}
   nextLevelName: Level2-5
   levelToLoadOnRetry: Level2-1
   levelMusic: {fileID: 8300000, guid: 3fee03a81d87aff4c83f74005af6cf42, type: 3}
+  saveDataAtInitLevel: 0
+  saveVariableName: 

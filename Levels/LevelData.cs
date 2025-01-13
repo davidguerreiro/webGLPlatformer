@@ -6,6 +6,7 @@ public class LevelData : ScriptableObject
 {
     public string levelName;
     public string levelIntro;
+    public string levelIntroEs;
     public Sprite levelIcon;
     public string nextLevelName;
     public string levelToLoadOnRetry;

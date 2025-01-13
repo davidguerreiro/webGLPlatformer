@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: Level 7-2
   levelIntro: '"The Phantom Menace"'
+  levelIntroEs: '"La Amenaza Fantasma"'
   levelIcon: {fileID: 21300000, guid: c7f744ab1ab95a840ab879c5010e887c, type: 3}
   nextLevelName: Level7-3
   levelToLoadOnRetry: Level7-2
   levelMusic: {fileID: 8300000, guid: e168c166841d7234c8405aa68ec27ba1, type: 3}
+  saveDataAtInitLevel: 0
+  saveVariableName: 

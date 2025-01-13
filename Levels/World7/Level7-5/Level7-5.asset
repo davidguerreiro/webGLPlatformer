@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: Level 7-5
   levelIntro: '"The Reunion"'
+  levelIntroEs: '"El Reencuentro"'
   levelIcon: {fileID: 21300000, guid: c7f744ab1ab95a840ab879c5010e887c, type: 3}
   nextLevelName: Level8-1
   levelToLoadOnRetry: Level7-5
   levelMusic: {fileID: 8300000, guid: efc99fdf224d04f4e9230e619cf7a745, type: 3}
+  saveDataAtInitLevel: 0
+  saveVariableName: 

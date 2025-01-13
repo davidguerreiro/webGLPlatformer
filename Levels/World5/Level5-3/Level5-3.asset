@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: Level 5-3
   levelIntro: '"A Giant Wheel"'
+  levelIntroEs: '"Una rueda enorme"'
   levelIcon: {fileID: 21300000, guid: 7872f9ec4e690e04ab4ca5db88d337b6, type: 3}
   nextLevelName: Level5-4
   levelToLoadOnRetry: Level5-1
   levelMusic: {fileID: 8300000, guid: dadc5368ce97247439cc2d49392f1870, type: 3}
+  saveDataAtInitLevel: 0
+  saveVariableName: 

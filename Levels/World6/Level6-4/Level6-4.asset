@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: Level 6-4
   levelIntro: '"Round and round around"'
+  levelIntroEs: '"Rota y rota otra vez"'
   levelIcon: {fileID: 21300000, guid: 5889540ee0bb6c344b75bc0f517ceb19, type: 3}
   nextLevelName: Level6-5
   levelToLoadOnRetry: Level6-1
   levelMusic: {fileID: 8300000, guid: 2daaa132b7cd1a8488963c5eda1fb5f3, type: 3}
+  saveDataAtInitLevel: 0
+  saveVariableName: 

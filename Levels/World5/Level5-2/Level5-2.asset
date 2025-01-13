@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Level5-2
   m_EditorClassIdentifier: 
   levelName: Level 5-2
-  levelIntro: '"No fear!"'
+  levelIntro: '"Too many looping platforms"'
+  levelIntroEs: '"Demasiadas vueltas"'
   levelIcon: {fileID: 21300000, guid: 7872f9ec4e690e04ab4ca5db88d337b6, type: 3}
   nextLevelName: Level5-3
   levelToLoadOnRetry: Level5-1
   levelMusic: {fileID: 8300000, guid: dadc5368ce97247439cc2d49392f1870, type: 3}
+  saveDataAtInitLevel: 0
+  saveVariableName: 

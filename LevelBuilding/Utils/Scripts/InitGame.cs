@@ -53,6 +53,5 @@ public class InitGame : MonoBehaviour
     {
         _saveGame = GetComponent<SaveGame>();
         _saveGame.Init();
-        Debug.Log("Persistent Data Path: " + Application.persistentDataPath);
     }
 }
