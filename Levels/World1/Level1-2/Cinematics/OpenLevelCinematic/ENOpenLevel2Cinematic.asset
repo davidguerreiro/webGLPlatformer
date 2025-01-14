@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96b2c1daae5610d47976faeb120a10fe, type: 3}
-  m_Name: ENOpenLevel1Cinematic
+  m_Name: ENOpenLevel2Cinematic
   m_EditorClassIdentifier: 
   speakerImageSprite: {fileID: 21300000, guid: af91f600257d98b43bd4a925717bfc9e, type: 3}
   dialogue:
-  - Where am I... ? This is not my world.
-  - 'Apparently, Oso Buko has not destroyed
-
-    the universe, at least yet.'
-  - What is that door over there? I will try to open it and see where it takes me.
+  - Apparently, If I collect all the coins around here, a key to open the door will
+    appear. That kind of magic is not normal.
+  - Could it be the result of freeing the Eternal Flame?
+  - I don't know, but in any case, let's keeping opening those doors and see if I
+    find a way to go back to my own world.
