@@ -13,6 +13,7 @@ public class GamePlayUI : MonoBehaviour
     public HealthUI healthUI;
     public GameOverUI gameOver;
     public DialogueBox dialogueBox;
+    public DialogueBox dialogueBoxSecondary;
     public PauseUI pauseUI;
 
     [HideInInspector]
