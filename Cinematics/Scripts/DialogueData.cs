@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DialogueData : ScriptableObject
 {
+    public Sprite speakerImageSprite;
+
     [TextArea]
     public string[] dialogue;
 

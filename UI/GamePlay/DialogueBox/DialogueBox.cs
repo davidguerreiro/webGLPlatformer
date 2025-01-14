@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Rewired;
 
 public class DialogueBox : MonoBehaviour
 {
     [Header("Components")]
     public Animator background;
+    public Image speakerImage;
     public TextComponent text;
     public GameObject arrow;
 
@@ -67,8 +69,7 @@ public class DialogueBox : MonoBehaviour
     public IEnumerator DisplayRoutine()
     {
         background.SetBool("Display", true);
-        // _audio.PlaySound(0);
-
+        
         yield return new WaitForSeconds(displayAwait);
 
         displaying = null;
@@ -93,6 +94,7 @@ public class DialogueBox : MonoBehaviour
     {
         text.Clear();
         text.gameObject.SetActive(false);
+        speakerImage.gameObject.SetActive(false);
 
         if (arrow.activeSelf)
         {
@@ -113,6 +115,9 @@ public class DialogueBox : MonoBehaviour
     public void PlayDialogue()
     {
         text.gameObject.SetActive(true);
+        speakerImage.gameObject.SetActive(true);
+        speakerImage.sprite = _dialogue.speakerImageSprite;
+
         text.Clear();
 
         if (playingDialogue == null)
@@ -214,9 +219,9 @@ public class DialogueBox : MonoBehaviour
     }
 
     /// <summary>
-    /// Set dialogue data.
+    /// Set dialogue data and speaker image.
     /// </summary>
-    /// <param name="dialogueData"></param>
+    /// <param name="dialogueData">DialogueData</param>
     public void SetDialogueData(DialogueData dialogueData)
     {
         _dialogue = dialogueData;
