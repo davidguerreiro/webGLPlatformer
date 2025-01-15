@@ -11,8 +11,10 @@ public class EyesProjectileAttack : MonoBehaviour
     public ObjectPool pool;
     public Transform leftEye;
     public Transform rightEye;
+    public Transform cristal;               // Only to be used by Scar boss.
     public Transform[] leftPoints;
     public Transform[] rightPoints;
+    public Transform[] bottomPoints;        // Only to be used by Scar boss.
     public Transform leftHorizontal;
     public Transform rightHorizontal;
 
@@ -113,6 +115,11 @@ public class EyesProjectileAttack : MonoBehaviour
         _eyesProjectilesAttack = null;
     }
 
+    /// <summary>
+    /// Get random target.
+    /// </summary>
+    /// <param name="max">int</param>
+    /// <returns>int</returns>
     private int GetRandomTarget(int max)
     {
         return Random.Range(0, max);
@@ -162,6 +169,51 @@ public class EyesProjectileAttack : MonoBehaviour
 
         inAttack = false;
         pool.DisableAll();
+        _eyesProjectilesAttack = null;
+    }
+
+    /// <summary>
+    /// Eyes proyectile attack used only by Scar boss.
+    /// </summary>
+    /// <param name="direction">string</param>
+    /// <returns>IEnumerator</returns>
+    public IEnumerator TriggerCristalProyectilesAttackCoroutine(string direction)
+    {
+        inAttack = true;
+
+        if (direction == "right")
+        {
+            System.Array.Reverse(bottomPoints);
+        }
+        
+        foreach (Transform target in bottomPoints)
+        {
+            GameObject projectileGameObject = pool.SpawnPrefab();
+
+            if (projectileGameObject)
+            {
+                EvilGhostProjectile evilProyectile = projectileGameObject.GetComponent<EvilGhostProjectile>();
+                evilProyectile.gameObject.transform.position = cristal.position;
+                evilProyectile.Spawn();
+
+                yield return new WaitForSeconds(1f);
+
+                _audio.PlaySound(1);
+
+                evilProyectile.MoveToTarget(target, true);
+
+                yield return new WaitForSeconds(toWaitBetweenShots);
+            }
+        }
+
+        inAttack = false;
+        pool.DisableAll();
+
+        if (direction == "right")
+        {
+            System.Array.Reverse(bottomPoints);
+        }
+
         _eyesProjectilesAttack = null;
     }
 
