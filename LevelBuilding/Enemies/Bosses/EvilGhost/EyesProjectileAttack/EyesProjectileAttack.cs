@@ -196,7 +196,7 @@ public class EyesProjectileAttack : MonoBehaviour
                 evilProyectile.gameObject.transform.position = cristal.position;
                 evilProyectile.Spawn();
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
 
                 _audio.PlaySound(1);
 
@@ -206,7 +206,8 @@ public class EyesProjectileAttack : MonoBehaviour
             }
         }
 
-        inAttack = false;
+        yield return new WaitForSeconds(1f);
+
         pool.DisableAll();
 
         if (direction == "right")
@@ -214,6 +215,7 @@ public class EyesProjectileAttack : MonoBehaviour
             System.Array.Reverse(bottomPoints);
         }
 
+        inAttack = false;
         _eyesProjectilesAttack = null;
     }
 

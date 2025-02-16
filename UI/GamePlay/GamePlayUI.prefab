@@ -69,6 +69,7 @@ MonoBehaviour:
   healthUI: {fileID: 2270537166747890952}
   gameOver: {fileID: 1131102546198400885}
   dialogueBox: {fileID: 2053132689961966772}
+  dialogueBoxSecondary: {fileID: 3054864420544977949}
   pauseUI: {fileID: 8239457636977283023}
 --- !u!223 &2993380171926055475
 Canvas:
@@ -1346,6 +1347,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16ffbf8cb71913e44a974fb914f6c9b7, type: 3}
+--- !u!114 &3054864420544977949 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6321249572807225072, guid: 16ffbf8cb71913e44a974fb914f6c9b7, type: 3}
+  m_PrefabInstance: {fileID: 9069293074212172525}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d11188c4779e343b21ac82cbb1dbd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4443396799805318713 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4645045369201448148, guid: 16ffbf8cb71913e44a974fb914f6c9b7, type: 3}

@@ -581,6 +581,9 @@ public class OsoBuko : Boss
         }
     }
 
+    /// <summary>
+    /// Stop all coroutines.
+    /// </summary>
     public void StopAllAttackCoroutines()
     {
         isMoving = false;

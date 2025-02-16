@@ -57,6 +57,7 @@ public class GamePlayUI : MonoBehaviour
         if (gameManager.isBossLevel || gameManager.hasCinematic)
         {
             dialogueBox.Init();
+            dialogueBoxSecondary.Init();
         }
 
         _gameManager = gameManager;

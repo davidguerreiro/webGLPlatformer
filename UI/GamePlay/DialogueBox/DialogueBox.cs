@@ -178,8 +178,9 @@ public class DialogueBox : MonoBehaviour
     /// <summary>
     /// Play full dialogue routine.
     /// </summary>
-    /// <param name="dialogueData"></param>
-    public void PlayFullDialogue(DialogueData dialogueData)
+    /// <param name="dialogueData">DialogueData</param>
+    /// <param name="hideAtEnd">bool</param>
+    public void PlayFullDialogue(DialogueData dialogueData, bool hideAtEnd = true)
     {
         if (playingFullDialogue == null)
         {
@@ -191,8 +192,9 @@ public class DialogueBox : MonoBehaviour
     /// Play full dialogue.
     /// </summary>
     /// <param name="dialogueData">DialogueData</param>
+    /// <param name="hideAtEnd">bool</param>
     /// <returns>IEnumerator</returns>
-    private IEnumerator PlayFullDialogueRoutine(DialogueData dialogueData)
+    private IEnumerator PlayFullDialogueRoutine(DialogueData dialogueData, bool hideAtEnd = true)
     {
         Display(dialogueData);
         
@@ -208,11 +210,14 @@ public class DialogueBox : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        Hide();
-
-        while (hidding != null)
+        if (hideAtEnd)
         {
-            yield return new WaitForFixedUpdate();
+            Hide();
+
+            while (hidding != null)
+            {
+                yield return new WaitForFixedUpdate();
+            }
         }
 
         playingFullDialogue = null;
