@@ -13,6 +13,7 @@ public class Navegable : MonoBehaviour
     public bool cancellable;
     public float waitBetweenNewSelected;
     public bool unsetNavegableOnSelection;
+    public bool playAudioOnSelect = true;
 
     [Header("Events")]
     public UnityEvent onCancel;
@@ -82,7 +83,10 @@ public class Navegable : MonoBehaviour
     /// </summary>
     private void SelectOption()
     {
-        _audio.PlaySound(1);
+        if (playAudioOnSelect)
+        {
+            _audio.PlaySound(1);
+        }
 
         items[_index].Select();
 

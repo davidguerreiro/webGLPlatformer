@@ -9,7 +9,14 @@ public class CrusherAppearCinematic : MonoBehaviour
     public Crusher boss;
     public Transform bossMovingPoint;
     public GameObject explosion;
-    public DialogueData dialogueData;
+
+    [Header("Dialogues")]
+    public DialogueData crusherAppearEN;
+    public DialogueData crusherAppearES;
+    public DialogueData ramiroAnswerEN;
+    public DialogueData ramiroAnswerES;
+    public DialogueData crusherEndEN;
+    public DialogueData crusherEndES;
 
     [Header("Settins")]
     public float bossAscendSpeed;
@@ -33,6 +40,8 @@ public class CrusherAppearCinematic : MonoBehaviour
     /// <returns>IEnumerator</returns>
     private IEnumerator PlayCinematicRoutine()
     {
+        string lang = PlayerPrefs.GetString("language", "english");
+
         boss.RemoveColliders();
         cinematicManager.gameManager.inGamePlay = false;
         yield return new WaitForSeconds(1.5f);
@@ -56,13 +65,36 @@ public class CrusherAppearCinematic : MonoBehaviour
         explosion.SetActive(false);
 
         // play dialogue.
-        cinematicManager.gameManager.gamePlayUI.dialogueBox.PlayFullDialogue(dialogueData);
+        DialogueData crusherEnter = (lang == "english") ? crusherAppearEN : crusherAppearES;
+        cinematicManager.gameManager.gamePlayUI.dialogueBox.PlayFullDialogue(crusherEnter);
 
         while (cinematicManager.gameManager.gamePlayUI.dialogueBox.playingFullDialogue != null)
         {
             yield return new WaitForFixedUpdate();
         }
-        
+
+        yield return new WaitForSeconds(1f);
+
+        DialogueData ramiroAnswers = (lang == "english") ? ramiroAnswerEN : ramiroAnswerES;
+        cinematicManager.gameManager.gamePlayUI.dialogueBox.PlayFullDialogue(ramiroAnswers);
+
+        while (cinematicManager.gameManager.gamePlayUI.dialogueBox.playingFullDialogue != null)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        DialogueData crusherEnd = (lang == "english") ? crusherEndEN: crusherEndES;
+        cinematicManager.gameManager.gamePlayUI.dialogueBox.PlayFullDialogue(crusherEnd);
+
+        while (cinematicManager.gameManager.gamePlayUI.dialogueBox.playingFullDialogue != null)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        yield return new WaitForSeconds(1f);
+
         // start boss battle.
         cinematicManager.gameManager.player.playerController.AllowControl();
         cinematicManager.gameManager.inGamePlay = true;
@@ -71,5 +103,5 @@ public class CrusherAppearCinematic : MonoBehaviour
         cinematicManager.gameManager.isBossLevel = false;
 
         boss.StartBattle();
-     }
+    }
 }

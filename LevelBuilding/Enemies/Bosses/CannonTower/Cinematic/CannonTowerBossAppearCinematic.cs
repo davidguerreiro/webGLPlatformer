@@ -7,7 +7,17 @@ public class CannonTowerBossAppearCinematic : MonoBehaviour
     public CinematicManager cinematicManager;
     public CannonTower bossLeft;
     public CannonTower bossRight;
-    public DialogueData dialogueData;
+
+    [Header("Dialogue Data EN")]
+    public DialogueData cannonTower1EN;
+    public DialogueData cannonTower2EN;
+    public DialogueData ramiroEN;
+
+    [Header("Dialogue Data ES")]
+    public DialogueData cannonTower1ES;
+    public DialogueData cannonTower2ES;
+    public DialogueData ramiroES;
+
 
     private Coroutine _playCinematic;
 
@@ -28,6 +38,8 @@ public class CannonTowerBossAppearCinematic : MonoBehaviour
     /// <returns>IEnumerator</returns>
     private IEnumerator PlayCinematicRoutine()
     {
+        string lang = PlayerPrefs.GetString("language", "english");
+
         cinematicManager.gameManager.inGamePlay = false;
         yield return new WaitForSeconds(1f);
 
@@ -36,14 +48,29 @@ public class CannonTowerBossAppearCinematic : MonoBehaviour
         StartCoroutine(bossLeft.ShowsUp());
         StartCoroutine(bossRight.ShowsUp());
 
-        // TOOD: Add appear boss right.
-
         yield return new WaitForSeconds(2.5f);
 
         // play dialogue.
-        cinematicManager.gameManager.gamePlayUI.dialogueBox.PlayFullDialogue(dialogueData);
+        DialogueData cannonTower1 = (lang == "english") ? cannonTower1EN : cannonTower1ES;
+        cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.PlayFullDialogue(cannonTower1);
+
+        while (cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.playingFullDialogue != null)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        DialogueData ramiro = (lang == "english") ? ramiroEN : ramiroES;
+        cinematicManager.gameManager.gamePlayUI.dialogueBox.PlayFullDialogue(ramiro);
 
         while (cinematicManager.gameManager.gamePlayUI.dialogueBox.playingFullDialogue != null)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        DialogueData cannonTower2 = (lang == "english") ? cannonTower2EN : cannonTower2ES;
+        cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.PlayFullDialogue(cannonTower2);
+
+        while (cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.playingFullDialogue != null)
         {
             yield return new WaitForFixedUpdate();
         }
@@ -59,7 +86,5 @@ public class CannonTowerBossAppearCinematic : MonoBehaviour
 
         bossLeft.StartBattle();
         bossRight.StartBattle();
-
-        // TODO: Add start bttle for boss right.
     }
 }

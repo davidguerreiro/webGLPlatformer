@@ -34278,6 +34278,10 @@ PrefabInstance:
       value: 1-2
       objectReference: {fileID: 0}
     - target: {fileID: 5305767622340963797, guid: b80197376ea4a4bb9abcd4027dd8254b, type: 3}
+      propertyPath: removeCoinsUI
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305767622340963797, guid: b80197376ea4a4bb9abcd4027dd8254b, type: 3}
       propertyPath: cinematicManager
       value: 
       objectReference: {fileID: 890763941}

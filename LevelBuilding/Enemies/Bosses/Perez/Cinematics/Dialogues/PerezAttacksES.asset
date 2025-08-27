@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b2c1daae5610d47976faeb120a10fe, type: 3}
+  m_Name: PerezAttacksES
+  m_EditorClassIdentifier: 
+  speakerImageSprite: {fileID: 21300000, guid: c0727b20f8124ac45be9d925d632aeb9, type: 3}
+  dialogue:
+  - "\xA1Como si me importase a mi tu vida! Espera, tu debes de ser el tipo que derrot\xF3
+    a Crusher, \xBFno es cierto? Scar me advirti\xF3 de que intentar\xEDas cruzar
+    mi cueva."
+  - "Lo siento por ti, pero la llave azul de estas tierras la tengo yo, y tengo \xF3rdenes
+    estrictas de protegerla con mi vida. Aunque, en este caso, tu no eres rival para
+    mi jajaja."
+  - "\xA1Me quedar\xE9 con todos tus dientes de leche y te enterrar\xE9 en esta cueva
+    de por vida! Jajajaja."

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96b2c1daae5610d47976faeb120a10fe, type: 3}
-  m_Name: ScarDialogue2En
+  m_Name: ScarDialogue2EN
   m_EditorClassIdentifier: 
   speakerImageSprite: {fileID: 21300000, guid: 27215a54a9c4e6a498d906f226163286, type: 3}
   dialogue:
-  - Hahahaha you moron! Once you are here, you become part of the King Falseijo reign
-    of horror! Get ready to rumble!
+  - I give you one chance to survive. Tell me the codes to unlock your ship. Falseijo
+    needs the codes. If not, I'm going to get those codes the hard way Muahahaha.

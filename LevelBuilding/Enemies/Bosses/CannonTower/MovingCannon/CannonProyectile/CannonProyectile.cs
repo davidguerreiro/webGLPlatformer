@@ -10,6 +10,13 @@ public class CannonProyectile : MonoBehaviour
     private Vector2 _direccion;
     private bool _canMove;
 
+    private Transform initParent;
+
+    private void Start()
+    {
+        Init();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -17,6 +24,11 @@ public class CannonProyectile : MonoBehaviour
         {
             Move();
         }
+    }
+
+    private void OnDisable()
+    {
+       // ReassignParentOnDisable();
     }
 
     /// <summary>
@@ -46,5 +58,22 @@ public class CannonProyectile : MonoBehaviour
     private void Move()
     {
         transform.Translate(_direccion * speed * Time.deltaTime);
+    }
+
+    /// <summary>
+    /// Reasign original spawn parent. Useful if proyectile
+    /// was part of an object pool.
+    /// </summary>
+    private void ReassignParentOnDisable()
+    {
+        transform.parent = initParent;
+    }
+
+    /// <summary>
+    /// Init class method.
+    /// </summary>
+    public void Init()
+    {
+        //initParent = transform.parent;
     }
 }

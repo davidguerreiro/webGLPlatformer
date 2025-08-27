@@ -6,7 +6,17 @@ public class SpaguettiAppearCinematic : MonoBehaviour
 {
     public CinematicManager cinematicManager;
     public Spagueti boss;
-    public DialogueData dialogueData;
+
+    [Header("DialogueData")]
+    public DialogueData spagueti1EN;
+    public DialogueData spagueti1ES;
+    public DialogueData spagueti2EN;
+    public DialogueData spagueti2ES;
+    public DialogueData ramiro1EN;
+    public DialogueData ramiro1ES;
+    public DialogueData ramiro2EN;
+    public DialogueData ramiro2ES;
+
 
     private Coroutine _playCinematic;
 
@@ -28,6 +38,8 @@ public class SpaguettiAppearCinematic : MonoBehaviour
     /// <returns>IEnumerator</returns>
     private IEnumerator PlayCinematicRoutine()
     {
+        string lang = PlayerPrefs.GetString("language", "english");
+
         cinematicManager.gameManager.inGamePlay = false;
         yield return new WaitForSeconds(1f);
 
@@ -36,12 +48,44 @@ public class SpaguettiAppearCinematic : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         // play dialogue.
-        cinematicManager.gameManager.gamePlayUI.dialogueBox.PlayFullDialogue(dialogueData);
+        DialogueData spagueti1 = (lang == "english") ? spagueti1EN : spagueti1ES;
+
+        cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.PlayFullDialogue(spagueti1);
+
+        while (cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.playingFullDialogue != null)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        DialogueData ramiro1 = (lang == "english") ? ramiro1EN: ramiro1ES;
+
+        cinematicManager.gameManager.gamePlayUI.dialogueBox.PlayFullDialogue(ramiro1);
 
         while (cinematicManager.gameManager.gamePlayUI.dialogueBox.playingFullDialogue != null)
         {
             yield return new WaitForFixedUpdate();
         }
+
+        DialogueData spagueti2 = (lang == "english") ? spagueti2EN : spagueti2ES;
+
+        cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.PlayFullDialogue(spagueti2);
+
+        while (cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.playingFullDialogue != null)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        DialogueData ramiro2 = (lang == "english") ? ramiro2EN : ramiro2ES;
+
+        cinematicManager.gameManager.gamePlayUI.dialogueBox.PlayFullDialogue(ramiro2);
+
+        while (cinematicManager.gameManager.gamePlayUI.dialogueBox.playingFullDialogue != null)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        cinematicManager.gameManager.gamePlayUI.dialogueBox.Hide();
+        cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.Hide();
 
         boss.IncreaseGoingDownSpeed();
         StartCoroutine(boss.GoDown());

@@ -6,7 +6,18 @@ public class GuardianAppearCinematic : MonoBehaviour
 {
     public CinematicManager cinematicManager;
     public Guardian boss;
-    public DialogueData dialogueData;
+
+    [Header("Dialogue Data")]
+    public DialogueData guardian1EN;
+    public DialogueData guardian2EN;
+    public DialogueData guardian3EN;
+    public DialogueData guardian1ES;
+    public DialogueData guardian2ES;
+    public DialogueData guardian3ES;
+    public DialogueData ramiro1EN;
+    public DialogueData ramiro2EN;
+    public DialogueData ramiro1ES;
+    public DialogueData ramiro2ES;
 
     private Coroutine _playCinematic;
 
@@ -29,6 +40,7 @@ public class GuardianAppearCinematic : MonoBehaviour
     /// <returns>IEnumerator</returns>
     private IEnumerator PlayCinematicRoutine()
     {
+        string lang = PlayerPrefs.GetString("language", "english");
         DarkPortal darkPortal = cinematicManager.objects.GetObject(0).GetComponent<DarkPortal>();
 
         cinematicManager.gameManager.inGamePlay = false;
@@ -44,9 +56,47 @@ public class GuardianAppearCinematic : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // play dialogue.
-        cinematicManager.gameManager.gamePlayUI.dialogueBox.PlayFullDialogue(dialogueData);
+        DialogueData guardian1 = (lang == "english") ? guardian1EN: guardian1ES;
+
+        cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.PlayFullDialogue(guardian1);
+
+        while (cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.playingFullDialogue != null)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        DialogueData ramiro1 = (lang == "english") ? ramiro1EN : ramiro1ES;
+
+        cinematicManager.gameManager.gamePlayUI.dialogueBox.PlayFullDialogue(ramiro1);
 
         while (cinematicManager.gameManager.gamePlayUI.dialogueBox.playingFullDialogue != null)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        DialogueData guardian2 = (lang == "english") ? guardian2EN : guardian2ES;
+
+        cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.PlayFullDialogue(guardian2);
+
+        while (cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.playingFullDialogue != null)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        DialogueData ramiro2 = (lang == "english") ? ramiro2EN : ramiro2ES;
+
+        cinematicManager.gameManager.gamePlayUI.dialogueBox.PlayFullDialogue(ramiro2);
+
+        while (cinematicManager.gameManager.gamePlayUI.dialogueBox.playingFullDialogue != null)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        DialogueData guardian3 = (lang == "english") ? guardian3EN : guardian3ES;
+
+        cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.PlayFullDialogue(guardian3);
+
+        while (cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.playingFullDialogue != null)
         {
             yield return new WaitForFixedUpdate();
         }

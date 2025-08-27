@@ -12,8 +12,12 @@ public class Player : MonoBehaviour
     public int maxCoins;
     public bool key;
 
+    [Header("Status")]
+    public bool invincible;
+
     [Header("Events")]
     public UnityEvent getDamage;
+    public UnityEvent onInvincible;
 
 
     [HideInInspector]
@@ -21,6 +25,8 @@ public class Player : MonoBehaviour
 
     [HideInInspector]
     public bool inDamage;
+
+    private Rigidbody2D rigi;
 
     /// <summary>
     /// Update player's health.
@@ -107,7 +113,21 @@ public class Player : MonoBehaviour
         playerController.TriggerHitVibration();
         UpdateHealth(-1);
 
+        ResetPlayerPhysics();
+
         getDamage?.Invoke();
+    }
+
+    /// <summary>
+    /// Set player invencible.
+    /// </summary>
+    public void Invincible()
+    {
+        invincible = true;
+
+        onInvincible?.Invoke();
+
+        Invoke("AllowDamage", 1.5f);
     }
 
     /// <summary>
@@ -117,6 +137,7 @@ public class Player : MonoBehaviour
     public void AllowDamage()
     {
         inDamage = false;
+        invincible = false;
     }
 
     /// <summary>
@@ -125,10 +146,28 @@ public class Player : MonoBehaviour
     /// <param name="collision">Collision2D</param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (playerController.canMove && collision.gameObject.CompareTag("Hazard") && ! inDamage)
+        if (playerController.canMove && ! invincible && collision.gameObject.CompareTag("Hazard") && ! inDamage)
         {
             GetDamage();
         }
+    }
+
+    /// <summary>
+    /// Reset player physics, usually after death.
+    /// </summary>
+    private void ResetPlayerPhysics()
+    {
+        rigi.velocity = Vector2.zero;
+        rigi.angularVelocity = 0f;
+        rigi.simulated = false;
+    }
+
+    /// <summary>
+    /// Enable player physics, usually disabled after death.
+    /// </summary>
+    public void ReEnablePlayerPhysics()
+    {
+        rigi.simulated = true;
     }
 
     /// <summary>
@@ -138,6 +177,8 @@ public class Player : MonoBehaviour
     {
         // init playercontroller.
         playerController = GetComponent<PlayerController>();
+        rigi = GetComponent<Rigidbody2D>();
+
         playerController.Init();
 
         key = false;

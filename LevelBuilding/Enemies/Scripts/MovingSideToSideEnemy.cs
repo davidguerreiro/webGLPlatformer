@@ -6,6 +6,7 @@ public class MovingSideToSideEnemy : Enemy
 {
     [Header("Moving Settings")]
     public float speed;
+    public bool moveRightFirst;
 
     [Header("Moving Points")]
     public Transform leftPoint;
@@ -47,7 +48,7 @@ public class MovingSideToSideEnemy : Enemy
     /// <returns>IEnumerator</returns>
     public IEnumerator Moving()
     {
-        Transform target = leftPoint;
+        Transform target = (moveRightFirst) ? rightPoint : leftPoint;
 
         while (Vector2.Distance(transform.position, target.position) > 0.01f)
         {
@@ -56,7 +57,7 @@ public class MovingSideToSideEnemy : Enemy
         }
 
         transform.position = target.position;
-        target = rightPoint;
+        target = (moveRightFirst) ? leftPoint: rightPoint;
         spriteRenderer.flipX = !spriteRenderer.flipX;
 
         while (Vector2.Distance(transform.position, target.position) > 0.01f)

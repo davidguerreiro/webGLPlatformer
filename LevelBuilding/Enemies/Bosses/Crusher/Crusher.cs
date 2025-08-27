@@ -156,6 +156,7 @@ public class Crusher : Boss
             GameObject faillingPlatform = faillingPlatformSpawners[pattern[i]].SpawnPrefab();
             faillingPlatform.transform.position = faillingPlatformSpawners[pattern[i]].transform.position;
             faillingPlatform.GetComponent<FallingHazard>().Drop();
+            _audio.PlaySound(5);
             yield return new WaitForSeconds(waitBetweenPlatforms);
         }
       

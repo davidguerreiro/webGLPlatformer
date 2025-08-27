@@ -284,7 +284,7 @@ MonoBehaviour:
       _categoryId: 0
     - _id: 4
       _name: MoveVertical
-      _type: 1
+      _type: 0
       _descriptiveName: Action0
       _positiveDescriptiveName: 
       _negativeDescriptiveName: 
@@ -557,7 +557,7 @@ MonoBehaviour:
     controllerMapLayoutManagerRuleSets: []
     controllerMapEnablerRuleSets: []
     playerIdCounter: 2
-    actionIdCounter: 6
+    actionIdCounter: 7
     actionCategoryIdCounter: 1
     inputBehaviorIdCounter: 1
     mapCategoryIdCounter: 1

@@ -4951,7 +4951,12 @@ MonoBehaviour:
   cinematicManager: {fileID: 933474493}
   bossForCinematic: {fileID: 4836909822653565854}
   boss: {fileID: 5780054090362417}
-  dialogueData: {fileID: 11400000, guid: c46ca743628c07348bdda1be0f8144a6, type: 2}
+  perezAppearsEN: {fileID: 11400000, guid: c1b5d9106d7e2254896fb1cc72f2e22e, type: 2}
+  perezAppearsES: {fileID: 11400000, guid: 3e6e69bbf0e85624f91b3b980c298f8e, type: 2}
+  ramiroAnswersEN: {fileID: 11400000, guid: 49b25d01b10f8ed408b139b883f9fe57, type: 2}
+  ramiroAnswersES: {fileID: 11400000, guid: 2758c3ce4d8c2124c8306b7ccb3aa0ee, type: 2}
+  perezEndEN: {fileID: 11400000, guid: afa4f9485cefd2641995dd572f16b70a, type: 2}
+  perezEndES: {fileID: 11400000, guid: dd7ec575081ccd747b85906140d33933, type: 2}
 --- !u!1001 &1234307307
 PrefabInstance:
   m_ObjectHideFlags: 0

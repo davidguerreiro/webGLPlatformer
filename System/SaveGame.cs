@@ -14,23 +14,30 @@ public class SaveGame : MonoBehaviour
     {
         string variablesJson = JsonUtility.ToJson(variables);
         File.WriteAllText(_path, variablesJson);
+
     }
 
     /// <summary>
     /// Load saved data.
     /// </summary>
     /// <returns><LocalVars.LVars</returns>
-    public LocalVars GetDataFromJson()
+    public LocalVars GetDataFromJson(LocalVars localVars)
     {
         if (SaveDataExists())
         {
             string jsonData = File.ReadAllText(_path);
-            LocalVars vars = JsonUtility.FromJson<LocalVars>(jsonData);
+            VarStructureArray varStructure = JsonUtility.FromJson<VarStructureArray>(jsonData);
+            
+            foreach(VarStructure data in varStructure.variables)
+            {
+                localVars.SetVar(data.name, bool.Parse(data.value));
+            }
 
-            return vars;
+            return localVars;
+
         }
 
-        return null;
+        return localVars;
     }
 
     /// <summary>
@@ -49,4 +56,17 @@ public class SaveGame : MonoBehaviour
     {
         _path = Application.persistentDataPath + "/saveData.json";
     }
+}
+
+[System.Serializable]
+public class VarStructure
+{
+    public string name;
+    public string value;
+}
+
+[System.Serializable]
+public class VarStructureArray
+{
+    public VarStructure[] variables;
 }

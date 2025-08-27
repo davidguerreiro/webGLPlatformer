@@ -14,6 +14,7 @@ public class GamePlayUI : MonoBehaviour
     public GameOverUI gameOver;
     public DialogueBox dialogueBox;
     public DialogueBox dialogueBoxSecondary;
+    public HelpBox helpbox;
     public PauseUI pauseUI;
 
     [HideInInspector]
@@ -31,7 +32,7 @@ public class GamePlayUI : MonoBehaviour
         levelIntro.Init(gameManager.levelData);
 
         // init coins UI.
-        if (gameManager.isBossLevel)
+        if (gameManager.isBossLevel || gameManager.removeCoinsUI)
         {
             coinsUI.gameObject.SetActive(false);
         } else
@@ -61,6 +62,15 @@ public class GamePlayUI : MonoBehaviour
         }
 
         _gameManager = gameManager;
+    }
+
+    /// <summary>
+    /// Init gameplay UI for general cinematics.
+    /// </summary>
+    public void Init()
+    {
+        dialogueBox.Init();
+        dialogueBoxSecondary.Init();
     }
 
     /// <summary>
@@ -103,5 +113,16 @@ public class GamePlayUI : MonoBehaviour
     public void HideGameOver()
     {
         gameOver.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// Disables UI elements.
+    /// </summary>
+    public void DisableMainGamePlayElements()
+    {
+        coinsUI.gameObject.SetActive(false);
+        keyUI.gameObject.SetActive(false);
+        blueKeyUI.gameObject.SetActive(false);
+        healthUI.gameObject.SetActive(false);
     }
 }

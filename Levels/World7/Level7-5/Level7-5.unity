@@ -872,6 +872,7 @@ MonoBehaviour:
   delay: 0
   completedDelay: 0
   playSoundAtInitMovement: 0
+  stopAtTheEnd: 0
   leftTarget: {fileID: 288653195}
   rightTarget: {fileID: 288653194}
 --- !u!212 &199610638
@@ -1665,7 +1666,7 @@ GameObject:
   - component: {fileID: 476229292}
   - component: {fileID: 476229293}
   m_Layer: 0
-  m_Name: OsoBuko
+  m_Name: Falseijo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3061,6 +3062,7 @@ MonoBehaviour:
   delay: 1
   completedDelay: 1
   playSoundAtInitMovement: 0
+  stopAtTheEnd: 0
   leftTarget: {fileID: 1640394205}
   rightTarget: {fileID: 1640394204}
 --- !u!212 &911687749
@@ -3619,6 +3621,7 @@ MonoBehaviour:
   delay: 0
   completedDelay: 0
   playSoundAtInitMovement: 0
+  stopAtTheEnd: 0
   leftTarget: {fileID: 451714011}
   rightTarget: {fileID: 451714010}
 --- !u!212 &1143486422
@@ -3723,6 +3726,7 @@ MonoBehaviour:
   delay: 0
   completedDelay: 0
   playSoundAtInitMovement: 0
+  stopAtTheEnd: 0
   leftTarget: {fileID: 71659163}
   rightTarget: {fileID: 71659162}
 --- !u!212 &1151120290
@@ -4868,7 +4872,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cinematicManager: {fileID: 861067107}
   boss: {fileID: 9188824494187585072}
-  dialogueData: {fileID: 11400000, guid: bf5381826127e7f4cade6022272da486, type: 2}
+  ramiroDialogue1EN: {fileID: 11400000, guid: 127f84c1439d48f44b326f42d5704c0e, type: 2}
+  ramiroDialogue2EN: {fileID: 11400000, guid: a09b4e778ad6fce48b412d77daa142ab, type: 2}
+  falseijoDialogue1EN: {fileID: 11400000, guid: db7dddc145f4fd74d9719503776ba94c, type: 2}
+  falseijoDialogue2EN: {fileID: 11400000, guid: 746aa8ccf6d3d174bb93e1e1e9d3966d, type: 2}
+  falseijoDialogue3EN: {fileID: 11400000, guid: e6b954c1f6df8c94ebc4d883aa37243a, type: 2}
+  ramiroDialogue1ES: {fileID: 11400000, guid: bbb74f6b8afcf2f4d95f6152e995c36b, type: 2}
+  ramiroDialogue2ES: {fileID: 11400000, guid: 2debced6df8265a4c948213bf4a14d81, type: 2}
+  falseijoDialogue1ES: {fileID: 11400000, guid: 794c04c026926db419eb1bdfb7080a95, type: 2}
+  falseijoDialogue2ES: {fileID: 11400000, guid: 88c6fe8809760584891f6ad24b4b208a, type: 2}
+  falseijoDialogue3ES: {fileID: 11400000, guid: ce5fe75c8f157cc4885eb1ebff0fba62, type: 2}
 --- !u!1 &1783098431
 GameObject:
   m_ObjectHideFlags: 0
@@ -4919,6 +4932,7 @@ MonoBehaviour:
   delay: 0
   completedDelay: 0
   playSoundAtInitMovement: 0
+  stopAtTheEnd: 0
   leftTarget: {fileID: 900182273}
   rightTarget: {fileID: 900182272}
 --- !u!212 &1783098434

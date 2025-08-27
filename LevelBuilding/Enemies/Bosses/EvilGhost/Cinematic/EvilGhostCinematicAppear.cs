@@ -6,7 +6,22 @@ public class EvilGhostCinematicAppear : MonoBehaviour
 {
     public CinematicManager cinematicManager;
     public EvilGhost boss;
-    public DialogueData dialogueData;
+
+    [Header("Dialogue data en")]
+    public DialogueData ramiroDialogue1EN;
+    public DialogueData ramiroDialogue2EN;
+
+    public DialogueData falseijoDialogue1EN;
+    public DialogueData falseijoDialogue2EN;
+    public DialogueData falseijoDialogue3EN;
+
+    [Header("Dialogue data es")]
+    public DialogueData ramiroDialogue1ES;
+    public DialogueData ramiroDialogue2ES;
+
+    public DialogueData falseijoDialogue1ES;
+    public DialogueData falseijoDialogue2ES;
+    public DialogueData falseijoDialogue3ES;
 
     private Coroutine _playCinematic;
 
@@ -33,18 +48,63 @@ public class EvilGhostCinematicAppear : MonoBehaviour
         DarkPortal bossDarkPortal = cinematicManager.objects.GetObject(1).GetComponent<DarkPortal>();
         GameObject villain = cinematicManager.objects.GetObject(2);
 
+        string lang = PlayerPrefs.GetString("language", "english");
+
         cinematicManager.gameManager.inGamePlay = false;
+
+        DialogueData ramiroDialogue1 = (lang == "english") ? ramiroDialogue1EN : ramiroDialogue1ES;
+        DialogueData ramiroDialogue2 = (lang == "english") ? ramiroDialogue2EN : ramiroDialogue2ES;
+
+        DialogueData falseijoDialogue1 = (lang == "english") ? falseijoDialogue1EN : falseijoDialogue1ES;
+        DialogueData falseijoDialogue2 = (lang == "english") ? falseijoDialogue2EN : falseijoDialogue2ES;
+        DialogueData falseijoDialogue3 = (lang == "english") ? falseijoDialogue3EN : falseijoDialogue3ES;
+
         yield return new WaitForSeconds(1.5f);
 
-        // play dialogue.
-        cinematicManager.gameManager.gamePlayUI.dialogueBox.PlayFullDialogue(dialogueData);
+        cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.PlayFullDialogue(falseijoDialogue1, false);
+
+        while (cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.playingFullDialogue != null)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        cinematicManager.gameManager.gamePlayUI.dialogueBox.PlayFullDialogue(ramiroDialogue1, false);
 
         while (cinematicManager.gameManager.gamePlayUI.dialogueBox.playingFullDialogue != null)
         {
             yield return new WaitForFixedUpdate();
         }
 
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1f);
+
+        cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.PlayFullDialogue(falseijoDialogue2, false);
+
+        while (cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.playingFullDialogue != null)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        cinematicManager.gameManager.gamePlayUI.dialogueBox.PlayFullDialogue(ramiroDialogue2, false);
+
+        while (cinematicManager.gameManager.gamePlayUI.dialogueBox.playingFullDialogue != null)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.PlayFullDialogue(falseijoDialogue3, false);
+
+        while (cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.playingFullDialogue != null)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        yield return new WaitForSeconds(1f);
 
         villainDarkPortal.Appear();
         yield return new WaitForSeconds(1f);

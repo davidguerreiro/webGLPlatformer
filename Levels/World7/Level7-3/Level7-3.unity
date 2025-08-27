@@ -3506,6 +3506,7 @@ MonoBehaviour:
   delay: 1
   completedDelay: 1
   playSoundAtInitMovement: 0
+  stopAtTheEnd: 0
   leftTarget: {fileID: 1640394205}
   rightTarget: {fileID: 1640394204}
 --- !u!212 &911687749
@@ -3758,6 +3759,7 @@ MonoBehaviour:
   delay: 0
   completedDelay: 0
   playSoundAtInitMovement: 0
+  stopAtTheEnd: 0
   leftTarget: {fileID: 2029927062}
   rightTarget: {fileID: 2029927061}
 --- !u!212 &977935079
@@ -4281,6 +4283,7 @@ MonoBehaviour:
   delay: 0
   completedDelay: 0
   playSoundAtInitMovement: 0
+  stopAtTheEnd: 0
   leftTarget: {fileID: 451714011}
   rightTarget: {fileID: 451714010}
 --- !u!212 &1143486422
@@ -7792,6 +7795,7 @@ MonoBehaviour:
   delay: 0
   completedDelay: 0
   playSoundAtInitMovement: 0
+  stopAtTheEnd: 0
   leftTarget: {fileID: 1704317126}
   rightTarget: {fileID: 1704317125}
 --- !u!212 &2023756963
@@ -8867,6 +8871,10 @@ PrefabInstance:
     - target: {fileID: 5305767622340963797, guid: b80197376ea4a4bb9abcd4027dd8254b, type: 3}
       propertyPath: nextLevelName
       value: 1-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305767622340963797, guid: b80197376ea4a4bb9abcd4027dd8254b, type: 3}
+      propertyPath: removeCoinsUI
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5305767622340963797, guid: b80197376ea4a4bb9abcd4027dd8254b, type: 3}
       propertyPath: OnPlayerSpawn.m_PersistentCalls.m_Calls.Array.size

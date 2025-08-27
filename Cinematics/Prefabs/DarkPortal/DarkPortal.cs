@@ -32,6 +32,15 @@ public class DarkPortal : MonoBehaviour
     }
 
     /// <summary>
+    /// Expand dark portal.
+    /// </summary>
+    public void Expand()
+    {
+        _audio.PlaySound(0);
+        _anim.SetBool("Expand", true);
+    }
+
+    /// <summary>
     /// Init class method.
     /// </summary>
     public void Init()

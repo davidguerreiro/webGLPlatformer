@@ -15,7 +15,7 @@ public class OneSidePlatform : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         CheckPlayerPosition();
     }

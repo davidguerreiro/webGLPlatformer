@@ -10,12 +10,18 @@ public class ScarAppearCinematic : MonoBehaviour
     public DarkPortal darkPortal;
 
     [Header("Dialogue data en")]
-    public DialogueData ramiroDialogueEn;
-    public DialogueData[] scarDialogueEn;
+    public DialogueData ramiroDialogue1EN;
+    public DialogueData ramiroDialogue2EN;
+    public DialogueData scarDialogue1EN;
+    public DialogueData scarDialogue2EN;
+    public DialogueData scarDialogue3EN;
 
     [Header("Dialogue data es")]
-    public DialogueData ramiroDialogueEs;
-    public DialogueData[] scarDialogueEs;
+    public DialogueData ramiroDialogue1ES;
+    public DialogueData ramiroDialogue2ES;
+    public DialogueData scarDialogue1ES;
+    public DialogueData scarDialogue2ES;
+    public DialogueData scarDialogue3ES;
 
     private Coroutine _playingCinematic;
        
@@ -40,6 +46,8 @@ public class ScarAppearCinematic : MonoBehaviour
     {
         string lang = PlayerPrefs.GetString("language", "english");
 
+        cinematicManager.gameManager.inGamePlay = false;
+
         yield return new WaitForSeconds(1f);
 
         // thunder.
@@ -54,24 +62,41 @@ public class ScarAppearCinematic : MonoBehaviour
         darkPortal.Dissapear();
 
         // play dialogue.
-        DialogueData ramiroDialogue = (lang == "english") ? ramiroDialogueEn : ramiroDialogueEs;
-        DialogueData[] scarDialogue = (lang == "english") ? scarDialogueEn : scarDialogueEs;
+        DialogueData ramiroDialogue1 = (lang == "english") ? ramiroDialogue1EN : ramiroDialogue1ES;
+        DialogueData ramiroDialogue2 = (lang == "english") ? ramiroDialogue2EN : ramiroDialogue2ES;
+        DialogueData scarDialogue1 = (lang == "english") ? scarDialogue1EN : scarDialogue1ES;
+        DialogueData scarDialogue2 = (lang == "english") ? scarDialogue2EN : scarDialogue2ES;
+        DialogueData scarDialogue3 = (lang == "english") ? scarDialogue3EN : scarDialogue3ES;
 
-        cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.PlayFullDialogue(scarDialogue[0], false);
+        cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.PlayFullDialogue(scarDialogue1, false);
 
         while (cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.playingFullDialogue != null)
         {
             yield return new WaitForFixedUpdate();
         }
 
-        cinematicManager.gameManager.gamePlayUI.dialogueBox.PlayFullDialogue(ramiroDialogue, false);
+        cinematicManager.gameManager.gamePlayUI.dialogueBox.PlayFullDialogue(ramiroDialogue1, false);
 
         while (cinematicManager.gameManager.gamePlayUI.dialogueBox.playingFullDialogue != null)
         {
             yield return new WaitForFixedUpdate();
         }
 
-        cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.PlayFullDialogue(scarDialogue[1], false);
+        cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.PlayFullDialogue(scarDialogue2, false);
+
+        while (cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.playingFullDialogue != null)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        cinematicManager.gameManager.gamePlayUI.dialogueBox.PlayFullDialogue(ramiroDialogue2, false);
+
+        while (cinematicManager.gameManager.gamePlayUI.dialogueBox.playingFullDialogue != null)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.PlayFullDialogue(scarDialogue3, false);
 
         while (cinematicManager.gameManager.gamePlayUI.dialogueBoxSecondary.playingFullDialogue != null)
         {

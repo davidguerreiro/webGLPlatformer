@@ -9,6 +9,7 @@ public class MainMenuUI : MonoBehaviour
     public FadeElement gameTitle;
     public FadeElement companyLogo;
     public GameObject pressStartText;
+    public GameObject gameVersion;
     public GameObject mainMenuNavegable;
 
     [HideInInspector]
@@ -41,6 +42,7 @@ public class MainMenuUI : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         pressStartText.SetActive(true);
+        gameVersion.SetActive(true);
         displayed = true;
     }
 

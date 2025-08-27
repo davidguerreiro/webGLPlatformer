@@ -153,6 +153,21 @@ public class AudioComponent : MonoBehaviour
     }
 
     /// <summary>
+    /// Fade out song.
+    /// Song will stop gradually.
+    /// </summary>
+    /// <param name="speed">float - fade out sound speed. Default to 1f</param>
+    /// <param name="toPause">bool - song will be paused if true. Otherwise stopped. False by default</param>
+    /// <param name="restartVolume">bool - whether to restart volume to original value after the songs fades out</param>
+    public void FadeOutSong( float speed = 1f, bool toPause = false, bool restartVolume = true )
+    {
+        if (onFade == false)
+        {
+            StartCoroutine(FadeOutSongRoutine(speed, toPause, restartVolume));
+        }
+    }
+
+    /// <summary>
     /// Fade in song.
     /// Song will start gradually.
     /// </summary>
@@ -179,7 +194,24 @@ public class AudioComponent : MonoBehaviour
         }
 
         onFade = false;
-    } 
+    }
+
+    /// <summary>
+    /// Fade in song.
+    /// Song will start gradually.
+    /// </summary>
+    /// <param name="speed">float - fade out sound speed. Default to 1f</param>
+    /// <param name="startVolume">float - Initial volume. Default to 0f</param>
+    /// <param name="maxVolume">float - maximun volume to reaach.Default to 1f</param>
+    /// <param name="selectClip">bool - whether to select another clip in the array to play. Default to false</param>
+    /// <param name="clip">int - Clip to play. Only works if selectClip is set to true. Default to 0</param>
+    public void FadeInSong(float speed = 1f, float startVolume = 0f, float maxVolume = 1f, bool selectClip = false, int clip = 0 )
+    {
+        if (onFade == false)
+        {
+            StartCoroutine(FadeInSongRoutine(speed, startVolume, maxVolume, selectClip, clip));
+        }
+    }
 
     /// <summary>
     /// Set loop value.
@@ -212,7 +244,6 @@ public class AudioComponent : MonoBehaviour
     /// </summary>
     public void Init() 
     {
-
         // get audio component reference.
         audio = GetComponent<AudioSource>();
 

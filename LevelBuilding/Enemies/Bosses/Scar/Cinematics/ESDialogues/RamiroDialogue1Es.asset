@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b2c1daae5610d47976faeb120a10fe, type: 3}
   m_Name: RamiroDialogue1Es
   m_EditorClassIdentifier: 
-  speakerImageSprite: {fileID: 21300000, guid: af91f600257d98b43bd4a925717bfc9e, type: 3}
+  speakerImageSprite: {fileID: 21300000, guid: dae52ec0859fe1741a34fa44d7bd2c7c, type: 3}
   dialogue:
-  - "Si, aunque no por gusto. Yo solo quer\xEDa hablar con ellos, pero me atacaron.
-    Si no quieres acabar igual, te recomiendo que te abstengas de intentar matarme."
-  - "Mira, mi nave espacial est\xE1 da\xF1ada y necesito repararla. \xBFSabes de
-    alguien que me pueda ayudar con eso por aqu\xED?"
+  - "\xBFPor qu\xE9 te has llevado mi nave? \xBFY qu\xE9n es el Falseijo ese del
+    que hablas? \xA1Responde!"

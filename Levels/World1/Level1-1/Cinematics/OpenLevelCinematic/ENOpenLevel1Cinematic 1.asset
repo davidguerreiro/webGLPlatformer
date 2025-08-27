@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b2c1daae5610d47976faeb120a10fe, type: 3}
   m_Name: ENOpenLevel1Cinematic 1
   m_EditorClassIdentifier: 
-  speakerImageSprite: {fileID: 21300000, guid: af91f600257d98b43bd4a925717bfc9e, type: 3}
+  speakerImageSprite: {fileID: 21300000, guid: dae52ec0859fe1741a34fa44d7bd2c7c, type: 3}
   dialogue:
-  - Where am I... ? This is not my world. Have I been teleported to another planet?
-  - 'Apparently, Oso Buko has not destroyed
-
-    the universe, at least yet.'
+  - "I have to repair my ship to come back to my planet. Let\xB4s see if I can find
+    a local around to help me."
   - What is that door over there? I will try to open it and see where it takes me.
+    I might need to find a key apparently.

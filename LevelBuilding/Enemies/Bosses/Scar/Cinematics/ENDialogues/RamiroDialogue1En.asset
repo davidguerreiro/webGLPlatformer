@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96b2c1daae5610d47976faeb120a10fe, type: 3}
-  m_Name: RamiroDialogue1En
+  m_Name: RamiroDialogue1EN
   m_EditorClassIdentifier: 
-  speakerImageSprite: {fileID: 21300000, guid: af91f600257d98b43bd4a925717bfc9e, type: 3}
+  speakerImageSprite: {fileID: 21300000, guid: dae52ec0859fe1741a34fa44d7bd2c7c, type: 3}
   dialogue:
-  - I guess so? They attack me in the first place. I just wanted to talk.
-  - Look my ship has been damaged. I just need to repair it and leave this planet.
-    Any idea about who could help me with that?
+  - Why did you take my ship? And who is that Falseijo guy you are talking about?
+    Answer me!

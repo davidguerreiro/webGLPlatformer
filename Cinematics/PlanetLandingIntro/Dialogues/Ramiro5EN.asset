@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b2c1daae5610d47976faeb120a10fe, type: 3}
+  m_Name: Ramiro5EN
+  m_EditorClassIdentifier: 
+  speakerImageSprite: {fileID: 21300000, guid: dae52ec0859fe1741a34fa44d7bd2c7c, type: 3}
+  dialogue:
+  - "Esto no se va a quedar as\xED. Si ese portal oscuro ha sido un ataque premeditado...
+    el responsable pagar\xE1 por ello, lo juro."
+  - "Por ahora voy a intentar buscar la se\xF1al de socorro, aunque no parece que
+    haya mucha tecnolog\xEDa por esta zona."
+  - A ver si encuentro a alguien con quien pueda hablar.
+  - I'm going to settle this, I promise! I'm sure that dark portal has been a deliverated
+    attack. If so, I must find the one behind this and make him pay!
+  - For now, I will try to find the distress signal. I don't think I will find it
+    around here, as there are no tech compatible around.
+  - Let's see if I find someone to ask.

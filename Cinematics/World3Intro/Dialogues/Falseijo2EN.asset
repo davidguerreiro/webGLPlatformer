@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b2c1daae5610d47976faeb120a10fe, type: 3}
+  m_Name: Falseijo2EN
+  m_EditorClassIdentifier: 
+  speakerImageSprite: {fileID: 21300000, guid: 062214946acd94b48a7b1b2f22014b35, type: 3}
+  dialogue:
+  - That is correct. The blue keys are made of old magic that only exists in this
+    world. Nobody makes them, nobody ownes them.
+  - Their power lust the evil hearts, that's why you will find powerful enemies around
+    them. In the wrong hands, they only give raw power and strenght.
+  - A total waste, if may I say.
+  - But if you posees a kind and a gentle hearth, the blue keys will bring you whatever
+    you wish the most. In your case, to come back home.

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b2c1daae5610d47976faeb120a10fe, type: 3}
   m_Name: ESOpenLevel1Cinematic
   m_EditorClassIdentifier: 
-  speakerImageSprite: {fileID: 21300000, guid: af91f600257d98b43bd4a925717bfc9e, type: 3}
+  speakerImageSprite: {fileID: 21300000, guid: dae52ec0859fe1741a34fa44d7bd2c7c, type: 3}
   dialogue:
-  - "\xBFDonde estoy? Este no es mi mundo... \xBFMe he teletransportado a otro planeta?"
-  - "Oso Buko no ha podido destruir el universo, al menos todav\xEDa."
+  - "Tengo que encontrar una forma de repara mi nave. Empezar\xE9 por buscar a un
+    local u otra persona que me pueda aydar."
   - "\xBFQu\xE9 es esa puerta marr\xF3n? Vamos a ver si puedo abrirla y ver a donde
-    me lleva."
+    me lleva. Tiene pinta de que podr\xEDa necesitar una llave para abrirla."

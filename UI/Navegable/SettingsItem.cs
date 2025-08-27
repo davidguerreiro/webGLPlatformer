@@ -22,7 +22,6 @@ public class SettingsItem : MonoBehaviour
     /// <param name="playAudio">bool</param>
     public void SetSelected(bool playAudio = true)
     {
-        Debug.Log("called");
         if (playAudio) {
             _audio.PlaySound(0);
         }

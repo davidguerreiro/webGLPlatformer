@@ -1444,6 +1444,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 525412509}
     m_Modifications:
+    - target: {fileID: 3215312217170040390, guid: bc288db0fb32a4faf96842fe6b7fae94, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3659446690405731115, guid: bc288db0fb32a4faf96842fe6b7fae94, type: 3}
       propertyPath: m_Name
       value: PlatformSmallGreen (5)
@@ -2604,6 +2608,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 525412509}
     m_Modifications:
+    - target: {fileID: 3215312217170040390, guid: bc288db0fb32a4faf96842fe6b7fae94, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3659446690405731115, guid: bc288db0fb32a4faf96842fe6b7fae94, type: 3}
       propertyPath: m_Name
       value: PlatformSmallGreen (19)
@@ -7812,7 +7820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4641183343135379394, guid: 9c3f4f41d55884e878d757e1942e1119, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.9571601
+      value: 1.9994534
       objectReference: {fileID: 0}
     - target: {fileID: 4641183343135379394, guid: 9c3f4f41d55884e878d757e1942e1119, type: 3}
       propertyPath: m_LocalScale.y
@@ -7824,7 +7832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4641183343135379394, guid: 9c3f4f41d55884e878d757e1942e1119, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.3573
+      value: -5.3784
       objectReference: {fileID: 0}
     - target: {fileID: 4641183343135379394, guid: 9c3f4f41d55884e878d757e1942e1119, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10875,7 +10883,12 @@ MonoBehaviour:
   boss: {fileID: 8014101645126169929}
   bossMovingPoint: {fileID: 846314646}
   explosion: {fileID: 3863445209633486023}
-  dialogueData: {fileID: 11400000, guid: 6f9c88afffa6019489dff36d331d6e9c, type: 2}
+  crusherAppearEN: {fileID: 11400000, guid: 4e938c9ecec24d742b04b79b2fe00149, type: 2}
+  crusherAppearES: {fileID: 11400000, guid: 199d5aea58e94bc41aed165f0fb01164, type: 2}
+  ramiroAnswerEN: {fileID: 11400000, guid: 0bfa6b4af0c86164f948215829676536, type: 2}
+  ramiroAnswerES: {fileID: 11400000, guid: a86dc2f9ca7062e41a4c9039ba9c4869, type: 2}
+  crusherEndEN: {fileID: 11400000, guid: 82d7fd389f2f1144f856b29460ca1963, type: 2}
+  crusherEndES: {fileID: 11400000, guid: 52e28f5068aa6fe40bdb7d4b8a13f731, type: 2}
   bossAscendSpeed: 2
 --- !u!1001 &1881179730
 PrefabInstance:
@@ -11809,6 +11822,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 525412509}
     m_Modifications:
+    - target: {fileID: 3168724205741519401, guid: 84f605db8b6fa4c56a4d282aeeebd22f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3687225992114012348, guid: 84f605db8b6fa4c56a4d282aeeebd22f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.8375845

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b2c1daae5610d47976faeb120a10fe, type: 3}
+  m_Name: Falseijo2EN
+  m_EditorClassIdentifier: 
+  speakerImageSprite: {fileID: 21300000, guid: 062214946acd94b48a7b1b2f22014b35, type: 3}
+  dialogue:
+  - I'm going to tell you something.
+  - I came to this planet 200 years ago looking for the mystic blue keys. I heard
+    a rumour about them and then I moved earth and heaven to find this world.
+  - The legend says that the blue keys would help you to get whatver you desire the
+    most. I wanted to have the person I loved closed to me again.
+  - But when I finally found the blue key... it transformed into a red key. A cursed
+    key.
+  - It was then when I finally realised that I didn't have a kind heart. I wasn't
+    worthy enough.
+  - The blue keys rejected me... but I got an inmense power instead. A powerful black
+    magic.

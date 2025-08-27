@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void Move()
     {
-        // xMove = Input.GetAxis("Horizontal");
         xMove = rewiredPlayer.GetAxis("MoveHorizontal");
         Vector2 movement = new Vector2(xMove, _rigibody.velocity.y);
 

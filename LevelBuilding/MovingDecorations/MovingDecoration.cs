@@ -10,6 +10,7 @@ public class MovingDecoration : MonoBehaviour
     public float delay;
     public float completedDelay;
     public bool playSoundAtInitMovement;
+    public bool stopAtTheEnd;
 
     [Header("Components")]
     public Transform leftTarget;
@@ -89,6 +90,11 @@ public class MovingDecoration : MonoBehaviour
         } else
         {
             transform.localPosition = leftTarget.localPosition;
+        }
+
+        if (stopAtTheEnd)
+        {
+            speed = 0;
         }
 
         _isMoving = null;

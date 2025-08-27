@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public bool isBossLevel;
     public bool hasCinematic;
     public bool hasBlueKey;
+    public bool removeGameplayUIElements;
+    public bool removeCoinsUI;
 
     [Header("Game Progresion")]
     public LocalVars gameProgresion;
@@ -109,12 +111,15 @@ public class GameManager : MonoBehaviour
         }
 
         // start gameplay UI.
-        gamePlayUI.InitGamePlay();
-        PlayLevelIntroMusic();
-
-        while (gamePlayUI.initLevel != null)
+        if (removeGameplayUIElements == false)
         {
-            yield return new WaitForFixedUpdate();
+            gamePlayUI.InitGamePlay();
+            PlayLevelIntroMusic();
+
+            while (gamePlayUI.initLevel != null)
+            {
+                yield return new WaitForFixedUpdate();
+            }
         }
 
         // init player.
@@ -124,6 +129,12 @@ public class GameManager : MonoBehaviour
         if (! isBossLevel)
         {
             PlayLevelMainTheme();
+        }
+
+        // remove UI gameplay elements if neccesary.
+        if (removeGameplayUIElements)
+        {
+            gamePlayUI.DisableMainGamePlayElements();
         }
 
         yield return new WaitForSeconds(.1f);
@@ -143,6 +154,8 @@ public class GameManager : MonoBehaviour
     {
         player.transform.position = playerSpawn.position;
         player.playerController.AllowControl();
+
+        player.ReEnablePlayerPhysics();
 
         if (isBossLevel)
         {
@@ -178,7 +191,12 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         gamePlayUI.pauseUI.Display();
-        player.playerController.RestrictPlayerInput();
+
+        if (inGamePlay)
+        {
+            player.playerController.RestrictPlayerInput();
+        }
+
         isPaused = true;
     }
 
@@ -189,7 +207,12 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         gamePlayUI.pauseUI.Hide();
-        player.playerController.AllowPlayerInput();
+
+        if (inGamePlay)
+        {
+            player.playerController.AllowPlayerInput();
+        }
+
         isPaused = false;
     }
 
@@ -327,6 +350,16 @@ public class GameManager : MonoBehaviour
     {
         gameProgresion.SetVar(levelData.saveVariableName, true);
         _saveGame.WriteDataInJson(gameProgresion);
+    }
+
+    /// <summary>
+    /// Upload data from save game JSON file.
+    /// Usually only called when loading select world
+    /// scene.
+    /// </summary>
+    public void LoadGameProgression()
+    {
+        gameProgresion = _saveGame.GetDataFromJson(gameProgresion);
     }
 
     /// <summary>

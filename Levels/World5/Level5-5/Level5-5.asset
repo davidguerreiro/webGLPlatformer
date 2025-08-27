@@ -16,7 +16,7 @@ MonoBehaviour:
   levelIntro: '"The Two Towers"'
   levelIntroEs: '"Las Dos Torres"'
   levelIcon: {fileID: 21300000, guid: 7872f9ec4e690e04ab4ca5db88d337b6, type: 3}
-  nextLevelName: Level6-1
+  nextLevelName: World6Intro
   levelToLoadOnRetry: Level5-5
   levelMusic: {fileID: 8300000, guid: 5661b438d1e65004c990041aed60b10c, type: 3}
   saveDataAtInitLevel: 0

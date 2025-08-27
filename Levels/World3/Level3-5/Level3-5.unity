@@ -243,6 +243,7 @@ MonoBehaviour:
   delay: 0
   completedDelay: 0
   playSoundAtInitMovement: 0
+  stopAtTheEnd: 0
   leftTarget: {fileID: 1239749663}
   rightTarget: {fileID: 1239749662}
 --- !u!212 &124947545
@@ -463,7 +464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6053971203517858010, guid: 6cb8a79c29a5d47d1a8747863a8f7eb5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.17
+      value: 9.05
       objectReference: {fileID: 0}
     - target: {fileID: 6053971203517858010, guid: 6cb8a79c29a5d47d1a8747863a8f7eb5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -617,7 +618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6053971203517858010, guid: 6cb8a79c29a5d47d1a8747863a8f7eb5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.73
+      value: -4.83
       objectReference: {fileID: 0}
     - target: {fileID: 6053971203517858010, guid: 6cb8a79c29a5d47d1a8747863a8f7eb5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -726,7 +727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6053971203517858010, guid: 6cb8a79c29a5d47d1a8747863a8f7eb5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.63
+      value: 5.3
       objectReference: {fileID: 0}
     - target: {fileID: 6053971203517858010, guid: 6cb8a79c29a5d47d1a8747863a8f7eb5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11755,7 +11756,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6053971203517858010, guid: 6cb8a79c29a5d47d1a8747863a8f7eb5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.55
+      value: -7.84
       objectReference: {fileID: 0}
     - target: {fileID: 6053971203517858010, guid: 6cb8a79c29a5d47d1a8747863a8f7eb5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11865,6 +11866,7 @@ MonoBehaviour:
   delay: 0
   completedDelay: 0
   playSoundAtInitMovement: 0
+  stopAtTheEnd: 0
   leftTarget: {fileID: 2031474619}
   rightTarget: {fileID: 2031474618}
 --- !u!212 &878353453
@@ -11933,7 +11935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6053971203517858010, guid: 6cb8a79c29a5d47d1a8747863a8f7eb5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.09
+      value: 2.12
       objectReference: {fileID: 0}
     - target: {fileID: 6053971203517858010, guid: 6cb8a79c29a5d47d1a8747863a8f7eb5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16938,6 +16940,7 @@ MonoBehaviour:
   delay: 0
   completedDelay: 0
   playSoundAtInitMovement: 0
+  stopAtTheEnd: 0
   leftTarget: {fileID: 1485813127}
   rightTarget: {fileID: 1485813126}
 --- !u!1 &1055478971
@@ -16987,14 +16990,16 @@ MonoBehaviour:
   cinematicManager: {fileID: 515486845}
   boss: {fileID: 867359716}
   darkPortal: {fileID: 314430722}
-  ramiroDialogueEn: {fileID: 11400000, guid: 16b7c1e8ddad32e48bb76772f43ca9b9, type: 2}
-  scarDialogueEn:
-  - {fileID: 11400000, guid: 73c6739ec27a3f84480273cb508b9d6e, type: 2}
-  - {fileID: 11400000, guid: 3526343fa4e65004fa37fef12d43dd1b, type: 2}
-  ramiroDialogueEs: {fileID: 11400000, guid: 3941d8608b3bb2a4a97c2a93e4e756df, type: 2}
-  scarDialogueEs:
-  - {fileID: 11400000, guid: ba3c265040311b14ba0f100d44f7b010, type: 2}
-  - {fileID: 11400000, guid: 1c1e6ae7b306d6b4b93295375e114d41, type: 2}
+  ramiroDialogue1EN: {fileID: 11400000, guid: 53371c50ca7856f43a27b31135f81b88, type: 2}
+  ramiroDialogue2EN: {fileID: 11400000, guid: efeb5a5cc5e82c640b08b09180996f04, type: 2}
+  scarDialogue1EN: {fileID: 11400000, guid: 99de44703f590924d915c41cbe23b2ee, type: 2}
+  scarDialogue2EN: {fileID: 11400000, guid: f14cc30d684e06a40b4ae699b3c6d741, type: 2}
+  scarDialogue3EN: {fileID: 11400000, guid: bf67899dae85e434e832492ea08ca821, type: 2}
+  ramiroDialogue1ES: {fileID: 11400000, guid: 3941d8608b3bb2a4a97c2a93e4e756df, type: 2}
+  ramiroDialogue2ES: {fileID: 11400000, guid: 68a91f9a5a00680409cea76b06ee9d37, type: 2}
+  scarDialogue1ES: {fileID: 11400000, guid: ba3c265040311b14ba0f100d44f7b010, type: 2}
+  scarDialogue2ES: {fileID: 11400000, guid: 1c1e6ae7b306d6b4b93295375e114d41, type: 2}
+  scarDialogue3ES: {fileID: 11400000, guid: e79fa7b2a712ef341a8d2d51dc9047bb, type: 2}
 --- !u!1 &1060274784
 GameObject:
   m_ObjectHideFlags: 0
@@ -18031,7 +18036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6053971203517858010, guid: 6cb8a79c29a5d47d1a8747863a8f7eb5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.08
+      value: -1.95
       objectReference: {fileID: 0}
     - target: {fileID: 6053971203517858010, guid: 6cb8a79c29a5d47d1a8747863a8f7eb5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18539,6 +18544,7 @@ MonoBehaviour:
   delay: 0
   completedDelay: 0
   playSoundAtInitMovement: 0
+  stopAtTheEnd: 0
   leftTarget: {fileID: 2014069349}
   rightTarget: {fileID: 2014069348}
 --- !u!212 &1671771409
@@ -18795,6 +18801,7 @@ MonoBehaviour:
   delay: 0
   completedDelay: 0
   playSoundAtInitMovement: 0
+  stopAtTheEnd: 0
   leftTarget: {fileID: 1683271093}
   rightTarget: {fileID: 1683271092}
 --- !u!212 &1716923731
@@ -18899,6 +18906,7 @@ MonoBehaviour:
   delay: 0
   completedDelay: 0
   playSoundAtInitMovement: 0
+  stopAtTheEnd: 0
   leftTarget: {fileID: 1063941896}
   rightTarget: {fileID: 1063941895}
 --- !u!212 &1800146024
@@ -19527,6 +19535,7 @@ MonoBehaviour:
   delay: 0
   completedDelay: 0
   playSoundAtInitMovement: 0
+  stopAtTheEnd: 0
   leftTarget: {fileID: 143020616}
   rightTarget: {fileID: 143020615}
 --- !u!212 &2032165965

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b2c1daae5610d47976faeb120a10fe, type: 3}
+  m_Name: CannonTower2ES
+  m_EditorClassIdentifier: 
+  speakerImageSprite: {fileID: 21300000, guid: 399e870e3380b164e95b70e1109a5b06, type: 3}
+  dialogue:
+  - "\xA1Dice que quiere ver a Lord Falseijo! Jajajaja mira, monigote saltar\xEDn,
+    Lord Falseijo podr\xEDa aplastarte solo con chasquear los dedos."
+  - "Nosotros somos los guadianes de la llave azul que lleva a los cielos, donde
+    est\xE1 el castillo de Lord Falseijo. \xA1Pero esa llave nunca caer\xE1 en tus
+    manos! \xA1Somos tan grandes que ni siquiera podr\xE1s hacernos da\xF1o!"

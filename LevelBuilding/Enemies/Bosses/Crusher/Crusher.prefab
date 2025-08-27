@@ -356,6 +356,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onDefeatedAfterAnim:
+    m_PersistentCalls:
+      m_Calls: []
   isAlive: 0
   isMoving: 0
   inBattleLoop: 0
@@ -520,6 +523,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 154d30aac0832534fa8783974c6d2b3d, type: 3}
   - {fileID: 8300000, guid: 5b9eff881ae22fe43a6d5e9d41847730, type: 3}
   - {fileID: 8300000, guid: e4019ec0536868b48b3b0e542372ee70, type: 3}
+  - {fileID: 8300000, guid: cbffddde5122ac94eb30697011b07716, type: 3}
   audio: {fileID: 0}
   onFade: 0
 --- !u!61 &6344296714930225642

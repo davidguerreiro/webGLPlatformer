@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b2c1daae5610d47976faeb120a10fe, type: 3}
+  m_Name: Jojonete1EN
+  m_EditorClassIdentifier: 
+  speakerImageSprite: {fileID: 21300000, guid: 059d7956d40990e4a8c37464823f14ba, type: 3}
+  dialogue:
+  - We are approaching 0024Z-Y43 coordinates from where the distress signal was detected.
+  - Multiple space ships have been lost around this area the last 20 - 30 years.
+    We are here to unveil the mistery and rescue any crew survivors, if possible.
+  - I recommend caution, Ramiro.

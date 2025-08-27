@@ -16,6 +16,12 @@ public class Spagueti : Boss
     [Header("SplashFireAttack")]
     public SplashFireBallLauncher fireLauncher;
 
+    [Header("Enemies to spawn")]
+    public GameObject[] enemiesRightTop;
+    public GameObject[] enemiesRightBottom;
+    public GameObject[] enemiesLeftTop;
+    public GameObject[] enemiesLeftBottom;
+
     [Header("MovingPoints")]
     public Transform rightUpMovingPoint;
     public Transform rightDownMovingPoint;
@@ -24,6 +30,7 @@ public class Spagueti : Boss
 
     private string _position;
     private float _originalDownSpeed;
+    private int enemiesSpawnCounter;
     private Coroutine _showUpRoutine;
     private Coroutine _showDownRoutine;
     private Coroutine _attackLoopBehaviour;
@@ -173,6 +180,22 @@ public class Spagueti : Boss
             }
 
             IncreaseGoingDownSpeed();
+        }
+    }
+
+    /// <summary>
+    /// Spawn enemies in battle arena.
+    /// </summary>
+    public void SpawnEnemyGroup()
+    {
+        if (enemiesSpawnCounter <= 3)
+        {
+            enemiesLeftTop[enemiesSpawnCounter].SetActive(true);
+            enemiesLeftBottom[enemiesSpawnCounter].SetActive(true);
+            enemiesRightTop[enemiesSpawnCounter].SetActive(true);
+            enemiesRightBottom[enemiesSpawnCounter].SetActive(true);
+
+            enemiesSpawnCounter++;
         }
     }
 

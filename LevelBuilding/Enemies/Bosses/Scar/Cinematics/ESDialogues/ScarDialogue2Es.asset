@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speakerImageSprite: {fileID: 21300000, guid: 27215a54a9c4e6a498d906f226163286, type: 3}
   dialogue:
-  - "\xBFTengo yo pinta de mec\xE1nico o algo? Jajajaja una vez entras en este planeta,
-    est\xE1s a las \xF3rdenes del Rey Falseijo. \xA1Prep\xE1rate a morir!"
+  - "Tienes una oportunidad de sobrevivir. Si me dices los c\xF3digos de activaci\xF3n
+    de tu nave, te perdonar\xE9 la vida. Si no, te los voy a sacar por las malas
+    Muajajaja."

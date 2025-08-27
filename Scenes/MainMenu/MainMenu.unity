@@ -1090,8 +1090,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuUI: {fileID: 8515087857183850222}
   playerShipWrapper: {fileID: 1503605001}
-  newGameScene: Level1-1
-  continueScene: Level1-1
+  newGameScene: GameIntroCinematic
+  continueScene: SelectWorld
   optionsScene: OptionsScene
 --- !u!4 &1463596865
 Transform:

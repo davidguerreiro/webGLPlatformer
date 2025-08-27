@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speakerImageSprite: {fileID: 21300000, guid: 27215a54a9c4e6a498d906f226163286, type: 3}
   dialogue:
-  - Asi que tu eres el venao que ha derrotado a Crusher y al Ratoncito Perez...
+  - "\xBFTodav\xEDa sigues con vida? Est\xE1 claro que te he subestimado. Les has
+    dado una buena paliza a Crusher y al Ratoncito P\xE9rez."
+  - La otra vez iba con prisa por llevarle la nave a Lord Falseijo, pero esta vez
+    te voy a hacer papilla yo mismo, mendrugote.

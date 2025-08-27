@@ -16,7 +16,7 @@ MonoBehaviour:
   levelIntro: '"Perez the ratoncito"'
   levelIntroEs: "\"El ratoncito P\xE9rez\""
   levelIcon: {fileID: 21300000, guid: 2f67d6c598046a14a80c224dcec17824, type: 3}
-  nextLevelName: Level3-1
+  nextLevelName: World3Intro
   levelToLoadOnRetry: Level2-5
   levelMusic: {fileID: 8300000, guid: 5661b438d1e65004c990041aed60b10c, type: 3}
   saveDataAtInitLevel: 0

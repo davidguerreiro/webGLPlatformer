@@ -27,6 +27,16 @@ public class CinematicSounds : MonoBehaviour
     }
 
     /// <summary>
+    /// Expose audio component for further interaction
+    /// in cinematics.
+    /// </summary>
+    /// <returns>AudioComponent</returns>
+    public AudioComponent GetAudioComponent()
+    {
+        return _audioComponent;
+    }
+
+    /// <summary>
     /// Init class method.
     /// </summary>
     public void Init()
